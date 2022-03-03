@@ -10,7 +10,7 @@ body {
 }
 
 .logo{
-  margin-left: 150%;
+  /* margin-left: 150%; */
 }
 
 .init {
@@ -24,7 +24,7 @@ body {
   padding-right: 16px
 }
 .header{
-  margin-left: 100%;
+  /* margin-left: 100%; */
   width: 100%;
 }
 .barraLat {
