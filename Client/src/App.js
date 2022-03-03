@@ -14,7 +14,7 @@ import OrdenCompra from './Components/Screens/Compras/OrdenCompra';
 import InformesCompras from './Components/Screens/Compras/InformesCompras';
 import CreateItem from './Components/Screens/Inventario/CreateItem';
 import SearchProducts from './Components/Screens/Inventario/SearchProduct';
-import logo from "../../../../Proyecto_1/client/sis_conta/src/static/images/logo_JD2.jpg";
+import logo from "./static/images/logo_JD2.jpg";
 
 function App() {
   const [socket] = useState(io.connect("/"));
