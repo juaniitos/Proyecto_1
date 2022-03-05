@@ -1,20 +1,21 @@
 import { Button, Table } from "reactstrap";
 import React, { useState, useEffect } from "react";
-import { /* Link,  */ useNavigate/* , useParams */ } from "react-router-dom";
+import { /* Link,  */ useNavigate,/* , useParams */ 
+useParams} from "react-router-dom";
 import axios from "axios";
+import ProductTable from "../../ProductTable";
 
 const ListaPrecios = (props) => {
     const navigate = useNavigate();
     const [inputs, setInputs] = useState([]);
     const [loaded, setLoaded] = useState(false);
-    /* const {index} = useParams(); */
 
 
     useEffect(() =>{
         axios.get('/api/products')
             .then(res => {
-                console.log("RES", res.data.product);
-                setInputs(res.data.product);
+                console.log("RES", res.data.products);
+                setInputs(res.data.products);
                 setLoaded(true);
         })
             .catch (err => {
@@ -22,71 +23,22 @@ const ListaPrecios = (props) => {
             })
     }, [])
 
+    const deleteProduct = (_id) => {
+        axios.delete('/api/products/delete/' + _id)
+        .then(res => {
+            setInputs(inputs.filter(p => p._id !== _id));
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
     return (
         <div>
-            <h1>ListaProductos</h1>
+            <h1>Lista de Precios</h1>
             <h2>En proceso ...</h2>
-            <div className="tableProducts" >
-                <Table className="table1">
-                    <thead>
-                        Codigo
-                    </thead>
-                    {loaded &&
-                    <tbody>
-                        <tr>
-                            {inputs.map((p) => {
-                                return(
-                                    <tr key={p._id}>
-                                        <tr>
-                                            <tr><Button color="#ffffff" onClick={() => navigate('#')}> {p.codigo} </Button></tr>
-                                        </tr> 
-                                    </tr>
-                                )
-                            })}
-                            </tr>
-                    </tbody>}
-                </Table>
-                <Table className="table2">
-                    <thead>
-                        Descripción
-                    </thead>
-                    {loaded &&
-                    <tbody>
-                        <tr>
-                            {inputs.map((p) => {
-                                return(
-                                    <tr key={p._id}>
-                                        <tr>
-                                            <tr><Button color="#ffffff" onClick={() => navigate('#')}> {p.descripcion} </Button></tr>
-                                        </tr> 
-                                    </tr>
-                                )
-                            })}
-                            </tr>
-                    </tbody>}
-                </Table>
-                <Table className="table4">
-                    <thead>
-                        Precio
-                    </thead>
-                    {loaded &&
-                    <tbody>
-                        <tr>
-                            {inputs.map((p) => {
-                                return(
-                                    <tr key={p._id}>
-                                        <tr>
-                                            <tr><Button color="#ffffff" onClick={() => navigate('#')}> {p.precio} </Button></tr>
-                                        </tr> 
-                                    </tr>
-                                )
-                            })}
-                            </tr>
-                    </tbody>}
-                </Table>
-            </div>
+            <ProductTable ths={[{th: 'Código', key: 'codigo'}, {th: 'Descripción', key: 'descripcion'}, {th: 'Precio', key: 'precio'}]} inputs={inputs} loaded={loaded} deleteProduct={deleteProduct} />
             <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
-            
         </div>
     )
 }

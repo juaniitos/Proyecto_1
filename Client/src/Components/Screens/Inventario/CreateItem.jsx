@@ -2,6 +2,7 @@ import { Button, Form, Input, Label } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import ProductForm from "../../ProductForm";
 
 const CreateItem = () => {
     const navigate = useNavigate();
@@ -14,46 +15,24 @@ const CreateItem = () => {
         "caracteristicas": ""
     }
     const [newProduct, setNewProduct] = useState(initialProducts);
-    const addProduct = (e) => {
+    
+    const addProduct = (e, p) => {
         e.preventDefault();
-        setNewProduct(initialProducts);
-        console.log(newProduct);
-        const {codigo, descripcion, precio, cantidad, marca, caracteristicas} = newProduct
-        axios.post('/api/createProduct', {
-            codigo, descripcion, precio, cantidad, marca, caracteristicas
-        }).then((res) => console.log(res["Products"]))
-        .catch((error) => console.log("Error", error))
-    }
-
-    const change = (e) => {
-        const {name, value} = e.target;
-        setNewProduct({
-            ...newProduct,
-            [name]: value
-        });
+        console.log(p)
+        axios.post('/api/createProduct', p)
+            .then(res => {
+                console.log(res)
+                setNewProduct(initialProducts)
+                navigate('/Home')                
+            })
+            .catch(error => console.log("Error", error))
     }
 
     return (
         <div>
             <h1>Crear Item</h1>
             <h2>En proceso ...</h2>
-            <Form onSubmit={ addProduct }>
-                <Label>Código:</Label>
-                <Input type="text" name="codigo" value={newProduct.codigo} onChange={change} required  placeholder="Inserte código"/>
-                <Label>Descripción:</Label>
-                <Input type="text" name="descripcion" value={newProduct.descripcion} onChange={change} required  placeholder="Inserte descripción"/>
-                <Label>Precio:</Label>
-                <Input type="text" name="precio" value={newProduct.precio} onChange={change} required  placeholder="Inserte precio"/>
-                <Label>Cantidad:</Label>
-                <Input type="text" name="cantidad" value={newProduct.cantidad} onChange={change} placeholder="Inserte cantidad"/>
-                <Label>Marca:</Label>
-                <Input type="text" name="marca" value={newProduct.marca} onChange={change} required placeholder="Inserte marca"/>
-                <Label>Características:</Label>
-                <Input type="text" name="caracteristicas" value={newProduct.caracteristicas} onChange={change} placeholder="Inserte caracteristicas"/>
-                <br/>
-                <Button type="submit" color="success" >Crear ítem</Button>
-                <br/><br/>
-            </Form>
+            <ProductForm read={[1,1,1,1,1,1]} p={newProduct} onSubmit={addProduct} label={'Crear'}/>
             <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
         </div>
     )

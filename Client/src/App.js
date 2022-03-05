@@ -14,6 +14,7 @@ import OrdenCompra from './Components/Screens/Compras/OrdenCompra';
 import InformesCompras from './Components/Screens/Compras/InformesCompras';
 import CreateItem from './Components/Screens/Inventario/CreateItem';
 import SearchProducts from './Components/Screens/Inventario/SearchProduct';
+import EditarItem from './Components/Screens/Inventario/EditarItem';
 import logo from "./static/images/logo_JD2.jpg";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path='/ordenventa' element={<OrdenVenta/>} />
           <Route path='/informesventas' element={<InformesVentas/>} />
           <Route path='/item' element={<CreateItem/>} />
+          <Route path='/item/editar/:_id' element={<EditarItem/>} />
           <Route path='/kardex' element={<Kardex/>} />
           <Route path='/products' element={<ListaProductos/>} />
           <Route path='/precios' element={<ListaPrecios/>} />

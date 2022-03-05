@@ -1,4 +1,4 @@
-const { createProducts, viewsProducts, searchProducts, updateProducts } = require("../controllers/products.controllers");
+const { createProducts, viewsProducts, searchProducts, updateProducts, eliminarProduct } = require("../controllers/products.controllers");
 
 
 module.exports = (app) => {
@@ -6,4 +6,5 @@ module.exports = (app) => {
     app.get('/api/products', viewsProducts);
     app.get('/api/products/:_id', searchProducts);
     app.put('/api/products/update/:_id', updateProducts);
+    app.delete('/api/products/delete/:_id', eliminarProduct);
 }

@@ -5,6 +5,7 @@
 }
 
 body {
+  padding: 5px;
   width: 1024px;
   height: 970px;
 }
@@ -23,8 +24,10 @@ body {
   padding-right: 16px
 }
 .header{
-  /* margin-left: 100%; */
-  width: 100%;
+  margin-bottom: 10px;
+  /* margin-left: auto;
+  margin-right: 0%; */
+  width: fit-content;
 }
 .barraLat {
   width: 40vh;
@@ -59,15 +62,7 @@ body {
   justify-content: space-between;
 }
 .tableProducts {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;    display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-}
-.table2{
-  margin-left: -158px;
-  padding-right: 10%;
+  margin-top: 10px;
 }
 
 .template-container{

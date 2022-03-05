@@ -105,10 +105,10 @@ const SignInSide = (props) => {
                             </Grid>
                             <Copyright sx={{ mt: 5 }}/><br/>
                             <Typography color='red' align='center' >
-                            Para pruebas puede utilizar:<br/>
-                            Usuario: ventas@JD.com<br/>
-                            Contraseña: 1234
-                        </Typography>
+                                Para pruebas puede utilizar:<br/>
+                                Usuario: ventas@JD.com<br/>
+                                Contraseña: 1234
+                            </Typography>
                         </Box>
                     </Box>
                 </Grid>
