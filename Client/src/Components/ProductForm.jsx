@@ -6,10 +6,12 @@ const ProductForm = ({p, onSubmit, label, read}) => {
     const initialProduct = {
         codigo: p.codigo ? p.codigo : "",
         descripcion: p.descripcion ? p.descripcion : "",
-        precio: p.precio ? p.precio : "",
-        cantidad: p.cantidad ? p.cantidad : "",
+        precio: p.precio ? p.precio : "0",
+        cantidad: p.cantidad ? p.cantidad : "0",
         marca: p.marca ? p.marca : "",
-        caracteristicas: p.caracteristicas ? p.caracteristicas : ""       
+        caracteristicas: p.caracteristicas ? p.caracteristicas : "",
+        costo: p.costo ? p.costo : "0",
+        imgUrl: p.imgUrl ? p.imgUrl : ""     
     }
 
     const [product, setProduct] = useState(initialProduct);
@@ -29,13 +31,17 @@ const ProductForm = ({p, onSubmit, label, read}) => {
             <Label>Descripción:</Label>
             <Input readOnly={read[1] == 0 ? true : false} type="text" name="descripcion" value={product.descripcion} onChange={change} required  placeholder="Inserte descripción"/>
             <Label>Precio:</Label>
-            <Input readOnly={read[2] == 0 ? true : false} type="text" name="precio" value={product.precio} onChange={change} required  placeholder="Inserte precio"/>
+            <Input readOnly={read[2] == 0 ? true : false} type="number" name="precio" value={product.precio} onChange={change} required  placeholder="Inserte precio"/>
             <Label>Cantidad:</Label>
-            <Input readOnly={read[3] == 0 ? true : false} type="text" name="cantidad" value={product.cantidad} onChange={change} placeholder="Inserte cantidad"/>
+            <Input readOnly={read[3] == 0 ? true : false} type="number" name="cantidad" value={product.cantidad} onChange={change} placeholder="Inserte cantidad"/>
             <Label>Marca:</Label>
             <Input readOnly={read[4] == 0 ? true : false} type="text" name="marca" value={product.marca} onChange={change} required placeholder="Inserte marca"/>
             <Label>Características:</Label>
             <Input readOnly={read[5] == 0 ? true : false} type="text" name="caracteristicas" value={product.caracteristicas} onChange={change} placeholder="Inserte caracteristicas"/>
+            <Label>Costo de producto:</Label>
+            <Input readOnly={read[6] == 0 ? true : false} type="number" name="costo" value={product.costo} onChange={change} placeholder="Inserte costo de producto"/>
+            <Label>URL de imagen de producto:</Label>
+            <Input readOnly={read[7] == 0 ? true : false} type="text" name="imgUrl" value={product.imgUrl} onChange={change} placeholder="Inserte URL de imagen de producto"/>
             <br/>
             <Button type="submit" color="success" >{label}</Button>
             <br/><br/>

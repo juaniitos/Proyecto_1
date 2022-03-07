@@ -60,7 +60,7 @@ const Home = (props) => {
                                 <AccordionBody accordionId="2">
                                     <Button color='#ffffff' onClick={ () => navigate('/item')}>Crear Items</Button><br></br>
                                     <Button color='#ffffff' onClick={ () => navigate('/products')}>Lista de productos</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('/precios')}>Lista de precios </Button><br></br>
+                                    {/* <Button color='#ffffff' onClick={ () => navigate('/precios')}>Lista de precios </Button><br></br> */}
                                     <Button color='#ffffff' onClick={ () => navigate('#')}>Revalorización de inventario </Button>
                                     <Button color='#ffffff' onClick={ () => navigate('/kardex')}>Kardex </Button>
                                     <AccordionHeader targetId="2">Operaciones de stock</AccordionHeader>

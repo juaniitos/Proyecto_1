@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const ClientSchema = new mongoose.Schema({
     nombre: {
@@ -17,11 +18,19 @@ const ClientSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        //match: [/^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/, "El email es inválido"],
-        unique: [true, "El email ya está en uso"]
+        match: [/^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/, "El formato del email es inválido"],
+        unique: true
+    },
+    saldo: {
+        type: Number,
+        required: [true, "El saldo pendiente es requerido"]
+    },
+    estado: {
+        type: Boolean
     }
 }, {timestamps: true});
 
 const Client = mongoose.model("Client", ClientSchema);
+ClientSchema.plugin(uniqueValidator, { message: 'Error; el email {VALUE} ya está en uso.' });
 
 module.exports = Client;

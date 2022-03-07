@@ -65,6 +65,28 @@ body {
   margin-top: 10px;
 }
 
+.img_prod{
+  width: 100px;
+}
+
+.btn_img{
+  transition: all 1s ease-out;
+  animation: show 1s ease-in forwards;
+}
+
+@keyframes show {
+  from{
+    transform: scale(1);
+    opacity: 0;
+    height: 0%;
+  } 
+  to{
+    transform: scale(5);
+    opacity: 1;
+    height: 1%;
+  } 
+}
+
 .template-container{
   display: grid;
   grid-template-columns: 30% 70%;

@@ -16,6 +16,7 @@ import CreateItem from './Components/Screens/Inventario/CreateItem';
 import SearchProducts from './Components/Screens/Inventario/SearchProduct';
 import EditarItem from './Components/Screens/Inventario/EditarItem';
 import logo from "./static/images/logo_JD2.jpg";
+import NewListaProductos from './Components/Screens/Inventario/NewListaProductos';
 
 function App() {
   const [socket] = useState(io.connect("/"));
@@ -46,8 +47,8 @@ function App() {
           <Route path='/item' element={<CreateItem/>} />
           <Route path='/item/editar/:_id' element={<EditarItem/>} />
           <Route path='/kardex' element={<Kardex/>} />
-          <Route path='/products' element={<ListaProductos/>} />
-          <Route path='/precios' element={<ListaPrecios/>} />
+          <Route path='/products' element={<NewListaProductos/>} />
+          {/* <Route path='/precios' element={<ListaPrecios/>} /> */}
           <Route path='/searchProduct/:_id' element={<SearchProducts/>}/>
           <Route path='/ordencompra' element={<OrdenCompra/>} />
           <Route path='/informescompras' element={<InformesCompras/>} />

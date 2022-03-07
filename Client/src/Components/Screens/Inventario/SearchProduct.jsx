@@ -1,8 +1,9 @@
 import { Button } from "reactstrap";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { /* Link,  */ useNavigate/* , useParams */ } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import SocketContext from "../../../Context/socket-context";
 
 const SearchProducts = (props) => {
     const navigate = useNavigate();
@@ -10,6 +11,7 @@ const SearchProducts = (props) => {
     const [loaded, setLoaded] = useState(false);
     const { _id } = useParams();
 
+    const {login} = useContext(SocketContext);
 
     useEffect(() =>{
         axios.get('/api/products/'+ _id)
@@ -28,6 +30,7 @@ const SearchProducts = (props) => {
 
     return (
         <div>
+            {login && <>
             <h1>SearchProducts</h1>
             <h2>En proceso ...</h2>
             <div className="tableProducts" >
@@ -51,7 +54,7 @@ const SearchProducts = (props) => {
             <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button> */}
             </div>
             <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
-            
+            </>}
         </div>
     )
 }

@@ -1,15 +1,17 @@
 import { Button, Table } from "reactstrap";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { /* Link,  */ useNavigate,/* , useParams */ 
 useParams} from "react-router-dom";
 import axios from "axios";
 import ProductTable from "../../ProductTable";
+import SocketContext from "../../../Context/socket-context";
 
 const ListaPrecios = (props) => {
     const navigate = useNavigate();
     const [inputs, setInputs] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
+    const {login} = useContext(SocketContext);
 
     useEffect(() =>{
         axios.get('/api/products')
@@ -35,10 +37,12 @@ const ListaPrecios = (props) => {
 
     return (
         <div>
+            {login && <>
             <h1>Lista de Precios</h1>
             <h2>En proceso ...</h2>
             <ProductTable ths={[{th: 'Código', key: 'codigo'}, {th: 'Descripción', key: 'descripcion'}, {th: 'Precio', key: 'precio'}]} inputs={inputs} loaded={loaded} deleteProduct={deleteProduct} />
             <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
+            </>}
         </div>
     )
 }

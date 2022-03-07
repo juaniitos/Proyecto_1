@@ -15,14 +15,21 @@ const ProductsSchema = new mongoose.Schema({
     },
     cantidad: {
         type: Number,
-        required: [true, "La cantidad es requerida"],
+        required: [true, "La cantidad es requerida"]
     },
     marca: {
         type: String
     },
     caracteristicas: {
         type: String
-    }
+    },
+    costo: {
+        type: Number,
+        required: [true, "El costo del producto es requerida"]
+    },
+    imgUrl: {
+        type: String
+    },
 }, {timestamps: true});
 
 const Product = mongoose.model("Product", ProductsSchema);
