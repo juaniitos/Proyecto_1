@@ -9,7 +9,7 @@ const NewListaProductos = (props) => {
     const [inputs, setInputs] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
-    const [btnActive, setBtnActive] = useState(false);
+    // const [btnActive, setBtnActive] = useState(false);
 
     const {login} = useContext(SocketContext);
 
@@ -35,9 +35,9 @@ const NewListaProductos = (props) => {
         })
     }
 
-    const agrandarImg = () => {
-        setBtnActive(!btnActive);
-    }
+    // const agrandarImg = () => {
+    //     setBtnActive(!btnActive);
+    // }
 
     return (
         <div>
@@ -67,7 +67,7 @@ const NewListaProductos = (props) => {
                                 <td>{p.cantidad}</td>
                                 <td>{p.precio}</td>  
                                 <td><img className="img_prod" src={p.imgUrl} alt="imagen producto"/></td>                                                         
-                                {btnActive && <Button className="btn_img" color="none" onClick={agrandarImg}><img className="img_prod" src={p.imgUrl} alt="imagen producto"/></Button>}
+                                {/* {btnActive && <Button className="btn_img" color="none" onClick={agrandarImg}><img className="img_prod" src={p.imgUrl} alt="imagen producto"/></Button>} */}
                                 <td><Button color="success" onClick={() => navigate('/item/editar/' + p._id)}>Editar</Button>&nbsp;&nbsp;<Button color="danger" onClick={() => {deleteProduct(p._id)}}>Eliminar</Button></td>
                             </tr>
                         )

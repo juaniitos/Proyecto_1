@@ -97,13 +97,14 @@ const Home = (props) => {
                             <AccordionItem >
                                 <AccordionHeader targetId="5">Clientes</AccordionHeader>
                                 <AccordionBody accordionId="5">
-                                <Button color='#ffffff' onClick={ () => navigate('#')}>Lista de clientes </Button><br></br>
+                                <Button color='#ffffff' onClick={ () => navigate('/client')}>Agregar Clientes </Button><br></br>
+                                <Button color='#ffffff' onClick={ () => navigate('/clientList')}>Lista de clientes </Button><br></br>
                                 <Button color='#ffffff' onClick={ () => navigate('#')}>Saldo de cuenta de cliente</Button>
                                 <Button color='#ffffff' onClick={ () => navigate('#')}>Campaña </Button>
                                 <AccordionHeader targetId="5">Informes de clientes</AccordionHeader>
                                 <AccordionBody accordionId="5">
                                     <Button color='#ffffff' onClick={ () => navigate('#')}>Antiguedad de saldos</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Clientes inactivos</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('/clientList/NoActive')}>Clientes inactivos</Button><br></br>
                                 </AccordionBody>
                                 </AccordionBody>
                             </AccordionItem>

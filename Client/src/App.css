@@ -67,9 +67,14 @@ body {
 
 .img_prod{
   width: 100px;
+  transition: 1s;
 }
 
-.btn_img{
+.img_prod:hover{
+  transform: scale(5);
+}
+
+/* .btn_img{
   transition: all 1s ease-out;
   animation: show 1s ease-in forwards;
 }
@@ -85,7 +90,7 @@ body {
     opacity: 1;
     height: 1%;
   } 
-}
+} */
 
 .template-container{
   display: grid;
@@ -119,4 +124,16 @@ body {
 }
 .image-card{
   width: 3vh;
+}
+
+.active{
+  margin-right: 10px;
+}
+
+.subTittle{
+  text-align: end;
+}
+.resumen{
+  width: 25%;
+  margin-left: 75%;
 }

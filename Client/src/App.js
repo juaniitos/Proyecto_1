@@ -17,6 +17,10 @@ import SearchProducts from './Components/Screens/Inventario/SearchProduct';
 import EditarItem from './Components/Screens/Inventario/EditarItem';
 import logo from "./static/images/logo_JD2.jpg";
 import NewListaProductos from './Components/Screens/Inventario/NewListaProductos';
+import CreateClient from './Components/Screens/Clientes/CreateClient';
+import EditarClient from './Components/Screens/Clientes/EditarClient';
+import ClientList from './Components/Screens/Clientes/ClientList';
+import ClientListNoActive from './Components/Screens/Clientes/ClientListNoActive';
 
 function App() {
   const [socket] = useState(io.connect("/"));
@@ -52,6 +56,10 @@ function App() {
           <Route path='/searchProduct/:_id' element={<SearchProducts/>}/>
           <Route path='/ordencompra' element={<OrdenCompra/>} />
           <Route path='/informescompras' element={<InformesCompras/>} />
+          <Route path='/client' element={<CreateClient/>} />
+          <Route path='/clientList' element={<ClientList/>} />
+          <Route path='/client/editar/:_id' element={<EditarClient/>} />
+          <Route path='/clientList/NoActive' element={<ClientListNoActive/>} />
         </Routes>
       </SocketContext.Provider>
     </div>

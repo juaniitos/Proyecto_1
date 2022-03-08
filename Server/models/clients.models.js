@@ -18,6 +18,7 @@ const ClientSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        required: [true, "El email es requerido"],
         match: [/^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/, "El formato del email es inválido"],
         unique: true
     },
@@ -25,7 +26,10 @@ const ClientSchema = new mongoose.Schema({
         type: Number,
         required: [true, "El saldo pendiente es requerido"]
     },
-    estado: {
+    activo: {
+        type: Boolean
+    },
+    inactivo: {
         type: Boolean
     }
 }, {timestamps: true});
