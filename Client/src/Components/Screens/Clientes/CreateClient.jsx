@@ -27,7 +27,7 @@ const CreateClient = () => {
             .then(res => {
                 console.log(res)
                 setNewClient(initialClient)
-                navigate('/Home')                
+                navigate('/clientList')                
             })
             .catch(error => console.log("Error", error))
     }

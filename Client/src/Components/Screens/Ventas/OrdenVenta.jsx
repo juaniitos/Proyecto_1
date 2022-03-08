@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button,Card,Col,Form,FormGroup,Input,Label, Table} from "reactstrap";
+import {  Button,Card,Col,Form,FormGroup,Input,Label, Table} from "reactstrap";
 import SocketContext from "../../../Context/socket-context";
 import adicion from "../../../static/images/icons/adicional_linea.png"  ;
+import VentaForm from "./VentaForm";
 
 
 const OrdenVenta = () => {
     const navigate = useNavigate();
-
+    const Ventaline = <VentaForm></VentaForm>
     const {login} = useContext(SocketContext);
 
     return (
@@ -41,29 +42,9 @@ const OrdenVenta = () => {
                 </FormGroup>
             </Form>
             <Card>
-                <Form>
-                    <FormGroup row>
-                        <Col md={3}>
-                            <Input id="codigo" name="codigo" placeholder="codigo productos"
-                            type="text" /* onBlur={} */ />
-                        </Col>
-                        <Col md={3}>
-                            <Input id="descripcion" name="descripcion" placeholder="descripcion productos"
-                            type="text" />
-                        </Col>
-                        <Col md={2}>
-                            <Input id="cantidad" name="cantidad" placeholder="cantidad" type="number" />
-                        </Col>
-                        <Col md={2}>
-                            <Input id="precio" name="precio" placeholder="precio" type="number" />
-                        </Col>
-                        <Col md={2}>
-                            <Input id="total" name="total" placeholder="0" type="number" />
-                        </Col>
-                    </FormGroup>
-                </Form>
+                <VentaForm/>
             </Card>
-            <img src={adicion} width={'20vh'} />
+            <img src={adicion} alt='adicionar linea' width={'20vh'} onClick={ () => Ventaline } />
             <Card className="resumen">
                 <Table>
                     <tbody>
