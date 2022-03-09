@@ -1,14 +1,12 @@
-import { Button, Table } from "reactstrap";
-import React, { useState, useEffect, useContext } from "react";
-import { /* Link,  */ useNavigate } from "react-router-dom";
+import { Button } from "reactstrap";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-import axios from "axios";
 import SocketContext from "../../../Context/socket-context";
 import ListOfProducts from "./ListOfProducts";
 
 const NewListaProductos = () => {
     const navigate = useNavigate();
-    const [loaded, setLoaded] = useState(false);
 
     const {login} = useContext(SocketContext);
 
@@ -16,7 +14,6 @@ const NewListaProductos = () => {
     let inputHandler = (e) => {
       var lowerCase = e.target.value.toLowerCase();
       setInputText(lowerCase);
-    //   console.log(lowerCase)
     };
 
     return (

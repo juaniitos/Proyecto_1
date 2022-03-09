@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {  Button,Card,Input, Table} from "reactstrap";
+import TextField from "@mui/material/TextField";
 import SocketContext from "../../../Context/socket-context";
 import adicion from "../../../static/images/icons/adicional_linea.png"  ;
 import FormOfClients from './FormOfClients';
@@ -11,6 +12,12 @@ const OrdenVenta = (props) => {
     const navigate = useNavigate();
     const [ventaList, setVentaList] = useState([<VentaForm/>]);
     const {login} = useContext(SocketContext);
+
+    const [inputText, setInputText] = useState("");
+    let inputHandler = (e) => {
+      var lowerCase = e.target.value.toLowerCase();
+      setInputText(lowerCase);
+    };
 
     const lineAdd = () => {
         setVentaList([...ventaList, <VentaForm/>])
@@ -24,11 +31,22 @@ const OrdenVenta = (props) => {
                 {/* <img src={logo} width={"70vh"} /> */}
             </div>
             <h2 className="subTittle" >Documento no. </h2>
-                <FormOfClients/>
+            <div>
+                <div className="search client">
+                    <TextField
+                    id="outlined-basic"
+                    onChange={inputHandler}
+                    variant="outlined"
+                    fullWidth
+                    label="Buscador de clientes por apellidos"
+                    />
+                </div>
+                <FormOfClients input={inputText}/>
+            </div>
             
-            {ventaList.map ((v) => {
+            {ventaList.map ((v, index) => {
                 return (
-                    <Card>
+                    <Card key={index}>
                         {v}
                     </Card>
                 )

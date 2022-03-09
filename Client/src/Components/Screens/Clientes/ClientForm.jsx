@@ -40,7 +40,7 @@ const ClientForm = ({c, onSubmit, label, read}) => {
         <Form onSubmit={(e) => onSubmit(e, cliente) }>
             <Label>Nombre:</Label>
             <Input readOnly={read[0] == 0 ? true : false} type="text" name="nombre" value={cliente.nombre} onChange={change} required  placeholder="Inserte nombre de cliente"/>
-            <Label>Apellido:</Label>
+            <Label>Apellidos:</Label>
             <Input readOnly={read[1] == 0 ? true : false} type="text" name="apellido" value={cliente.apellido} onChange={change} required  placeholder="Inserte apellido de cliente"/>
             <Label>RUC:</Label>
             <Input readOnly={read[2] == 0 ? true : false} type="number" name="ruc" value={cliente.ruc} onChange={change} required  placeholder="Inserte RUC de cliente"/>

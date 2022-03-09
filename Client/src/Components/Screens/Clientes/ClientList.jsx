@@ -1,33 +1,19 @@
 import { Button, Table, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import SocketContext from "../../../Context/socket-context";
 
-const ClientList = (props) => {
+const ClientList = () => {
     const navigate = useNavigate();
     const [clients, setClients] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    const [clientActive, setClientActive] = useState(true);
-
     const {login} = useContext(SocketContext);
 
-    useEffect(() =>{
-        axios.get('/api/clients')
-            .then(res => {
-                console.log("RES", res.data.clients);
-                setClients(res.data.clients);
-                setLoaded(true);
-        })
-            .catch (err => {
-                console.log("NO FUNCIONA", err)
-            })
-    }, [])
-
-    const deleteClient = (_id) => {
+   const deleteClient = (_id) => {
         axios.delete('/api/clients/delete/' + _id)
         .then(res => {
             setClients(clients.filter(c => c._id !== _id));
@@ -42,25 +28,36 @@ const ClientList = (props) => {
     }
 
     const listaActivos = () => {
-        if(clients.activo == true) {
-            setClientActive(clientActive)
-        }
-        else {
-            setClients(...clients)
-        }        
+        axios.get('/api/clients/active')   
+        .then(res => {
+            setClients(res.data.clients);
+            setLoaded(true);
+        })
+        .catch(err => {
+            console.log(err)
+        }) 
     }
 
     const listaNoActivos = () => {
-        if(clients.activo == false) {
-            setClientActive(!clientActive)
-        }
-        else {
-            setClients(...clients)
-        }        
+        axios.get('/api/clients/noActive')   
+        .then(res => {
+            setClients(res.data.clients);
+            setLoaded(true);
+        })
+        .catch(err => {
+            console.log(err)
+        })      
     }
 
     const listClientes = () => {
-        setClients(...clients)
+        axios.get('/api/clients')   
+        .then(res => {
+            setClients(res.data.clients);
+            setLoaded(true);
+        })
+        .catch(err => {
+            console.log(err)
+        }) 
     }
 
     return (

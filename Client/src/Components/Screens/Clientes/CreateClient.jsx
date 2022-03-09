@@ -15,8 +15,7 @@ const CreateClient = () => {
         ruc: "",
         email: "",
         saldo: "",
-        activo: "", 
-        inactivo: ""
+        activo: ""
     }
     const [newClient, setNewClient] = useState(initialClient);
     

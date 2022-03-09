@@ -1,37 +1,41 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Col,Form,FormGroup,Input, Label } from "reactstrap";
 
-const FormOfClient = () => {
+const FormOfClient = (props) => {
 
     const [clients, setClients] = useState([]);
-    const [nombreCliente, setNombreCliente] = useState("");
+    const [infoCliente, setInfoCliente] = useState("");
+
+    const [filteredClients, setFilteredClients] = useState([]);
 
     useEffect (() => {
         axios.get('/api/clients')
         .then(res => {
-            console.log("RES", res.data.clients);
+            // console.log("RES", res.data.clients);
             setClients(res.data.clients);
-            /* setLoaded(true); */
-    })
+        })
         .catch (err => {
             console.log("NO FUNCIONA", err)
-        })
+        });
     },[]) 
 
-    const cambioNombre = (e) => {
-        setNombreCliente(e.target.value)
-
+    const cambioInfoCliente = (e) => {
+        setInfoCliente(e.target.value)
     }
-    useEffect (() => {
-        clients.filter((c) => {
-            /* console.log(c); */
-            if (c.nombre.toLowerCase().includes(nombreCliente)) {
-                console.log(c.nombre)
-                console.log('-----------')
+
+    useEffect(() => {
+        filterClients(props.input)
+    }, [props.input])
+
+    const filterClients = (f) => {
+        const filteredClients = clients.filter((c) => {
+            if(c.apellido.toLowerCase().includes(props.input)){
+                return c               
             }
         })
-    },[nombreCliente])
+        setFilteredClients(filteredClients);
+    }
 
     return(
         <div>
@@ -39,20 +43,29 @@ const FormOfClient = () => {
                 <FormGroup row>
                     <Label for="nombre cliente" sm={2}>Nombre Cliente:</Label>
                     <Col sm={3}>
-                        <Input id="nombre" name="nombre" placeholder="inserte nombre de cliente" value={nombreCliente}
-                        type="text" onChange={cambioNombre} />
+                        {filteredClients.map((c, _id) => {
+                            return(
+                                <Input key={c._id} value={c.nombre} onChange={cambioInfoCliente}/>
+                            )
+                        })}
                     </Col>
-                    <Label for="apeliido cliente" sm={2}>Apellido Cliente</Label>
+                    <Label for="apellido cliente" sm={2}>Apellidos Cliente:</Label>
                     <Col sm={3}>
-                        <Input id="apellido" name="apellido" placeholder="inserte apeliido de cliente"
-                        type="text" />
+                        {filteredClients.map((c, _id) => {
+                            return(
+                                <Input key={c._id} value={c.apellido} onChange={cambioInfoCliente}/>
+                            )
+                        })}
                     </Col>
                 </FormGroup>
                 <FormGroup row >
-                    <Label for="identificacion" sm={2}  >ID </Label>
+                    <Label for="identificacion" sm={2}  >ID:</Label>
                     <Col sm={3} md={6} >
-                        <Input  id="_id" name="_id" placeholder="inserte identificacion de cliente"
-                        type="number" />
+                        {filteredClients.map((c, _id) => {
+                            return(
+                                <Input key={c._id} value={c._id} onChange={cambioInfoCliente}/>
+                            )
+                        })}
                     </Col>
                 </FormGroup>
             </Form>
