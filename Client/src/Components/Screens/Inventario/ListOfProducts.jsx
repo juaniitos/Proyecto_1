@@ -84,7 +84,7 @@ const ListOfProducts = (props) => {
                                 <td>{p.descripcion}</td>
                                 <td>{p.cantidad}</td>
                                 <td>{p.precio}</td>
-                                <td><img className={btnActive == _id ? "btn_img.active" : "btn_img"} onClick={() => mostrarImg(_id)} src={p.imgUrl} alt="imagen producto"/></td>  
+                                <td><img className="btn_img" onClick={() => mostrarImg(_id)} src={p.imgUrl} alt="imagen producto"/></td>  
                                 {/* <td><img className={btnActive == _id ? "btn_img.active" : "btn_img"} onClick={() => agrandarImg(_id)} src={p.imgUrl} alt="imagen producto"/></td>   */}
                                 {/* <td><img className="img_prod" src={p.imgUrl} alt="imagen producto"/></td>                                                          */}
                                 <td><Button color="success" onClick={() => navigate('/item/editar/' + p._id)}>Editar</Button>&nbsp;&nbsp;<Button color="danger" onClick={() => {deleteProduct(p._id)}}>Eliminar</Button></td>
