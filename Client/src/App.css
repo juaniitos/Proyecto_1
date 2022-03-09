@@ -65,16 +65,35 @@ body {
   margin-top: 10px;
 }
 
-.img_prod{
+/* .img_prod{
   width: 100px;
   transition: 1s;
 }
 
 .img_prod:hover{
   transform: scale(5);
+} */
+
+.btn_img{
+  width: 100px;
 }
 
-/* .btn_img{
+.div_img{
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.466);
+}
+
+.div_img img{
+  display: block;
+}
+
+/* .btn_img.active{
   transition: all 1s ease-out;
   animation: show 1s ease-in forwards;
 }
@@ -126,14 +145,14 @@ body {
   width: 3vh;
 }
 
-.active{
-  margin-right: 10px;
-}
-
 .subTittle{
   text-align: end;
 }
 .resumen{
   width: 25%;
   margin-left: 75%;
+}
+
+.search {
+  width: 30%;
 }

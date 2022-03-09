@@ -36,8 +36,8 @@ const CreateClient = () => {
         <div>
             {login && <>
             <h1>Crear Cliente</h1>
-            <h2>En proceso ...</h2>
-            <ClientForm read={[1,1,1,1,1,1,1,1]} c={newClient} onSubmit={addClient} label={'Crear'}/>
+            {/* <h2>En proceso ...</h2> */}
+            <ClientForm read={[1,1,1,1,1,1]} c={newClient} onSubmit={addClient} label={'Crear'}/>
             <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
             </>}
         </div>

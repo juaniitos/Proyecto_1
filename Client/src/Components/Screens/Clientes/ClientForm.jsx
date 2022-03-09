@@ -1,5 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, Form, Input, Label } from "reactstrap";
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import Switch from '@mui/material/Switch';
 
 const ClientForm = ({c, onSubmit, label, read}) => {
 
@@ -9,8 +15,7 @@ const ClientForm = ({c, onSubmit, label, read}) => {
         ruc: c.ruc ? c.ruc : "0",
         email: c.email ? c.email : "",
         saldo: c.saldo ? c.saldo : "0",
-        activo: c.activo ? c.activo : true, 
-        inactivo: c.inactivo ? c.inactivo : false   
+        activo: c.activo ? c.activo : true  
     }
 
     const [cliente, setCliente] = useState(initialClient);
@@ -43,10 +48,19 @@ const ClientForm = ({c, onSubmit, label, read}) => {
             <Input readOnly={read[3] == 0 ? true : false} type="email" name="email" value={cliente.email} onChange={change} required placeholder="Inserte email de cliente"/>
             <Label>Saldo de Cuenta:</Label>
             <Input readOnly={read[4] == 0 ? true : false} type="number" name="saldo" value={cliente.saldo} onChange={change} required placeholder="Inserte saldo de cliente"/>
-            <Label>Activo:</Label>
-            <Input className="active" readOnly={read[5] == 0 ? true : false} type="checkbox" name="activo" checked={cliente.activo} onChange={changeCheck} />
-            <Label>Inactivo:</Label>
-            <Input readOnly={read[6] == 0 ? true : false} type="checkbox" name="inactivo" checked={cliente.inactivo} onChange={changeCheck} />
+            <FormControl component="fieldset" variant="standard">
+                <FormLabel component="legend">Estado de Cliente</FormLabel>
+                <FormGroup>
+                    <FormControlLabel
+                    readOnly={read[5] == 0 ? true : false}
+                    control={
+                        <Switch checked={cliente.activo} onChange={changeCheck} name="activo" />
+                    }
+                    label={cliente.activo == true ? 'Activo' : 'Inactivo'}
+                    />
+                </FormGroup>
+                <FormHelperText>Formulario completo</FormHelperText>
+            </FormControl>
             <br/>
             <Button type="submit" color="success" >{label}</Button>
             <br/><br/>

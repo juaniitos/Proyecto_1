@@ -28,9 +28,6 @@ const ClientSchema = new mongoose.Schema({
     },
     activo: {
         type: Boolean
-    },
-    inactivo: {
-        type: Boolean
     }
 }, {timestamps: true});
 

@@ -8,8 +8,8 @@ import io from 'socket.io-client';
 import OrdenVenta from './Components/Screens/Ventas/OrdenVenta';
 import InformesVentas from './Components/Screens/Ventas/InformesVentas';
 import Kardex from './Components/Screens/Inventario/Kardex';
-import ListaProductos from './Components/Screens/Inventario/ListaProductos';
-import ListaPrecios from './Components/Screens/Inventario/ListaPrecios';
+// import ListaProductos from './Components/Screens/Inventario/ListaProductos';
+// import ListaPrecios from './Components/Screens/Inventario/ListaPrecios';
 import OrdenCompra from './Components/Screens/Compras/OrdenCompra';
 import InformesCompras from './Components/Screens/Compras/InformesCompras';
 import CreateItem from './Components/Screens/Inventario/CreateItem';
@@ -20,7 +20,7 @@ import NewListaProductos from './Components/Screens/Inventario/NewListaProductos
 import CreateClient from './Components/Screens/Clientes/CreateClient';
 import EditarClient from './Components/Screens/Clientes/EditarClient';
 import ClientList from './Components/Screens/Clientes/ClientList';
-import ClientListNoActive from './Components/Screens/Clientes/ClientListNoActive';
+// import ClientListNoActive from './Components/Screens/Clientes/ClientListNoActive';
 
 function App() {
   const [socket] = useState(io.connect("/"));
@@ -59,7 +59,7 @@ function App() {
           <Route path='/client' element={<CreateClient/>} />
           <Route path='/clientList' element={<ClientList/>} />
           <Route path='/client/editar/:_id' element={<EditarClient/>} />
-          <Route path='/clientList/NoActive' element={<ClientListNoActive/>} />
+          {/* <Route path='/clientList/NoActive' element={<ClientListNoActive/>} /> */}
         </Routes>
       </SocketContext.Provider>
     </div>

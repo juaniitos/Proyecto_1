@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Accordion, AccordionItem, AccordionHeader, Button, AccordionBody, Card, CardTitle, CardText } from "reactstrap";
 import SocketContext from '../Context/socket-context';
 
-const Home = (props) => {
+const Home = () => {
     const [indice, setIndice] = useState(1);
     const navigate = useNavigate();
 
@@ -104,7 +104,7 @@ const Home = (props) => {
                                 <AccordionHeader targetId="5">Informes de clientes</AccordionHeader>
                                 <AccordionBody accordionId="5">
                                     <Button color='#ffffff' onClick={ () => navigate('#')}>Antiguedad de saldos</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('/clientList/NoActive')}>Clientes inactivos</Button><br></br>
+                                    {/* <Button color='#ffffff' onClick={ () => navigate('/clientList/NoActive')}>Clientes inactivos</Button><br></br> */}
                                 </AccordionBody>
                                 </AccordionBody>
                             </AccordionItem>

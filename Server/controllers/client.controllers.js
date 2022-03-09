@@ -9,14 +9,21 @@ module.exports.registerClient = (req, res) => {
 
 module.exports.viewClients = (req, res) => {
     console.log("Funciona viewsClients!")
+    Client.find({}).sort({apellido: 1})
+    .then(allClients => res.json({clients: allClients}))
+    .catch(err => res.json({ message: "Algo salió mal viewClients", err }));
+};
+
+module.exports.viewClientsActive = (req, res) => {
+    console.log("Funciona viewClientsActive!")
     Client.find({activo: true}).sort({apellido: 1})
     .then(allClientsActive => res.json({clients: allClientsActive}))
     .catch(err => res.json({ message: "Algo salió mal viewClients", err }));
 };
 
 module.exports.viewClientsNoActive = (req, res) => {
-    console.log("Funciona viewsClients!")
-    Client.find({inactivo: true}).sort({apellido: 1})
+    console.log("Funciona viewClientsNoActive!")
+    Client.find({activo: false}).sort({apellido: 1})
     .then(allClientsNoActive => res.json({clients: allClientsNoActive}))
     .catch(err => res.json({ message: "Algo salió mal viewClients", err }));
 };

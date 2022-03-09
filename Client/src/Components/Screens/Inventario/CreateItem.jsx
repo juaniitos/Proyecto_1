@@ -37,7 +37,7 @@ const CreateItem = () => {
         <div>
             {login && <>
             <h1>Crear Item</h1>
-            <h2>En proceso ...</h2>
+            {/* <h2>En proceso ...</h2> */}
             <ProductForm read={[1,1,1,1,1,1,1,1]} p={newProduct} onSubmit={addProduct} label={'Crear'}/>
             <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
             </>}

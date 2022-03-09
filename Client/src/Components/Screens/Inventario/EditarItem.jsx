@@ -40,7 +40,7 @@ const EditarItem = () => {
         <div>
             {login && <>
             <h1>Editar Item</h1>
-            <h2>En proceso ...</h2>
+            {/* <h2>En proceso ...</h2> */}
             {loaded &&
             <ProductForm read={'http://localhost:3000/products' ? [0,1,1,1,1,1,0,1] : [0,0,0,0,0,0,0,0]} p={product} onSubmit={editarProduct} label={'Editar'}/>
             }

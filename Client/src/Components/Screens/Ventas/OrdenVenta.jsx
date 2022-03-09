@@ -1,15 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {  Button,Card,Col,Form,FormGroup,Input,Label, Table} from "reactstrap";
+import {  Button,Card,Input, Table} from "reactstrap";
 import SocketContext from "../../../Context/socket-context";
 import adicion from "../../../static/images/icons/adicional_linea.png"  ;
+import FormOfClients from './FormOfClients';
 import VentaForm from "./VentaForm";
 
 
-const OrdenVenta = () => {
+const OrdenVenta = (props) => {
     const navigate = useNavigate();
-    const Ventaline = <VentaForm></VentaForm>
+    const [ventaList, setVentaList] = useState([<VentaForm/>]);
     const {login} = useContext(SocketContext);
+
+    const lineAdd = () => {
+        setVentaList([...ventaList, <VentaForm/>])
+    }
 
     return (
         <div>
@@ -19,32 +24,16 @@ const OrdenVenta = () => {
                 {/* <img src={logo} width={"70vh"} /> */}
             </div>
             <h2 className="subTittle" >Documento no. </h2>
-            <Form autoComplete="on">
-                {/* <Autocomplete disablePortal */}
-                <FormGroup row>
-                    <Label for="nombre cliente" sm={2}>Nombre Cliente:</Label>
-                    <Col sm={3}>
-                        <Input id="nombre" name="nombre" placeholder="inserte nombre de cliente"
-                        type="text" />
-                    </Col>
-                    <Label for="apeliido cliente" sm={2}>Apeliido Cliente</Label>
-                    <Col sm={3}>
-                        <Input id="apellido" name="apellido" placeholder="inserte apeliido de cliente"
-                        type="text" />
-                    </Col>
-                </FormGroup>
-                <FormGroup row >
-                    <Label for="identificacion" sm={2}  >ID </Label>
-                    <Col sm={3} md={6} >
-                        <Input  id="_id" name="_id" placeholder="inserte identificacion de cliente"
-                        type="number" />
-                    </Col>
-                </FormGroup>
-            </Form>
-            <Card>
-                <VentaForm/>
-            </Card>
-            <img src={adicion} alt='adicionar linea' width={'20vh'} onClick={ () => Ventaline } />
+                <FormOfClients/>
+            
+            {ventaList.map ((v) => {
+                return (
+                    <Card>
+                        {v}
+                    </Card>
+                )
+            })}
+            <img  src={adicion} alt='adicionar linea' width={'20vh'} onClick={ lineAdd } />
             <Card className="resumen">
                 <Table>
                     <tbody>

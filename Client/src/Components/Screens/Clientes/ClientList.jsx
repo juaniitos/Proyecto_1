@@ -1,4 +1,4 @@
-import { Button, Table } from "reactstrap";
+import { Button, Table, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -8,6 +8,10 @@ const ClientList = (props) => {
     const navigate = useNavigate();
     const [clients, setClients] = useState([]);
     const [loaded, setLoaded] = useState(false);
+
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const [clientActive, setClientActive] = useState(true);
 
     const {login} = useContext(SocketContext);
 
@@ -33,11 +37,47 @@ const ClientList = (props) => {
         })
     }
 
+    const toggle = () => {
+        setDropdownOpen(!dropdownOpen);
+    }
+
+    const listaActivos = () => {
+        if(clients.activo == true) {
+            setClientActive(clientActive)
+        }
+        else {
+            setClients(...clients)
+        }        
+    }
+
+    const listaNoActivos = () => {
+        if(clients.activo == false) {
+            setClientActive(!clientActive)
+        }
+        else {
+            setClients(...clients)
+        }        
+    }
+
+    const listClientes = () => {
+        setClients(...clients)
+    }
+
     return (
         <div>
             {login && <>
             <h1>Lista de Clientes</h1>
-            <h2>En proceso ...</h2>
+            <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                <DropdownToggle caret>
+                    Filtrar Clientes
+                </DropdownToggle>
+                <DropdownMenu> 
+                    <DropdownItem onClick={listaActivos}>Clientes Activos</DropdownItem>
+                    <DropdownItem onClick={listaNoActivos}>Clientes Inactivos</DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem onClick={listClientes}>Lista de clientes</DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
             <Table striped className="tableProducts">
                 <thead>
                     <tr>
@@ -60,7 +100,7 @@ const ClientList = (props) => {
                                 <td>{c.ruc}</td>
                                 <td>{c.email}</td> 
                                 <td>{c.saldo}</td> 
-                                <td>{c.activo == true ? 'activo' : ''}</td>                                                                                        
+                                <td>{c.activo == true ? 'Activo' : 'Inactivo'}</td>                                                                                        
                                 <td><Button color="success" onClick={() => navigate('/client/editar/' + c._id)}>Editar</Button>&nbsp;&nbsp;<Button color="danger" onClick={() => {deleteClient(c._id)}}>Eliminar</Button></td>
                             </tr>
                         )

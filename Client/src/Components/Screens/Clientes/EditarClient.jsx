@@ -40,9 +40,9 @@ const EditarClient = () => {
         <div>
             {login && <>
             <h1>Editar Cliente</h1>
-            <h2>En proceso ...</h2>
+            {/* <h2>En proceso ...</h2> */}
             {loaded &&
-            <ClientForm read={'http://localhost:3000/clients' ? [1,1,1,1,1,1,1,1] : [0,0,0,0,0,0,0,0]} c={client} onSubmit={editarClient} label={'Editar'}/>
+            <ClientForm read={'http://localhost:3000/clients' ? [1,1,1,1,1,1] : [0,0,0,0,0,0]} c={client} onSubmit={editarClient} label={'Editar'}/>
             }
             <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
             </>}
