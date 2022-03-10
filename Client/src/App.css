@@ -18,6 +18,15 @@ body {
   width: 100%;
 }
 
+.pass{
+  margin-left: 40%;
+  text-align: center;
+}
+
+.pass_div{
+  padding: 20px;
+}
+
 .scrollbar-container {
   height: calc(100vh - 88px),;
   padding-left: 16px;

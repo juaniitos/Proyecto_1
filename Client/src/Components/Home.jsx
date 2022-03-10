@@ -115,7 +115,7 @@ const Home = () => {
                                     <Button color='#ffffff' onClick={ () => navigate('#')}> Idioma</Button><br></br>
                                     <AccordionHeader targetId="6">Seguridad</AccordionHeader>
                                     <AccordionBody accordionId="6">
-                                        <Button color='#ffffff' onClick={ () => navigate('#')}>Modificar clave de acceso</Button><br></br>
+                                        <Button color='#ffffff' onClick={ () => navigate('/changePassword')}>Modificar clave de acceso</Button><br></br>
                                     </AccordionBody>
                                 </AccordionBody>
                             </AccordionItem>

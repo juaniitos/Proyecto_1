@@ -3,6 +3,11 @@ const bcrypt = require('bcrypt');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const UserSchema = new mongoose.Schema({
+    userId: {
+        sparse: true,
+        type: String,
+        unique: true
+    },
     nombre: {
         type: String,
         required: [true, "El nombre es requerido"]

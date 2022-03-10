@@ -20,6 +20,7 @@ import NewListaProductos from './Components/Screens/Inventario/NewListaProductos
 import CreateClient from './Components/Screens/Clientes/CreateClient';
 import EditarClient from './Components/Screens/Clientes/EditarClient';
 import ClientList from './Components/Screens/Clientes/ClientList';
+import ChangePassword from './Components/Screens/Usuarios/ChangePassword';
 // import ClientListNoActive from './Components/Screens/Clientes/ClientListNoActive';
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
       <SocketContext.Provider value={{socket: socket, login: login, setLogin: setLogin, usuario: usuario, setUsuario: setUsuario }}>
         <Routes>
           <Route path='/' element={<SignInSide setLogin={setLogin} />} />
+          <Route path='/changePassword' element={<ChangePassword />} />
           <Route path='/home' element={<Home user={usuario} />} />
           <Route path='/ordenventa' element={<OrdenVenta/>} />
           <Route path='/informesventas' element={<InformesVentas/>} />

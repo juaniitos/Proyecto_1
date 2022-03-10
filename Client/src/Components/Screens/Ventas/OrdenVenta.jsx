@@ -16,15 +16,17 @@ const OrdenVenta = (props) => {
     const {login} = useContext(SocketContext);
     const [clients, setClients] = useState([]);
     const [client, setClient] = useState({});
-
+    const [products, setProducts] = useState([]);
+    const [producto, setProducto] = useState({});
     const [inputText, setInputText] = useState("");
+
     let inputHandler = (e) => {
-      var lowerCase = e.target.value.toLowerCase();
-      setInputText(lowerCase);
-    };
+        var lowerCase = e.target.value.toLowerCase();
+        setInputText(lowerCase);
+      };
 
     const lineAdd = () => {
-        setVentaList([...ventaList, <VentaForm/>])
+        setVentaList([...ventaList, <VentaForm />])
     }
 
     useEffect (() => {
@@ -32,6 +34,17 @@ const OrdenVenta = (props) => {
         .then(res => {
             console.log("RES", res.data.clients);
             setClients(res.data.clients);
+        })
+        .catch (err => {
+            console.log("NO FUNCIONA", err)
+        });
+    },[]) 
+
+    useEffect (() => {
+        axios.get('/api/products')
+        .then(res => {
+            console.log("RES", res.data.products);
+            setProducts(res.data.products);
         })
         .catch (err => {
             console.log("NO FUNCIONA", err)
@@ -54,7 +67,7 @@ const OrdenVenta = (props) => {
                     options={clients}
                     getOptionLabel={(option) => (option?.ruc + " - " + option?.nombre +" "+ option?.apellido)}
                     sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="client" onChange={inputHandler}
+                    renderInput={(params) => <TextField {...params} label="Buscador de clientes" onChange={inputHandler}
                     variant="outlined" />}
                     onChange={(event, newValue) => {
                         setClient(newValue);
@@ -65,13 +78,30 @@ const OrdenVenta = (props) => {
                 <FormOfClients input={client}/>
             </div>
             
-            {ventaList.map ((v, index) => {
+            <div>
+                <div className="search client">
+                <Autocomplete
+                    disablePortal
+                    id="combo-box-demo"
+                    options={products}
+                    getOptionLabel={(option) => (option?.codigo + " - " + option?.descripcion +" "+ option?.precio)}
+                    sx={{ width: 500 }}
+                    renderInput={(params) => <TextField {...params} label="Buscador de productos" onChange={inputHandler }
+                    variant="outlined" />}
+                    onChange={(event, newValue) => {
+                        setProducto(newValue);
+                    }}
+            
+                />
+                </div>
+                {ventaList.map ((v, index) => {
                 return (
                     <Card key={index}>
-                        {v}
+                        {v=<VentaForm input={producto} />}
                     </Card>
                 )
-            })}
+            })}                
+            </div>
             <img  src={adicion} alt='adicionar linea' width={'20vh'} onClick={ lineAdd } />
             <Card className="resumen">
                 <Table>
