@@ -43,29 +43,32 @@ const FormOfClient = (props) => {
                 <FormGroup row>
                     <Label for="nombre cliente" sm={2}>Nombre Cliente:</Label>
                     <Col sm={3}>
-                        {filteredClients.map((c, _id) => {
+                        {/* {filteredClients.map((c, _id) => {
                             return(
-                                <Input key={c._id} value={c.nombre} onChange={cambioInfoCliente}/>
+                                <Input key={c._id} value={c.nombre} onChange={cambioInfoCliente}  />
                             )
-                        })}
+                        })} */}
+                        <Input /* key={c._id} */ value={props.input?.nombre} /* onChange={cambioInfoCliente} */  />
                     </Col>
                     <Label for="apellido cliente" sm={2}>Apellidos Cliente:</Label>
                     <Col sm={3}>
-                        {filteredClients.map((c, _id) => {
+                        {/* {filteredClients.map((c, _id) => {
                             return(
-                                <Input key={c._id} value={c.apellido} onChange={cambioInfoCliente}/>
+                                <Input key={c._id}  value={props.input.apellido} onChange={cambioInfoCliente} />
                             )
-                        })}
+                        })} */}
+                        <Input /* key={c._id} */ value={props.input?.apellido} /* onChange={cambioInfoCliente} *//>
                     </Col>
                 </FormGroup>
                 <FormGroup row >
                     <Label for="identificacion" sm={2}  >ID:</Label>
                     <Col sm={3} md={6} >
-                        {filteredClients.map((c, _id) => {
+                        {/* {filteredClients.map((c, _id) => {
                             return(
-                                <Input key={c._id} value={c._id} onChange={cambioInfoCliente}/>
+                                <Input key={c._id} value={props.input.ruc}  onChange={cambioInfoCliente} />
                             )
-                        })}
+                        })} */}
+                        <Input /* key={c._id} */ value={props.input?.ruc} /* onChange={cambioInfoCliente} *//>
                     </Col>
                 </FormGroup>
             </Form>

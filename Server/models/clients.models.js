@@ -14,7 +14,8 @@ const ClientSchema = new mongoose.Schema({
     ruc: {
         type: Number,
         minlength: 10,
-        required: [true, "El ruc es requerido"]
+        required: [true, "El ruc es requerido"],
+        unique: true
     },
     email: {
         type: String,
