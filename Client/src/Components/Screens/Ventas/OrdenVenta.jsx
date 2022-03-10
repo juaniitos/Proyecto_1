@@ -19,6 +19,7 @@ const OrdenVenta = (props) => {
     const [products, setProducts] = useState([]);
     const [producto, setProducto] = useState({});
     const [inputText, setInputText] = useState("");
+    const [selectProduct, setSelectProduct] = useState({});
 
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
@@ -38,9 +39,6 @@ const OrdenVenta = (props) => {
         .catch (err => {
             console.log("NO FUNCIONA", err)
         });
-    },[]) 
-
-    useEffect (() => {
         axios.get('/api/products')
         .then(res => {
             console.log("RES", res.data.products);

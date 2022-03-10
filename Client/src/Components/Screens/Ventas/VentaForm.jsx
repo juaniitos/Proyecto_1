@@ -4,6 +4,13 @@ import { Col,Form,FormGroup,Input } from "reactstrap";
 
 const VentaForm = (props) => {
     const [products, setProducts] = useState([]);
+    const [price, setPrice] = useState(0);
+    const [ctd, setCtd] = useState(0);
+
+    useEffect (() => {
+        setPrice (props.input.precio * ctd)
+        console.log(ctd)
+    }, [ctd])
 
     useEffect (() => {
         axios.get('/api/products')
@@ -22,23 +29,24 @@ const VentaForm = (props) => {
                     <FormGroup row>
                         <Col md={3}>
                             <Input id="codigo" name="codigo" placeholder="codigo productos"
-                            type="text" value={props.input?.codigo} />
+                            type="text" value={props.input?.codigo} disabled />
                         </Col>
                         <Col md={3}>
                             <Input id="descripcion" name="descripcion" placeholder="descripcion productos"
-                            type="text" value={props.input?.descripcion} />
+                            type="text" value={props.input?.descripcion} disabled />
                         </Col>
                         <Col md={2}>
                             <Input id="cantidad" name="cantidad" placeholder="cantidad" type="number" 
-                            value={props.input?.cantidad} />
+                            onChange={(e) => {setCtd(e.target.value)}}
+                            value={ctd} min={1} />
                         </Col>
                         <Col md={2}>
                             <Input id="precio" name="precio" placeholder="precio" type="number"
-                            value={props.input?.precio} />
+                            value={props.input?.precio} min={0} disabled />
                         </Col>
                         <Col md={2}>
                             <Input id="total" name="total" placeholder="0" type="number" 
-                            value={props.input?.total} />
+                            value={price} disabled  />
                         </Col>
                     </FormGroup>
                 </Form>
