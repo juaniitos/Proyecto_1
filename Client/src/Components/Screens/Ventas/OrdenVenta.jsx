@@ -12,14 +12,12 @@ import axios from "axios";
 
 const OrdenVenta = (props) => {
     const navigate = useNavigate();
-    const [ventaList, setVentaList] = useState([<VentaForm/>]);
     const {login} = useContext(SocketContext);
     const [clients, setClients] = useState([]);
     const [client, setClient] = useState({});
     const [products, setProducts] = useState([]);
-    const [producto, setProducto] = useState({});
     const [inputText, setInputText] = useState("");
-    const [selectProduct, setSelectProduct] = useState({});
+    const [ventaProductos, setVentaProductos] = useState([{}]);
 
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
@@ -27,7 +25,8 @@ const OrdenVenta = (props) => {
       };
 
     const lineAdd = () => {
-        setVentaList([...ventaList, <VentaForm />])
+        // setVentaList([...ventaList, <VentaForm />])
+        setVentaProductos([...ventaProductos, {}]);
     }
 
     useEffect (() => {
@@ -87,15 +86,24 @@ const OrdenVenta = (props) => {
                     renderInput={(params) => <TextField {...params} label="Buscador de productos" onChange={inputHandler }
                     variant="outlined" />}
                     onChange={(event, newValue) => {
-                        setProducto(newValue);
+                        // setProducto(newValue);
+                        const l = ventaProductos[ventaProductos.length -1]
+                        if(Object.keys(l.length == 0)){  
+                            console.log('Entré!')  
+                            const new_list = [...ventaProductos]
+                            new_list[ventaProductos.length -1] = newValue                     
+                            setVentaProductos(new_list)
+                        } else {
+                            setVentaProductos([...ventaProductos, newValue])
+                        }
                     }}
             
                 />
                 </div>
-                {ventaList.map ((v, index) => {
+                {ventaProductos.map ((v, index) => {
                 return (
                     <Card key={index}>
-                        {v=<VentaForm input={producto} />}
+                        {<VentaForm input={v} />}
                     </Card>
                 )
             })}                

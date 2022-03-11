@@ -38,56 +38,24 @@ module.exports.login = (req, res) => {
     }).catch (err => res.json(err));
 };
 
-// export const changePassword = async (req, res) => {
-//     const { email, oldPassword, newPassword } = req.body
-//     User.findOne({ email: email })
-//       .then(oldUser => {
-//         if (!oldUser) return res.status(404).send("User does not exist")
-//         oldUser.comparePassword(oldPassword, (err, isMatch) => {
-//           if (err) {
-//             return res.status(401).send("Unauthorized")
-//           }
-//           if (isMatch) {
-//             // change to new password
-//             oldUser.password = newPassword
-//             oldUser
-//               .save()
-//               .then(newUser => {
-//                 res.status(200).send(newUser)
-//               })
-//               .catch(err => {
-//                 const message = err.message
-//                 res.status(500).json({
-//                   status: "change password failed",
-//                   msg: message
-//                 })
-//               })
-//           } else {
-//             return res.status(401).send("Invalid old password")
-//           }
-//         })
-//       })
-//       .catch(err => {
-//         res.status(500).send(err)
-//       })
-//   }
-
 module.exports.changePassword = (req, res) => {
-    User.findOne({ _id: userId })
+    console.log(req.body)
+    const payload = jwt.decode(req.cookies.usertoken, secret);
+    User.findOne({ _id: payload._id })
     .then(user => {
-      const secret = user.password + "-" + user.createdAt
-      const payload = jwt.decode(token, secret)
-      if (payload.userId === user.id) {
-        bcrypt.genSalt(10, function(err, salt) {
-          if (err) return
-          bcrypt.hash(password, salt, function(err, hash) {
-            if (err) return
-            User.findOneAndUpdate({ _id: userId }, { password: hash })
-              .then(() => res.status(202).json("Password changed accepted"))
-              .catch(err => res.status(500).json(err))
-          })
+        bcrypt.compare(req.body.oldPassword, user.password)
+        .then(passwordIsValid => {
+            if (passwordIsValid) {
+                bcrypt.hash(req.body.newPassword, 10)
+                .then(hash => {
+                    user.password = hash;
+                    user.save()
+                    res.json({data: datos, msg: "sucesss!", error: false});
+                });           
+            } else {
+                res.json({ msg: "Usuario y/o clave inválido", error: true})
+            } 
         })
-      }
     })
     .catch(() => {
       res.status(404).json("Invalid user")

@@ -7,9 +7,9 @@ const VentaForm = (props) => {
     const [price, setPrice] = useState(0);
     const [ctd, setCtd] = useState(0);
 
-    useEffect (() => {
-        setPrice (props.input.precio * ctd)
-        console.log(ctd)
+    useEffect(() => {
+        setPrice(props.input.precio * ctd)
+        // console.log(ctd)
     }, [ctd])
 
     useEffect (() => {
@@ -29,11 +29,11 @@ const VentaForm = (props) => {
                     <FormGroup row>
                         <Col md={3}>
                             <Input id="codigo" name="codigo" placeholder="codigo productos"
-                            type="text" value={props.input?.codigo} disabled />
+                            type="text" value={props.input?.codigo} readOnly />
                         </Col>
                         <Col md={3}>
                             <Input id="descripcion" name="descripcion" placeholder="descripcion productos"
-                            type="text" value={props.input?.descripcion} disabled />
+                            type="text" value={props.input?.descripcion} readOnly />
                         </Col>
                         <Col md={2}>
                             <Input id="cantidad" name="cantidad" placeholder="cantidad" type="number" 
@@ -42,11 +42,11 @@ const VentaForm = (props) => {
                         </Col>
                         <Col md={2}>
                             <Input id="precio" name="precio" placeholder="precio" type="number"
-                            value={props.input?.precio} min={0} disabled />
+                            value={props.input?.precio} min={0} readOnly />
                         </Col>
                         <Col md={2}>
                             <Input id="total" name="total" placeholder="0" type="number" 
-                            value={price} disabled  />
+                            value={price} readOnly  />
                         </Col>
                     </FormGroup>
                 </Form>
