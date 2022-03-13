@@ -1,12 +1,14 @@
 import { Button, Table } from "reactstrap";
 import React, { useState, useEffect, useContext } from "react";
-import { /* Link,  */ useNavigate,/* , useParams */ 
-useParams} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ProductTable from "../../ProductTable";
 import SocketContext from "../../../Context/socket-context";
+import { useTranslation } from "react-i18next";
 
 const ListaPrecios = (props) => {
+
+    const { t } = useTranslation('translation');
     const navigate = useNavigate();
     const [inputs, setInputs] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -38,10 +40,10 @@ const ListaPrecios = (props) => {
     return (
         <div>
             {login && <>
-            <h1>Lista de Precios</h1>
+            <h1>{t('lista_precios.h1')}</h1>
             <h2>En proceso ...</h2>
             <ProductTable ths={[{th: 'Código', key: 'codigo'}, {th: 'Descripción', key: 'descripcion'}, {th: 'Precio', key: 'precio'}]} inputs={inputs} loaded={loaded} deleteProduct={deleteProduct} />
-            <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
+            <Button color="primary" onClick={() => navigate('/Home')}>{t('lista_precios.button')}</Button>
             </>}
         </div>
     )

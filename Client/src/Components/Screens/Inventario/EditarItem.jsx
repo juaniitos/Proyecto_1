@@ -4,8 +4,11 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import ProductForm from "../../ProductForm";
 import SocketContext from "../../../Context/socket-context";
+import { useTranslation } from "react-i18next";
 
 const EditarItem = () => {
+
+    const { t } = useTranslation('translation');
     const {_id} = useParams();
     const navigate = useNavigate();
 
@@ -39,12 +42,12 @@ const EditarItem = () => {
     return (
         <div>
             {login && <>
-            <h1>Editar Item</h1>
+            <h1>{t('editar_item.h1')}</h1>
             {/* <h2>En proceso ...</h2> */}
             {loaded &&
-            <ProductForm read={'http://localhost:3000/products' ? [0,1,1,1,1,1,0,1] : [0,0,0,0,0,0,0,0]} p={product} onSubmit={editarProduct} label={'Editar'}/>
+            <ProductForm read={'http://localhost:3000/products' ? [0,1,1,1,1,1,0,1] : [0,0,0,0,0,0,0,0]} p={product} onSubmit={editarProduct} label={t('editar_item.editar')}/>
             }
-            <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
+            <Button color="primary" onClick={() => navigate('/Home')}>{t('editar_item.button')}</Button>
             </>}
         </div>
     )

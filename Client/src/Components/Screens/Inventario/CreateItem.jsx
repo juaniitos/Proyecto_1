@@ -4,9 +4,11 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import ProductForm from "../../ProductForm";
 import SocketContext from "../../../Context/socket-context";
+import { useTranslation } from "react-i18next";
 
 const CreateItem = () => {
 
+    const { t } = useTranslation('translation');
     const {login} = useContext(SocketContext);
     const navigate = useNavigate();
     const initialProducts = {
@@ -36,10 +38,10 @@ const CreateItem = () => {
     return (
         <div>
             {login && <>
-            <h1>Crear Item</h1>
+            <h1>{t('crear_item.h1')}</h1>
             {/* <h2>En proceso ...</h2> */}
-            <ProductForm read={[1,1,1,1,1,1,1,1]} p={newProduct} onSubmit={addProduct} label={'Crear'}/>
-            <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
+            <ProductForm read={[1,1,1,1,1,1,1,1]} p={newProduct} onSubmit={addProduct} label={t('crear_item.crear')}/>
+            <Button color="primary" onClick={() => navigate('/Home')}>{t('crear_item.button')}</Button>
             </>}
         </div>
     )

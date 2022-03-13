@@ -2,8 +2,11 @@ import { Button, Table } from "reactstrap";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const ListOfProducts = (props) => {
+
+    const { t } = useTranslation('translation');
     const navigate = useNavigate();
     const [inputs, setInputs] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -67,12 +70,12 @@ const ListOfProducts = (props) => {
             <Table striped className="tableProducts">
                 <thead>
                     <tr>
-                        <th>Código</th>
-                        <th>Descripción</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>
-                        <th>Imagen del producto</th>
-                        <th>Acciones</th>
+                        <th>{t('lista_prod.th_a')}</th>
+                        <th>{t('lista_prod.th_b')}</th>
+                        <th>{t('lista_prod.th_c')}</th>
+                        <th>{t('lista_prod.th_d')}</th>
+                        <th>{t('lista_prod.th_e')}</th>
+                        <th>{t('lista_prod.th_f')}</th>
                     </tr>
                 </thead>
                 {loaded && <>
@@ -87,7 +90,7 @@ const ListOfProducts = (props) => {
                                 <td><img className="btn_img" onClick={() => mostrarImg(_id)} src={p.imgUrl} alt="imagen producto"/></td>  
                                 {/* <td><img className={btnActive == _id ? "btn_img.active" : "btn_img"} onClick={() => agrandarImg(_id)} src={p.imgUrl} alt="imagen producto"/></td>   */}
                                 {/* <td><img className="img_prod" src={p.imgUrl} alt="imagen producto"/></td>                                                          */}
-                                <td><Button color="success" onClick={() => navigate('/item/editar/' + p._id)}>Editar</Button>&nbsp;&nbsp;<Button color="danger" onClick={() => {deleteProduct(p._id)}}>Eliminar</Button></td>
+                                <td><Button color="success" onClick={() => navigate('/item/editar/' + p._id)}>{t('lista_prod.btn_ed')}</Button>&nbsp;&nbsp;<Button color="danger" onClick={() => {deleteProduct(p._id)}}>{t('lista_prod.btn_del')}</Button></td>
                             </tr>
                         )
                     })}

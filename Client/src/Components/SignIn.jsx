@@ -4,14 +4,19 @@ import Checkbox from '@mui/material/Checkbox';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useContext, useState } from 'react';
+import Swal from 'sweetalert2';
 import SocketContext from '../Context/socket-context';
+import { useTranslation } from "react-i18next";
 
 function Copyright (props) {
+
+    const { t } = useTranslation('translation');
+
     return(
         <Typography variant="body2" color="text.secondary" align='center' {...props}>
             {'Copyright © '}
             <Link color="inherit" href='http://mui.com' >
-                Your Website
+                {t('signin.typ_title')}                
             </Link>{ ' ' }
             { new Date().getFullYear() }
             { '.' }
@@ -22,6 +27,8 @@ function Copyright (props) {
 const theme = createTheme();
 
 const SignInSide = (props) => {
+
+    const { t } = useTranslation('translation');
     const navigate = useNavigate();
     const [inputs, setInputs] = useState({
         email: '',
@@ -31,11 +38,15 @@ const SignInSide = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("INPUT", inputs);
+        // console.log("INPUT", inputs);
         axios.post('/api/login', inputs).then(resp => {
             console.log("RESP",resp)
             if(resp.data.error) {
-                alert('Error', 'El usuario o clave no son válidos', 'error');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Usuario o clave inválidos',
+                  })
             } else {
                 //console.log("JSON",JSON.stringify(resp.data.data))
                 props.setLogin(true);
@@ -76,38 +87,38 @@ const SignInSide = (props) => {
                         </Avatar>
                         {/* Título */}
                         <Typography component="h1" variant="h5">
-                            Sign in
+                            {t('signin.grid_title')}
                         </Typography>
                         {/* Comienzo de formulario */}
                         <Box component={"form"} noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
 
                             <TextField margin='normal' required fullWidth id='email' 
-                            label='Email Address' name='email' autoComplete='email' autoFocus value={inputs.email} onChange={actualizarInputs} />
+                            label={t('signin.text_field_lb_a')} name='email' autoComplete='email' autoFocus value={inputs.email} onChange={actualizarInputs} />
                             <TextField margin='normal' required fullWidth name='password' 
-                            label="Password" type={"password"} id="password" autoComplete='current-password' value={inputs.password} 
+                            label={t('signin.text_field_lb_b')} type={"password"} id="password" autoComplete='current-password' value={inputs.password} 
                             onChange={actualizarInputs} />
                             <FormControlLabel control={<Checkbox value='remenber' color="primary" /> }
-                            label="Remember me" />
+                            label={t('signin.form_control_label')} />
                             <Button type="submit" fullWidth variant='contained' sx={{mt:3, mb:2}}>
-                                Sign In
+                                {t('signin.button')}
                             </Button>
                             <Grid container>
                                 <Grid item xs>
                                     <Link href='#' variant="body2">
-                                        Forgot password?
+                                        {t('signin.grid_link_a')}
                                     </Link>
                                 </Grid>
                                 <Grid item>
                                     <Link href="#" variant='body2'>
-                                        {"Don't have an account? Sign Up"}
+                                        {t('signin.grid_link_b')}
                                     </Link>
                                 </Grid>
                             </Grid>
                             <Copyright sx={{ mt: 5 }}/><br/>
                             <Typography color='red' align='center' >
                                 Para pruebas puede utilizar:<br/>
-                                Usuario: ventas@JD.com<br/>
-                                Contraseña: 1234
+                                Usuario: ventas2@JD.com<br/>
+                                Contraseña: 5678
                             </Typography>
                         </Box>
                     </Box>

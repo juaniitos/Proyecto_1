@@ -8,9 +8,11 @@ import FormOfClients from './FormOfClients';
 import VentaForm from "./VentaForm";
 import { Autocomplete } from "@mui/material";
 import axios from "axios";
-
+import { useTranslation } from "react-i18next";
 
 const OrdenVenta = (props) => {
+
+    const { t } = useTranslation('translation');
     const navigate = useNavigate();
     const {login} = useContext(SocketContext);
     const [clients, setClients] = useState([]);
@@ -18,11 +20,19 @@ const OrdenVenta = (props) => {
     const [products, setProducts] = useState([]);
     const [inputText, setInputText] = useState("");
     const [ventaProductos, setVentaProductos] = useState([{}]);
+    const [subTotal, setSubTotal] = useState([0]);
 
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
       };
+    const updateSubTotal = (p) => {
+        console.log("subtotal", subTotal)
+        var st = [subTotal, p];
+        console.log("subP",p);
+        console.log("subST",st);
+        setSubTotal(p);
+    }
 
     const lineAdd = () => {
         // setVentaList([...ventaList, <VentaForm />])
@@ -46,16 +56,16 @@ const OrdenVenta = (props) => {
         .catch (err => {
             console.log("NO FUNCIONA", err)
         });
-    },[]) 
+    },[])  
 
     return (
         <div>
             {login && <>
             <div className="cabOV" >
-                <h1>OrdenVenta</h1>
+                <h1>{t('orden_venta.h1')}</h1>
                 {/* <img src={logo} width={"70vh"} /> */}
             </div>
-            <h2 className="subTittle" >Documento no. </h2>
+            <h2 className="subTittle">{t('orden_venta.dcto')}</h2>
             <div>
                 <div className="search client">
                 <Autocomplete
@@ -64,7 +74,7 @@ const OrdenVenta = (props) => {
                     options={clients}
                     getOptionLabel={(option) => (option?.ruc + " - " + option?.nombre +" "+ option?.apellido)}
                     sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Buscador de clientes" onChange={inputHandler}
+                    renderInput={(params) => <TextField {...params} label={t('orden_venta.autocomplete_lb_a')} onChange={inputHandler}
                     variant="outlined" />}
                     onChange={(event, newValue) => {
                         setClient(newValue);
@@ -83,7 +93,7 @@ const OrdenVenta = (props) => {
                     options={products}
                     getOptionLabel={(option) => (option?.codigo + " - " + option?.descripcion +" "+ option?.precio)}
                     sx={{ width: 500 }}
-                    renderInput={(params) => <TextField {...params} label="Buscador de productos" onChange={inputHandler }
+                    renderInput={(params) => <TextField {...params} label={t('orden_venta.autocomplete_lb_b')} onChange={inputHandler }
                     variant="outlined" />}
                     onChange={(event, newValue) => {
                         // setProducto(newValue);
@@ -96,14 +106,13 @@ const OrdenVenta = (props) => {
                         } else {
                             setVentaProductos([...ventaProductos, newValue])
                         }
-                    }}
-            
+                    }}            
                 />
                 </div>
                 {ventaProductos.map ((v, index) => {
                 return (
                     <Card key={index}>
-                        {<VentaForm input={v} />}
+                        {<VentaForm input={v} updatePrice={updateSubTotal} />}
                     </Card>
                 )
             })}                
@@ -113,24 +122,24 @@ const OrdenVenta = (props) => {
                 <Table>
                     <tbody>
                         <tr>
-                            <th>Subtotal:</th>
+                            <th>{t('orden_venta.table_th_a')}</th>
+                            <td><p> { subTotal } </p></td>
+                        </tr>
+                        <tr>
+                            <th>{t('orden_venta.table_th_b')}</th>
                             <td><Input/></td>
                         </tr>
                         <tr>
-                            <th>Impuesto:</th>
-                            <td><Input/></td>
-                        </tr>
-                        <tr>
-                            <th>Total:</th>
+                            <th>{t('orden_venta.table_th_c')}</th>
                             <td><Input/></td>
                         </tr>
                     </tbody>
                 </Table>
             </Card>
             <br/>
-            <Button className="buttonOv" color="success" onClick={() => navigate('#')}>Facturar</Button>
-            <Button className="buttonOv" onClick={() => navigate('#')}>Cotizar</Button>
-            <Button className="buttonOv" color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
+            <Button className="buttonOv" color="success" onClick={() => navigate('#')}>{t('orden_venta.btn_fact')}</Button>
+            <Button className="buttonOv" onClick={() => navigate('#')}>{t('orden_venta.btn_cot')}</Button>
+            <Button className="buttonOv" color="primary" onClick={() => navigate('/Home')}>{t('orden_venta.button')}</Button>
             </>}
         </div>
     )

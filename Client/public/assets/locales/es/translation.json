@@ -1,0 +1,207 @@
+{ 
+    "app": {
+        "header_button" : "Cerrar Sesión"
+    },
+    "home": {
+        "app_title": "Título",
+        "language": "Idioma",
+        "welcome_message": "Bienvenido",
+        "days_since_release": "Han pasado {{number_of_days}} días desde que se lanzó este video",
+        "typography": "Admin",
+        "accordion_header_1": "Venta",
+        "accordion_body_button_1a": "Proforma",
+        "accordion_body_button_1b": "Orden de venta",
+        "accordion_body_button_1c": "Devolución",
+        "accordion_body_button_1d": "Nota de crédito",
+        "accordion_body_button_1e": "Informes de venta",
+        "accordion_header_2": "Inventario",
+        "accordion_body_button_2a": "Crear Items",
+        "accordion_body_button_2b": "Lista de productos",
+        "accordion_body_button_2?": "Lista de precios",
+        "accordion_body_button_2c": "Revalorización de inventario",
+        "accordion_body_button_2d": "Kardex",
+        "accordion_header_2+": "Operaciones de stock",
+        "accordion_body_button_2+a": "Ingresos por ajuste",
+        "accordion_body_button_2+b": "Egresos por ajuste",
+        "accordion_header_3": "Compra",
+        "accordion_body_button_3a": "Proforma",
+        "accordion_body_button_3b": "Orden de compra",
+        "accordion_body_button_3c": "Entrada de mercancía",
+        "accordion_body_button_3d": "Devolución",
+        "accordion_body_button_3e": "Nota de crédito",
+        "accordion_body_button_3f": "Informes de compra",
+        "accordion_header_4": "Finanzas",
+        "accordion_body_button_4a": "Plan de cuentas",
+        "accordion_body_button_4b": "Libro mayor",
+        "accordion_body_button_4c": "Anular transacciones",
+        "accordion_header_4+": "Informes financieros",
+        "accordion_body_button_4+a": "ATS",
+        "accordion_body_button_4+b": "Diario de documentos",
+        "accordion_header_5": "Clientes",
+        "accordion_body_button_5a": "Agregar Clientes",
+        "accordion_body_button_5b": "Lista de clientes",
+        "accordion_body_button_5c": "Saldo de cuenta de cliente",
+        "accordion_body_button_5d": "Campaña",
+        "accordion_header_5+": "Informes de clientes",
+        "accordion_body_button_5+a": "Antigüedad de saldos",
+        "accordion_body_button_5?": "Clientes inactivos",
+        "accordion_header_6": "Usuario",
+        "accordion_body_button_6a": "Temas (estilos)",
+        "accordion_body_button_6b": "Idioma",
+        "accordion_header_6+": "Seguridad",
+        "accordion_body_button_6+a": "Modificar clave de acceso",
+        "card_title_a": "Ganancias totales",
+        "card_button_a": "Mes",
+        "card_button_b": "Año",
+        "card_title_b": "Total",
+        "card_title_c": "Tratamiento de título especial",
+        "card_title_d": "Con el texto de apoyo a continuación como una introducción natural a contenido adicional.",
+        "card_title_e": "Botón"
+    },
+    "product_form": {
+        "p_label_a": "Código:",
+        "p_label_b": "Descripción:",
+        "p_label_c": "Precio:",
+        "p_label_d": "Cantidad:",
+        "p_label_e": "Marca:",
+        "p_label_f": "Características:",
+        "p_label_g": "Costo de producto:",
+        "p_label_h": "URL de imagen de producto:",
+        "placeholder_a": "Inserte código",
+        "placeholder_b": "Inserte descripción",
+        "placeholder_c": "Inserte precio",
+        "placeholder_d": "Inserte cantidad",
+        "placeholder_e": "Inserte marca",
+        "placeholder_f": "Inserte características",
+        "placeholder_g": "Inserte costo de producto",
+        "placeholder_h": "Inserte URL de imagen de producto"
+    },
+    "product_table": {
+        "p_th": "Acciones",
+        "p_th_btn_a": "Editar",
+        "p_th_btn_b": "Eliminar"
+    },
+    "signin": {
+        "typ_title": "Tu sitio web",
+        "grid_title": "Iniciar Sesión",
+        "text_field_lb_a": "Correo electrónico",
+        "text_field_lb_b": "Contraseña",
+        "form_control_label": "Recuérdame",
+        "button": "Iniciar Sesión",
+        "grid_link_a": "Recuperar contraseña",
+        "grid_link_b": "¿No tienes una cuenta? Regístrate"
+    },
+    "client_form": {
+        "c_label_a": "Nombre:",
+        "c_label_b": "Apellido:",
+        "c_label_c": "RUC:",
+        "c_label_d": "Correo eléctrónico:",
+        "c_label_e": "Saldo de Cuenta:",
+        "form_label": "Estado de Cliente",
+        "form_help": "Formulario completo",
+        "placeholder_a": "Inserte nombre de cliente",
+        "placeholder_b": "Inserte apellido de cliente",
+        "placeholder_c": "Inserte RUC de cliente",
+        "placeholder_d": "Inserte correo electrónico de cliente",
+        "placeholder_e": "Inserte saldo de cliente"
+    },
+    "client_list": {
+        "h1": "Lista de Clientes",
+        "dropdown_toggle": "Filtrar Clientes",
+        "dropdown_item_a": "Clientes Activos",
+        "dropdown_item_b": "Clientes Inactivos",
+        "dropdown_item_c": "Lista de clientes",
+        "th_a": "Nombre",
+        "th_b": "Apellido",
+        "th_c": "RUC",
+        "th_d": "Correo eléctrónico",
+        "th_e": "Saldo del cliente",
+        "th_f": "Estado del cliente",
+        "th_g": "Acciones",
+        "th_btn_a": "Editar",
+        "th_btn_b": "Eliminar",
+        "button": "Volver a Home",
+        "h1?": "Lista de Clientes Inactivos",
+        "crear": "Crear Cliente",
+        "btn_c": "Crear",
+        "editar": "Editar Cliente",
+        "btn_e": "Editar"
+    },
+    "informe_compra":{
+        "h1": "Informe de Compras",
+        "button": "Volver a Home" 
+    },
+    "orden_compra":{
+        "h1": "Orden de Compras",
+        "button": "Volver a Home" 
+    },
+    "crear_item": {
+        "h1": "Crear Item",
+        "crear": "Crear",
+        "button": "Volver a Home" 
+    },
+    "editar_item": {
+        "h1": "Editar Item",
+        "editar": "Editar",
+        "button": "Volver a Home" 
+    },
+    "kardex": {
+        "h1": "Kardex",
+        "button": "Volver a Home" 
+    },
+    "lista_precios": {
+        "h1": "Lista de Precios",
+        "button": "Volver a Home" 
+    },
+    "lista_prod": {
+        "h1": "Lista de Productos",
+        "label": "Buscar producto por su descripción",
+        "button": "Volver a Home",
+        "th_a": "Código",
+        "th_b": "Descripción",
+        "th_c": "Cantidad",
+        "th_d": "Precio",
+        "th_e": "Imagen del producto",
+        "th_f": "Acciones",
+        "btn_ed": "Editar",
+        "btn_del": "Eliminar"
+    },
+    "buscar_prod": {
+        "h1": "Buscar Productos",
+        "button": "Volver a Home" 
+    },
+    "change_pass": {
+        "typo": "Cambiar Contraseña",
+        "text_field_lb_a": "Contraseña Antigua",
+        "text_field_lb_b": "Nueva Contraseña",
+        "text_field_lb_c": "Confirmar Contraseña" ,
+        "button": "Cambiar Contraseña" 
+    },
+    "form_of_client": {
+        "label_a": "Nombre Cliente:",
+        "label_b": "Apellido Cliente:",
+        "label_c": "ID:"
+    },
+    "inf_venta": {
+        "h1": "Informe de Ventas",
+        "button": "Volver a Home"
+    },
+    "orden_venta": {
+        "h1": "Orden de Venta",
+        "dcto": "Documento n°",
+        "autocomplete_lb_a": "Buscador de clientes",
+        "autocomplete_lb_b": "Buscador de productos",
+        "table_th_a": "Subtotal:",
+        "table_th_b": "Impuesto:",
+        "table_th_c": "Total:",
+        "btn_fact": "Facturar",
+        "btn_cot": "Cotizar",
+        "button": "Volver a Home"
+    },
+    "venta_form": {
+        "placeholder_a": "Código de productos",
+        "placeholder_b": "Descripción de productos",
+        "placeholder_c": "Cantidad",
+        "placeholder_d": "Precio"
+    }
+}

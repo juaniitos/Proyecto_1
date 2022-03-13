@@ -6,8 +6,11 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Switch from '@mui/material/Switch';
+import { useTranslation } from "react-i18next";
 
 const ClientForm = ({c, onSubmit, label, read}) => {
+
+    const { t } = useTranslation('translation');
 
     const initialClient = {
         nombre: c.nombre ? c.nombre : "",
@@ -38,18 +41,18 @@ const ClientForm = ({c, onSubmit, label, read}) => {
 
     return(
         <Form onSubmit={(e) => onSubmit(e, cliente) }>
-            <Label>Nombre:</Label>
-            <Input readOnly={read[0] == 0 ? true : false} type="text" name="nombre" value={cliente.nombre} onChange={change} required  placeholder="Inserte nombre de cliente"/>
-            <Label>Apellidos:</Label>
-            <Input readOnly={read[1] == 0 ? true : false} type="text" name="apellido" value={cliente.apellido} onChange={change} required  placeholder="Inserte apellido de cliente"/>
-            <Label>RUC:</Label>
-            <Input readOnly={read[2] == 0 ? true : false} type="number" name="ruc" value={cliente.ruc} onChange={change} required  placeholder="Inserte RUC de cliente"/>
-            <Label>Email:</Label>
-            <Input readOnly={read[3] == 0 ? true : false} type="email" name="email" value={cliente.email} onChange={change} required placeholder="Inserte email de cliente"/>
-            <Label>Saldo de Cuenta:</Label>
-            <Input readOnly={read[4] == 0 ? true : false} type="number" name="saldo" value={cliente.saldo} onChange={change} required placeholder="Inserte saldo de cliente"/>
+            <Label>{t('client_form.c_label_a')}</Label>
+            <Input readOnly={read[0] == 0 ? true : false} type="text" name="nombre" value={cliente.nombre} onChange={change} required  placeholder={t('client_form.placeholder_a')}/>
+            <Label>{t('client_form.c_label_b')}</Label>
+            <Input readOnly={read[1] == 0 ? true : false} type="text" name="apellido" value={cliente.apellido} onChange={change} required  placeholder={t('client_form.placeholder_b')}/>
+            <Label>{t('client_form.c_label_c')}</Label>
+            <Input readOnly={read[2] == 0 ? true : false} type="number" name="ruc" value={cliente.ruc} onChange={change} required  placeholder={t('client_form.placeholder_c')}/>
+            <Label>{t('client_form.c_label_d')}</Label>
+            <Input readOnly={read[3] == 0 ? true : false} type="email" name="email" value={cliente.email} onChange={change} required placeholder={t('client_form.placeholder_d')}/>
+            <Label>{t('client_form.c_label_e')}</Label>
+            <Input readOnly={read[4] == 0 ? true : false} type="number" name="saldo" value={cliente.saldo} onChange={change} required placeholder={t('client_form.placeholder_e')}/>
             <FormControl component="fieldset" variant="standard">
-                <FormLabel component="legend">Estado de Cliente</FormLabel>
+                <FormLabel component="legend">{t('client_form.form_label')}</FormLabel>
                 <FormGroup>
                     <FormControlLabel
                     readOnly={read[5] == 0 ? true : false}
@@ -59,7 +62,7 @@ const ClientForm = ({c, onSubmit, label, read}) => {
                     label={cliente.activo == true ? 'Activo' : 'Inactivo'}
                     />
                 </FormGroup>
-                <FormHelperText>Formulario completo</FormHelperText>
+                <FormHelperText>{t('client_form.form_help')}</FormHelperText>
             </FormControl>
             <br/>
             <Button type="submit" color="success" >{label}</Button>

@@ -1,0 +1,207 @@
+{ 
+    "app": {
+        "header_button" : "Logout"
+    },
+    "home": {
+        "app_title": "Title",
+        "language": "Language",
+        "welcome_message": "Welcome",
+        "days_since_release": "it's been {{number_of_days}} days since this video was released",
+        "typography": "Admin",
+        "accordion_header_1": "Sale",
+        "accordion_body_button_1a": "Proforma",
+        "accordion_body_button_1b": "Sales order",
+        "accordion_body_button_1c": "Return",
+        "accordion_body_button_1d": "Credit note",
+        "accordion_body_button_1e": "Sales reports",
+        "accordion_header_2": "Inventory",
+        "accordion_body_button_2a": "Create Items",
+        "accordion_body_button_2b": "List of products",
+        "accordion_body_button_2?": "Price list",
+        "accordion_body_button_2c": "Inventory revaluation",
+        "accordion_body_button_2d": "Kardex",
+        "accordion_header_2+": "Stock operations",
+        "accordion_body_button_2+a": "Adjustment income",
+        "accordion_body_button_2+b": "Expenditures by adjustment",
+        "accordion_header_3": "Purchasing",
+        "accordion_body_button_3a": "Proforma",
+        "accordion_body_button_3b": "Purchase order",
+        "accordion_body_button_3c": "Merchandise receipt",
+        "accordion_body_button_3d": "Return",
+        "accordion_body_button_3e": "Credit note",
+        "accordion_body_button_3f": "Purchase reports",
+        "accordion_header_4": "Finance",
+        "accordion_body_button_4a": "Chart of Accounts",
+        "accordion_body_button_4b": "Ledger",
+        "accordion_body_button_4c": "Cancel transactions",
+        "accordion_header_4+": "Financial Reports",
+        "accordion_body_button_4+a": "ATS",
+        "accordion_body_button_4+b": "Journal of documents",
+        "accordion_header_5": "Clients",
+        "accordion_body_button_5a": "Add Clients",
+        "accordion_body_button_5b": "Customer List",
+        "accordion_body_button_5c": "Customer Account Balance",
+        "accordion_body_button_5d": "Campaign",
+        "accordion_header_5+": "Customer Reports",
+        "accordion_body_button_5+a": "Age of balances",
+        "accordion_body_button_5?": "Inactive customers",
+        "accordion_header_6": "User",
+        "accordion_body_button_6a": "Themes (styles)",
+        "accordion_body_button_6b": "Language",
+        "accordion_header_6+": "Security",
+        "accordion_body_button_6+a": "Reset Password",
+        "card_title_a": "Total Earning",
+        "card_button_a": "Month",
+        "card_button_b": "Year",
+        "card_title_b": "Total",
+        "card_title_c": "Special Title Treatment",
+        "card_title_d": "With supporting text below as a natural lead-in to additional content.",
+        "card_title_e": "Button"
+    },
+    "product_form": {
+        "p_label_a": "Code:",
+        "p_label_b": "Description:",
+        "p_label_c": "Price:",
+        "p_label_d": "Amount:",
+        "p_label_e": "Brand:",
+        "p_label_f": "Characteristics:",
+        "p_label_g": "Product Cost:",
+        "p_label_h": "Product image URL:",
+        "placeholder_a": "Insert code",
+        "placeholder_b": "Insert description",
+        "placeholder_c": "Insert price",
+        "placeholder_d": "Insert amount",
+        "placeholder_e": "Insert brand",
+        "placeholder_f": "Insert characteristics",
+        "placeholder_g": "Insert product cost",
+        "placeholder_h": "Insert product image URL"
+    },
+    "product_table": {
+        "p_th": "Actions",
+        "p_th_btn_a": "Edit",
+        "p_th_btn_b": "Delete"
+    },
+    "signin": {
+        "typ_title": "Your Website",
+        "grid_title": "Sign in",
+        "text_field_lb_a": "Email Address",
+        "text_field_lb_b": "Password",
+        "form_control_label": "Remember me",
+        "button": "Sign in",
+        "grid_link_a": "Forgot password?",
+        "grid_link_b": "Don't have an account? Sign Up"
+    },
+    "client_form": {
+        "c_label_a": "First Name:",
+        "c_label_b": "Last Name:",
+        "c_label_c": "RUC:",
+        "c_label_d": "Email Address:",
+        "c_label_e": "Account Balance:",
+        "form_label": "Customer Status",
+        "form_help": "Completed form",
+        "placeholder_a": "Insert customer first name",
+        "placeholder_b": "Insert customer last name",
+        "placeholder_c": "Insert Client RUC",
+        "placeholder_d": "Insert client email",
+        "placeholder_e": "Insert customer balance"
+    },
+    "client_list": {
+        "h1": "Customers List",
+        "dropdown_toggle": "Filter Customers",
+        "dropdown_item_a": "Active Customers",
+        "dropdown_item_b": "Inactive Clients",
+        "dropdown_item_c": "Customers List",
+        "th_a": "First Name",
+        "th_b": "Last Name",
+        "th_c": "RUC",
+        "th_d": "Email Address",
+        "th_e": "Account Balance",
+        "th_f": "Customer Status",
+        "th_g": "Actions",
+        "th_btn_a": "Edit",
+        "th_btn_b": "Delete",
+        "button": "Back to Home",
+        "h1?": "List of Inactive Customers",
+        "crear": "Create Client",
+        "btn_c": "Create",
+        "editar": "Edit Client",
+        "btn_e": "Edit"
+    },
+    "informe_compra":{
+        "h1": "Purchasing Report",
+        "button": "Back to Home" 
+    },
+    "orden_compra":{
+        "h1": "Purchase Order",
+        "button": "Back to Home" 
+    },
+    "crear_item": {
+        "h1": "Create Item",
+        "crear": "Create",
+        "button": "Back to Home" 
+    },
+    "editar_item": {
+        "h1": "Edit Item",
+        "editar": "Edit",
+        "button": "Back to Home" 
+    },
+    "kardex": {
+        "h1": "Kardex",
+        "button": "Back to Home" 
+    },
+    "lista_precios": {
+        "h1": "Price List",
+        "button": "Back to Home" 
+    },
+    "lista_prod": {
+        "h1": "List of Products",
+        "label": "Search product by description",
+        "button": "Back to Home",
+        "th_a": "Code",
+        "th_b": "Description",
+        "th_c": "Amount",
+        "th_d": "Price",
+        "th_e": "Product image URL",
+        "th_f": "Actions",
+        "btn_ed": "Edit",
+        "btn_del": "Delete"
+    },
+    "buscar_prod": {
+        "h1": "Search Products",
+        "button": "Back to Home" 
+    },
+    "change_pass": {
+        "typo": "Change Password",
+        "text_field_lb_a": "Old Password",
+        "text_field_lb_b": "New Password",
+        "text_field_lb_c": "Confirm Password" ,
+        "button": "Change Password" 
+    },
+    "form_of_client": {
+        "label_a": "Customer First Name:",
+        "label_b": "Customer Last Name:",
+        "label_c": "ID:"
+    },
+    "inf_venta": {
+        "h1": "Sales Report",
+        "button": "Back to Home"
+    },
+    "orden_venta": {
+        "h1": "Sales Order",
+        "dcto": "Document n°",
+        "autocomplete_lb_a": "Customer Finder",
+        "autocomplete_lb_b": "Product Finder",
+        "table_th_a": "Subtotal:",
+        "table_th_b": "Tax:",
+        "table_th_c": "Total:",
+        "btn_fact": "Bill",
+        "btn_cot": "Quote",
+        "button": "Back to Home"
+    },
+    "venta_form": {
+        "placeholder_a": "Product Code",
+        "placeholder_b": "Product Description",
+        "placeholder_c": "Amount",
+        "placeholder_d": "Price"
+    }
+}

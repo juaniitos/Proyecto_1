@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Button, Form, Input, Label } from "reactstrap";
+import { useTranslation } from "react-i18next";
 
 const ProductForm = ({p, onSubmit, label, read}) => {
+
+    const { t } = useTranslation('translation');
 
     const initialProduct = {
         codigo: p.codigo ? p.codigo : "",
@@ -26,22 +29,22 @@ const ProductForm = ({p, onSubmit, label, read}) => {
 
     return(
         <Form onSubmit={(e) => onSubmit(e, product) }>
-            <Label>Código:</Label>
-            <Input readOnly={read[0] == 0 ? true : false} type="text" name="codigo" value={product.codigo} onChange={change} required  placeholder="Inserte código"/>
-            <Label>Descripción:</Label>
-            <Input readOnly={read[1] == 0 ? true : false} type="text" name="descripcion" value={product.descripcion} onChange={change} required  placeholder="Inserte descripción"/>
-            <Label>Precio:</Label>
-            <Input readOnly={read[2] == 0 ? true : false} type="number" name="precio" value={product.precio} onChange={change} required  placeholder="Inserte precio"/>
-            <Label>Cantidad:</Label>
-            <Input readOnly={read[3] == 0 ? true : false} type="number" name="cantidad" value={product.cantidad} onChange={change} placeholder="Inserte cantidad"/>
-            <Label>Marca:</Label>
-            <Input readOnly={read[4] == 0 ? true : false} type="text" name="marca" value={product.marca} onChange={change} required placeholder="Inserte marca"/>
-            <Label>Características:</Label>
-            <Input readOnly={read[5] == 0 ? true : false} type="text" name="caracteristicas" value={product.caracteristicas} onChange={change} placeholder="Inserte caracteristicas"/>
-            <Label>Costo de producto:</Label>
-            <Input readOnly={read[6] == 0 ? true : false} type="number" name="costo" value={product.costo} onChange={change} placeholder="Inserte costo de producto"/>
-            <Label>URL de imagen de producto:</Label>
-            <Input readOnly={read[7] == 0 ? true : false} type="text" name="imgUrl" value={product.imgUrl} onChange={change} placeholder="Inserte URL de imagen de producto"/>
+            <Label>{t('product_form.p_label_a')}</Label>
+            <Input readOnly={read[0] == 0 ? true : false} type="text" name="codigo" value={product.codigo} onChange={change} required  placeholder={t('product_form.placeholder_a')}/>
+            <Label>{t('product_form.p_label_b')}</Label>
+            <Input readOnly={read[1] == 0 ? true : false} type="text" name="descripcion" value={product.descripcion} onChange={change} required  placeholder={t('product_form.placeholder_b')}/>
+            <Label>{t('product_form.p_label_c')}</Label>
+            <Input readOnly={read[2] == 0 ? true : false} type="number" name="precio" value={product.precio} onChange={change} required  placeholder={t('product_form.placeholder_c')}/>
+            <Label>{t('product_form.p_label_d')}</Label>
+            <Input readOnly={read[3] == 0 ? true : false} type="number" name="cantidad" value={product.cantidad} onChange={change} placeholder={t('product_form.placeholder_d')}/>
+            <Label>{t('product_form.p_label_e')}</Label>
+            <Input readOnly={read[4] == 0 ? true : false} type="text" name="marca" value={product.marca} onChange={change} required placeholder={t('product_form.placeholder_e')}/>
+            <Label>{t('product_form.p_label_f')}</Label>
+            <Input readOnly={read[5] == 0 ? true : false} type="text" name="caracteristicas" value={product.caracteristicas} onChange={change} placeholder={t('product_form.placeholder_f')}/>
+            <Label>{t('product_form.p_label_g')}</Label>
+            <Input readOnly={read[6] == 0 ? true : false} type="number" name="costo" value={product.costo} onChange={change} placeholder={t('product_form.placeholder_g')}/>
+            <Label>{t('product_form.p_label_h')}</Label>
+            <Input readOnly={read[7] == 0 ? true : false} type="text" name="imgUrl" value={product.imgUrl} onChange={change} placeholder={t('product_form.placeholder_h')}/>
             <br/>
             <Button type="submit" color="success" >{label}</Button>
             <br/><br/>

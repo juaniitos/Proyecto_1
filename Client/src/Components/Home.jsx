@@ -1,19 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Accordion, AccordionItem, AccordionHeader, Button, AccordionBody, Card, CardTitle, CardText } from "reactstrap";
 import SocketContext from '../Context/socket-context';
 
 const Home = () => {
     const [indice, setIndice] = useState(1);
     const navigate = useNavigate();
+    const { t } = useTranslation('translation');
 
-    const {login, setLogin} = useContext(SocketContext);
-
-    const cerrarSesion = () => {
-        localStorage.removeItem('USUARIO');
-        setLogin(false);
-        navigate("/")
-    }
+    const {login} = useContext(SocketContext);
 
     const toggle = (i) =>{
         if (i === indice) {
@@ -29,8 +25,7 @@ const Home = () => {
     }
     return(
         <div>
-            {login && <>
-            <Button className='header' color='#ffffff' onClick={cerrarSesion} >Cerrar Sesión</Button>
+            {login && <>            
             <div className='template-container' >
                 {/* {console.log(props.user)} */}
                 <div className='template-left-side'>
@@ -40,82 +35,82 @@ const Home = () => {
                         </div>
                         <div className="MuiBox-root css-k7os9j">
                             {/* <h6 > {props.user.name} </h6> */}
-                            <p className="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap css-10n697b">admin</p>
+                            <p className="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap css-10n697b">{t("home.typography")}</p>
                         </div>
                     </div>
                     <div className="barraLat">
                         <Accordion toggle={toggle} open={indice}>
                             <AccordionItem >
-                                <AccordionHeader targetId="1">Venta</AccordionHeader>
+                                <AccordionHeader targetId="1">{t("home.accordion_header_1")}</AccordionHeader>
                                 <AccordionBody accordionId="1">
-                                    <Button color='#ffffff' onClick={ () => navigate('/ordenventa')}>Proforma</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('/ordenventa')}>Orden de venta</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Devolución</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Nota de crédito</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Informes de ventas</Button>
+                                    <Button color='#ffffff' onClick={ () => navigate('/ordenventa')}>{t("home.accordion_body_button_1a")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('/ordenventa')}>{t("home.accordion_body_button_1b")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_1c")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_1d")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_1e")}</Button>
                                 </AccordionBody>
                             </AccordionItem>
                             <AccordionItem >
-                                <AccordionHeader targetId="2">Inventario</AccordionHeader>
+                                <AccordionHeader targetId="2">{t("home.accordion_header_2")}</AccordionHeader>
                                 <AccordionBody accordionId="2">
-                                    <Button color='#ffffff' onClick={ () => navigate('/item')}>Crear Items</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('/products')}>Lista de productos</Button><br></br>
-                                    {/* <Button color='#ffffff' onClick={ () => navigate('/precios')}>Lista de precios </Button><br></br> */}
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Revalorización de inventario </Button>
-                                    <Button color='#ffffff' onClick={ () => navigate('/kardex')}>Kardex </Button>
-                                    <AccordionHeader targetId="2">Operaciones de stock</AccordionHeader>
+                                    <Button color='#ffffff' onClick={ () => navigate('/item')}>{t("home.accordion_body_button_2a")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('/products')}>{t("home.accordion_body_button_2b")}</Button><br></br>
+                                    {/* <Button color='#ffffff' onClick={ () => navigate('/precios')}>{t("home.accordion_body_button_2?")}</Button><br></br> */}
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_2c")}</Button>
+                                    <Button color='#ffffff' onClick={ () => navigate('/kardex')}>{t("home.accordion_body_button_2d")}</Button>
+                                    <AccordionHeader targetId="2">{t("home.accordion_header_2+")}</AccordionHeader>
                                     <AccordionBody accordionId="2">
-                                        <Button color='#ffffff' onClick={ () => navigate('#')}>Ingresos por ajuste</Button><br></br>
-                                        <Button color='#ffffff' onClick={ () => navigate('#')}>Egresos por ajuste</Button><br></br>
+                                        <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_2+a")}</Button><br></br>
+                                        <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_2+b")}</Button><br></br>
                                     </AccordionBody>
                                 </AccordionBody>
                             </AccordionItem>
                             <AccordionItem >
-                                <AccordionHeader targetId="3">Compra</AccordionHeader>
+                                <AccordionHeader targetId="3">{t("home.accordion_header_3")}</AccordionHeader>
                                 <AccordionBody accordionId="3">
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Proforma</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('/ordencompra')}>Orden de compra </Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Entrada de mercancías</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Devolución </Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Nota de crédito</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('/informescompras')}>Informes de compras </Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_3a")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('/ordencompra')}>{t("home.accordion_body_button_3b")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_3c")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_3d")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_3e")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('/informescompras')}>{t("home.accordion_body_button_3f")}</Button><br></br>
                                 </AccordionBody>
                             </AccordionItem>
                             <AccordionItem >
-                                <AccordionHeader targetId="4">Finanzas</AccordionHeader>
+                                <AccordionHeader targetId="4">{t("home.accordion_header_4")}</AccordionHeader>
                                 <AccordionBody accordionId="4">
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Plan de cuentas </Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Libro mayor </Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Anular transacciones </Button><br></br>
-                                    <AccordionHeader targetId="4">Informes financieros</AccordionHeader>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_4a")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_4b")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_4c")}</Button><br></br>
+                                    <AccordionHeader targetId="4">{t("home.accordion_header_4+")}</AccordionHeader>
                                     <AccordionBody accordionId="4">
-                                        <Button color='#ffffff' onClick={ () => navigate('#')}>ATS</Button><br></br>
-                                        <Button color='#ffffff' onClick={ () => navigate('#')}>Diario de documentos</Button><br></br>
+                                        <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_4+a")}</Button><br></br>
+                                        <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_4+b")}</Button><br></br>
                                     </AccordionBody>
                                 </AccordionBody>
                             </AccordionItem>
                             <AccordionItem >
-                                <AccordionHeader targetId="5">Clientes</AccordionHeader>
+                                <AccordionHeader targetId="5">{t("home.accordion_header_5")}</AccordionHeader>
                                 <AccordionBody accordionId="5">
-                                <Button color='#ffffff' onClick={ () => navigate('/client')}>Agregar Clientes </Button><br></br>
-                                <Button color='#ffffff' onClick={ () => navigate('/clientList')}>Lista de clientes </Button><br></br>
-                                <Button color='#ffffff' onClick={ () => navigate('#')}>Saldo de cuenta de cliente</Button>
-                                <Button color='#ffffff' onClick={ () => navigate('#')}>Campaña </Button>
-                                <AccordionHeader targetId="5">Informes de clientes</AccordionHeader>
+                                <Button color='#ffffff' onClick={ () => navigate('/client')}>{t("home.accordion_body_button_5a")}</Button><br></br>
+                                <Button color='#ffffff' onClick={ () => navigate('/clientList')}>{t("home.accordion_body_button_5b")}</Button><br></br>
+                                <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_5c")}</Button>
+                                <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_5d")}</Button>
+                                <AccordionHeader targetId="5">{t("home.accordion_header_5+")}</AccordionHeader>
                                 <AccordionBody accordionId="5">
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Antiguedad de saldos</Button><br></br>
-                                    {/* <Button color='#ffffff' onClick={ () => navigate('/clientList/NoActive')}>Clientes inactivos</Button><br></br> */}
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_5+a")}</Button><br></br>
+                                    {/* <Button color='#ffffff' onClick={ () => navigate('/clientList/NoActive')}>{t("home.accordion_body_button_5?")}</Button><br></br> */}
                                 </AccordionBody>
                                 </AccordionBody>
                             </AccordionItem>
                             <AccordionItem >
-                                <AccordionHeader targetId="6">Usuario</AccordionHeader>
+                                <AccordionHeader targetId="6">{t("home.accordion_header_6")}</AccordionHeader>
                                 <AccordionBody accordionId="6">
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>Temas (estilos)</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}> Idioma</Button><br></br>
-                                    <AccordionHeader targetId="6">Seguridad</AccordionHeader>
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_6a")}</Button><br></br>
+                                    {/* <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_6b")}</Button><br></br> */}
+                                    <AccordionHeader targetId="6">{t("home.accordion_header_6+")}</AccordionHeader>
                                     <AccordionBody accordionId="6">
-                                        <Button color='#ffffff' onClick={ () => navigate('/changePassword')}>Modificar clave de acceso</Button><br></br>
+                                        <Button color='#ffffff' onClick={ () => navigate('/changePassword')}>{t("home.accordion_body_button_6+a")}</Button><br></br>
                                     </AccordionBody>
                                 </AccordionBody>
                             </AccordionItem>
@@ -133,7 +128,7 @@ const Home = () => {
                     >
                         <img className='image-card' src='https://berrydashboard.io/free/static/media/earning.b019e86a.svg' />
                         <CardTitle tag="h5">
-                            Total Earning
+                            {t("home.card_title_a")}
                         </CardTitle>
                         <CardText>
                             $500
@@ -146,11 +141,11 @@ const Home = () => {
                     >
                         <img className='image-card' src='https://berrydashboard.io/free/static/media/earning.b019e86a.svg' />
                         <div>
-                            <Button id="control-outline" type="checkbox" name="outline" onClick={totalMonth}>Month</Button>
-                            <Button id="control-outline" type="checkbox" name="outline">Year</Button>
+                            <Button id="control-outline" type="checkbox" name="outline" onClick={totalMonth}>{t("home.card_button_a")}</Button>
+                            <Button id="control-outline" type="checkbox" name="outline">{t("home.card_button_b")}</Button>
                         </div>
                         <CardTitle tag="h5">
-                            Total
+                            {t("home.card_title_b")}
                         </CardTitle>
                         <CardText>
                             $961
@@ -163,13 +158,13 @@ const Home = () => {
                             inverse
                         >
                             <CardTitle tag="h5">
-                                Special Title Treatment
+                                {t("home.card_title_c")}
                             </CardTitle>
                             <CardText>
-                                With supporting text below as a natural lead-in to additional content.
+                                {t("home.card_title_d")}
                             </CardText>
                             <Button>
-                                Button
+                                {t("home.card_title_e")}
                             </Button>
                         </Card>
                     </div>

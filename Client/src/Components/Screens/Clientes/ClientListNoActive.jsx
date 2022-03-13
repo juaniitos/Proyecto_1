@@ -3,8 +3,11 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import SocketContext from "../../../Context/socket-context";
+import { useTranslation } from "react-i18next";
 
 const ClientList = (props) => {
+
+    const { t } = useTranslation('translation');
     const navigate = useNavigate();
     const [clients, setClients] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -36,18 +39,18 @@ const ClientList = (props) => {
     return (
         <div>
             {login && <>
-            <h1>Lista de Clientes No Activos</h1>
+            <h1>{t('client_list.h1?')}</h1>
             <h2>En proceso ...</h2>
             <Table striped className="tableProducts">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>RUC</th>
-                        <th>Email</th>
-                        <th>Saldo del cliente</th>
-                        <th>Estado del cliente</th>
-                        <th>Acciones</th>
+                        <th>{t('client_list.th_a')}</th>
+                        <th>{t('client_list.th_b')}</th>
+                        <th>{t('client_list.th_c')}</th>
+                        <th>{t('client_list.th_d')}</th>
+                        <th>{t('client_list.th_e')}</th>
+                        <th>{t('client_list.th_f')}</th>
+                        <th>{t('client_list.th_g')}</th>
                     </tr>
                 </thead>
                 {loaded && <>
@@ -61,14 +64,14 @@ const ClientList = (props) => {
                                 <td>{c.email}</td> 
                                 <td>{c.saldo}</td> 
                                 <td>{c.inactivo == true ? 'inactivo' : ''}</td>                                                                                        
-                                <td><Button color="success" onClick={() => navigate('/client/editar/' + c._id)}>Editar</Button>&nbsp;&nbsp;<Button color="danger" onClick={() => {deleteClient(c._id)}}>Eliminar</Button></td>
+                                <td><Button color="success" onClick={() => navigate('/client/editar/' + c._id)}>{t('client_list.th_btn_a')}</Button>&nbsp;&nbsp;<Button color="danger" onClick={() => {deleteClient(c._id)}}>{t('client_list.th_btn_b')}</Button></td>
                             </tr>
                         )
                     })}
                 </tbody>
             </>}
             </Table>
-            <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>                
+            <Button color="primary" onClick={() => navigate('/Home')}>{t('client_list.button')}</Button>                
             </>}
         </div>
     )

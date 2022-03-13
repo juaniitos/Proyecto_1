@@ -4,8 +4,12 @@ import { /* Link,  */ useNavigate/* , useParams */ } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import SocketContext from "../../../Context/socket-context";
+import { useTranslation } from "react-i18next";
+
 
 const SearchProducts = (props) => {
+
+    const { t } = useTranslation('translation');
     const navigate = useNavigate();
     const [inputs, setInputs] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -31,7 +35,7 @@ const SearchProducts = (props) => {
     return (
         <div>
             {login && <>
-            <h1>SearchProducts</h1>
+            <h1>{t('buscar_prod.h1')}</h1>
             <h2>En proceso ...</h2>
             <div className="tableProducts" >
             {/* <Form onSubmit={ addProduct }>
@@ -53,7 +57,7 @@ const SearchProducts = (props) => {
             </Form>
             <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button> */}
             </div>
-            <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
+            <Button color="primary" onClick={() => navigate('/Home')}>{t('buscar_prod.button')}</Button>
             </>}
         </div>
     )

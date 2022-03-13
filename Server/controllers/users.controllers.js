@@ -24,9 +24,9 @@ module.exports.login = (req, res) => {
                         name: user.nombre + ' ' + user.apellido,
                         email: user.email 
                     };
-                    console.log("LLEGUE!")
+                    // console.log("LLEGUE!")
                     const newJWT = jwt.sign(datos, secret);
-                    console.log("FUNCIONOOO!!")
+                    // console.log("FUNCIONOOO!!")
                     res.cookie("usertoken", newJWT, secret, {
                         httpOnly: true
                     }).json({data: datos, msg: "sucesss!", error: false});
@@ -39,23 +39,29 @@ module.exports.login = (req, res) => {
 };
 
 module.exports.changePassword = (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const payload = jwt.decode(req.cookies.usertoken, secret);
     User.findOne({ _id: payload._id })
     .then(user => {
         bcrypt.compare(req.body.oldPassword, user.password)
         .then(passwordIsValid => {
             if (passwordIsValid) {
-                bcrypt.hash(req.body.newPassword, 10)
+                bcrypt.hash(req.body.newPassword, 10)                
                 .then(hash => {
-                    user.password = hash;
-                    user.save()
-                    res.json({data: datos, msg: "sucesss!", error: false});
-                });           
-            } else {
+                    User.findOneAndUpdate({_id: payload._id}, {$set: {password: hash}}, 
+                        {
+                            returnNewDocument: true
+                        },
+                        function( error, result){
+                            res.json({ msg: "Cambio de contraseña exitoso"})
+                        })
+                });
+            }
+            else {
                 res.json({ msg: "Usuario y/o clave inválido", error: true})
-            } 
+            }
         })
+          
     })
     .catch(() => {
       res.status(404).json("Invalid user")

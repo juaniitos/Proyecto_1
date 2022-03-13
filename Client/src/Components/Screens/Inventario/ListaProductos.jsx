@@ -4,8 +4,11 @@ import { /* Link,  */ useNavigate/* , useParams */ } from "react-router-dom";
 import axios from "axios";
 import ProductTable from "../../ProductTable";
 import SocketContext from "../../../Context/socket-context";
+import { useTranslation } from "react-i18next";
 
 const ListaProductos = (props) => {
+
+    const { t } = useTranslation('translation');
     const navigate = useNavigate();
     const [inputs, setInputs] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -39,10 +42,10 @@ const ListaProductos = (props) => {
             {/* {console.log("INPUTS", inputs[0])}
             {console.log("LOADED", loaded)} */}
             {login && <>
-            <h1>Lista de Productos</h1>
+            <h1>{t('lista_prod.h1')}</h1>
             <h2>En proceso ...</h2>
             <ProductTable ths={[{th: 'Código', key: 'codigo'}, {th: 'Descripción', key: 'descripcion'}, {th: 'Cantidad', key: 'cantidad'}, {th: 'Precio', key: 'precio'}]} imagen={inputs.imgUrl} inputs={inputs} loaded={loaded} deleteProduct={deleteProduct}/>
-            <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>                
+            <Button color="primary" onClick={() => navigate('/Home')}>{t('lista_prod.button')}</Button>                
             </>}
         </div>
     )

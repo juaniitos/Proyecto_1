@@ -4,9 +4,11 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import SocketContext from "../../../Context/socket-context";
 import ClientForm from "./ClientForm";
+import { useTranslation } from "react-i18next";
 
 const CreateClient = () => {
 
+    const { t } = useTranslation('translation');
     const {login} = useContext(SocketContext);
     const navigate = useNavigate();
     const initialClient = {
@@ -34,10 +36,10 @@ const CreateClient = () => {
     return (
         <div>
             {login && <>
-            <h1>Crear Cliente</h1>
+            <h1>{t('client_list.crear')}</h1>
             {/* <h2>En proceso ...</h2> */}
-            <ClientForm read={[1,1,1,1,1,1]} c={newClient} onSubmit={addClient} label={'Crear'}/>
-            <Button color="primary" onClick={() => navigate('/Home')}>Volver a Home</Button>
+            <ClientForm read={[1,1,1,1,1,1]} c={newClient} onSubmit={addClient} label={t('client_list.btn_c')}/>
+            <Button color="primary" onClick={() => navigate('/Home')}>{t('client_list.button')}</Button>
             </>}
         </div>
     )
