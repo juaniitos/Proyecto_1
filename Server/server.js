@@ -14,6 +14,7 @@ app.use(express.urlencoded({extended: true}));
 require('./routes/users.routes')(app);
 require('./routes/client.routes')(app);
 require('./routes/products.routes')(app);
+require('./routes/venta.routes')(app);
 // require('./routes/accounting.routes')(app);
 
 const server = app.listen( port, () => console.log(`Escuchando en el puerto ${port}`));

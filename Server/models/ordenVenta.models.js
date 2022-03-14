@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
 
 const VentaSchema = new mongoose.Schema({
+    contador: {
+        type: Number,
+        required: [true]
+    },
     nombre: {
-        type: Text,
+        type: String,
         required: [true, "El nombre es requerido"]
     },
     apellido: {
-        type: Text,
+        type: String,
         required: [true, "El apellido es requerido"]
     },
     id: {
@@ -14,11 +18,11 @@ const VentaSchema = new mongoose.Schema({
         required: [true, "El id es requerido"]
     },
     codigo: {
-        type: Text,
+        type: String,
         required: true
     },
     descripcion: {
-        type: Text,
+        type: String,
         required: true
     },
     cantidad: {
@@ -41,8 +45,8 @@ const VentaSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
-})
+}, {timestamps: true})
 
-const Venta = mongoose.model("Product", VentaSchema);
+const Venta = mongoose.model("Venta", VentaSchema);
 
 module.exports = Venta;
