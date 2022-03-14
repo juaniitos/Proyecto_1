@@ -3,6 +3,13 @@ const jwt = require('jsonwebtoken');
 const {secret} = require('../config/jwt.config');
 const bcrypt = require('bcrypt');
 
+module.exports.viewUsers = (req, res) => {
+    console.log("Funciona viewUsers!")
+    User.find({}).sort({apellido: 1})
+    .then(allUsers => res.json({users: allUsers}))
+    .catch(err => res.json({ message: "Algo salió mal viewClients", err }));
+};
+
 module.exports.register = (req, res) => {
     const user = req.body;
     User.create(user)

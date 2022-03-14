@@ -207,5 +207,9 @@
         "p": "Precisa conversar com os outros?",
         "placeholder": "Escreva aqui",
         "button": "Enviar"
+    },
+    "users_conn" :{
+        "h2": "Converse com seus colegas",
+        "label": "Localizador de usuários"
     }
 }

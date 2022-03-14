@@ -208,5 +208,9 @@
         "p": "¿Necesitas chatear con otros?",
         "placeholder": "Escribe aquí",
         "button": "Enviar"
+    },
+    "users_conn" :{
+        "h2": "Chatea con tus compañeros",
+        "label": "Buscador de usuarios"
     }
 }

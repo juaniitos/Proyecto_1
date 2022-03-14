@@ -15,7 +15,7 @@ const ChangePassword = (props) => {
         newPassword: '',
         confirmPassword: ''
     })
-    const {setUsuario} = useContext(SocketContext);
+    const {login} = useContext(SocketContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,6 +41,7 @@ const ChangePassword = (props) => {
 
     return(
         <div className='init pass' >
+            {login && <>
             {/* Comienzo de formulario */}            
             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square className='pass_div'>
                 <Typography component="h1" variant="h5">
@@ -61,6 +62,7 @@ const ChangePassword = (props) => {
                     </Button>
                 </Box>
             </Grid>
+            </>}
         </div>
     )
 }

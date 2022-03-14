@@ -66,7 +66,7 @@ const SignInSide = (props) => {
     }
 
     return(
-        <div className='init' >
+        <div className='init' >            
             <ThemeProvider theme={theme}  >
                 {/*Imagen de portada */}
                 <Grid container component="main" sx={{width: '120vh', height:'70vh' }} className='init'>
@@ -117,15 +117,14 @@ const SignInSide = (props) => {
                             <Copyright sx={{ mt: 5 }}/><br/>
                             <Typography color='red' align='center' >
                                 Para pruebas puede utilizar:<br/>
-                                Usuario: ventas@JD.com<br/>
+                                Usuario 1: ventas@JD.com<br/>
                                 Contraseña: 1234<br/>
-                                Usuario: ventas2@JD.com<br/>
+                                Usuario 2: ventas2@JD.com<br/>
                                 Contraseña: 5678
                             </Typography>
                         </Box>
                     </Box>
                 </Grid>
-
             </ThemeProvider>
         </div>
     )

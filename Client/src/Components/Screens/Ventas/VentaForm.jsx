@@ -11,9 +11,11 @@ const VentaForm = (props) => {
     const [ctd, setCtd] = useState(0);
 
     useEffect(() => {
-        setPrice(props.input.precio * ctd)
-        // console.log(ctd)
-        props.updatePrice(props.input.precio * ctd)
+        const new_price = props.input.precio * ctd;
+        setPrice(new_price)
+        console.log('props.input.precio', props.input.precio)
+        console.log('new_price', new_price)
+        props.updatePrice(new_price)
     }, [ctd])
 
     useEffect (() => {

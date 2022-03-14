@@ -20,18 +20,24 @@ const OrdenVenta = (props) => {
     const [products, setProducts] = useState([]);
     const [inputText, setInputText] = useState("");
     const [ventaProductos, setVentaProductos] = useState([{}]);
-    const [subTotal, setSubTotal] = useState([0]);
+    const [subTotal, setSubTotal] = useState(0);
 
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
       };
     const updateSubTotal = (p) => {
-        console.log("subtotal", subTotal)
-        var st = [subTotal, p];
+        let subT = 0;
+        if(!isNaN(subTotal)) {
+            subT = subTotal;
+            console.log(subTotal);
+        }
+        // console.log(subTotal)
+        p = parseInt(p);
+        var st = subT + p;
         console.log("subP",p);
-        console.log("subST",st);
-        setSubTotal(p);
+        console.log("subST", typeof st);
+        setSubTotal(st);
     }
 
     const lineAdd = () => {
@@ -112,6 +118,7 @@ const OrdenVenta = (props) => {
                 {ventaProductos.map ((v, index) => {
                 return (
                     <Card key={index}>
+                        {console.log('v', v)}
                         {<VentaForm input={v} updatePrice={updateSubTotal} />}
                     </Card>
                 )
@@ -123,7 +130,7 @@ const OrdenVenta = (props) => {
                     <tbody>
                         <tr>
                             <th>{t('orden_venta.table_th_a')}</th>
-                            <td><p> { subTotal } </p></td>
+                            <td><p> {subTotal ? subTotal : 0 } </p></td>
                         </tr>
                         <tr>
                             <th>{t('orden_venta.table_th_b')}</th>

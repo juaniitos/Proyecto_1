@@ -208,5 +208,9 @@
         "p": "Need to chat with others?",
         "placeholder": "Write here",
         "button": "Send"
+    },
+    "users_conn" :{
+        "h2": "Chat with your colleagues",
+        "label": "User Finder"
     }
 }
