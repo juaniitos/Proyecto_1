@@ -203,5 +203,10 @@
         "placeholder_b": "Product Description",
         "placeholder_c": "Amount",
         "placeholder_d": "Price"
+    },
+    "chat": {
+        "p": "Need to chat with others?",
+        "placeholder": "Write here",
+        "button": "Send"
     }
 }

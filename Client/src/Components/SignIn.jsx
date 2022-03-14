@@ -69,7 +69,7 @@ const SignInSide = (props) => {
         <div className='init' >
             <ThemeProvider theme={theme}  >
                 {/*Imagen de portada */}
-                <Grid container component="main" sx={{width: '100vh', height:'70vh' }} className='init'>
+                <Grid container component="main" sx={{width: '120vh', height:'70vh' }} className='init'>
                     <CssBaseline/>
                     <Grid item xs={false} sm={12} ms={7} 
                     sx={{backgroundImage: 'url(https://www.acatha.io/wp-content/uploads/2020/09/acatha-vectorizado.png)',
@@ -80,7 +80,7 @@ const SignInSide = (props) => {
                 </Grid>
                 {/* Formulario */}
                 <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square className='init' >
-                    <Box sx={{ my: 8, mx: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <Box sx={{ my: 8, mx: 5, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         {/* Avatar (imagen de adorno) */}
                         <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                             {/* <LockOutlineIcon/> */}
@@ -117,6 +117,8 @@ const SignInSide = (props) => {
                             <Copyright sx={{ mt: 5 }}/><br/>
                             <Typography color='red' align='center' >
                                 Para pruebas puede utilizar:<br/>
+                                Usuario: ventas@JD.com<br/>
+                                Contraseña: 1234<br/>
                                 Usuario: ventas2@JD.com<br/>
                                 Contraseña: 5678
                             </Typography>

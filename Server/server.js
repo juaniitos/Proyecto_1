@@ -21,10 +21,9 @@ const server = app.listen( port, () => console.log(`Escuchando en el puerto ${po
 const io = require('socket.io')(server);
 
 io.on("connection", socket => {
-    console.log(socket.id);
-
-    socket.on("product_reservation", data => {
-        data.reserved = true;
-        socket.broadcast.emit('product_reserved',data);
+    // console.log(socket.id);
+    socket.emit("your id", socket.id);
+    socket.on("send message", body => {
+        io.emit("message", body)
     });
 })

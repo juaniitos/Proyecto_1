@@ -24,6 +24,7 @@ import CreateClient from './Components/Screens/Clientes/CreateClient';
 import EditarClient from './Components/Screens/Clientes/EditarClient';
 import ClientList from './Components/Screens/Clientes/ClientList';
 import ChangePassword from './Components/Screens/Usuarios/ChangePassword';
+import Chat from './Components/Screens/Usuarios/Chat';
 // import ClientListNoActive from './Components/Screens/Clientes/ClientListNoActive';
 
 function App() {
@@ -88,11 +89,10 @@ function App() {
   }
 
   return (
-    <div>
-      <img className='logo' src={logo} width={"70vh"} /> 
-      <div className='container'>      
+    <div className='App'>
+      <img className='logo' src={logo} width={"70vh"} />      
         <div className='d-flex justify-content-end'>
-        <Button className='header' onClick={cerrarSesion}>{t('app.header_button')}</Button>
+          <Button className='header' onClick={cerrarSesion}>{t('app.header_button')}</Button>
           <Dropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle color="primary" className='globe' caret>
               <GlobeIcon/>
@@ -100,21 +100,18 @@ function App() {
             <DropdownMenu>
               {languages.map(({code, name, country_code}) => {
                 return(
-                  <DropdownItem onClick={() => i18n.changeLanguage(code)}>
-                    <button key={country_code} className="dropdown-item"
-                    disabled={code === currentLanguageCode}
-                  >
+                  <DropdownItem onClick={() => i18n.changeLanguage(code)} key={country_code} disabled={code === currentLanguageCode}>
+                    <p>
                   {/* <span className={`flag-icon flag-icon-${country_code} mx-2`}
                   style={{opacity: code === currentLanguageCode ? 0.5 : 1}}></span> */}
                       {name}
-                    </button>
+                    </p>
                   </DropdownItem>
                 )
               })}
             </DropdownMenu>
           </Dropdown>
        </div>
-      </div>
       <SocketContext.Provider value={{socket: socket, login: login, setLogin: setLogin, usuario: usuario, setUsuario: setUsuario }}>
         <Routes>
           <Route path='/' element={<SignInSide setLogin={setLogin} />} />
@@ -136,6 +133,9 @@ function App() {
           {/* <Route path='/clientList/NoActive' element={<ClientListNoActive/>} /> */}
         </Routes>
       </SocketContext.Provider>
+      <div>
+        <Chat />
+      </div>
     </div>
   );
 }

@@ -202,5 +202,10 @@
         "placeholder_b": "Descrição do produto",
         "placeholder_c": "Quantidade",
         "placeholder_d": "Preço"
+    },
+    "chat": {
+        "p": "Precisa conversar com os outros?",
+        "placeholder": "Escreva aqui",
+        "button": "Enviar"
     }
 }

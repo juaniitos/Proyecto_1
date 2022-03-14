@@ -99,7 +99,7 @@ const OrdenVenta = (props) => {
                         // setProducto(newValue);
                         const l = ventaProductos[ventaProductos.length -1]
                         if(Object.keys(l.length == 0)){  
-                            console.log('Entré!')  
+                            // console.log('Entré!')  
                             const new_list = [...ventaProductos]
                             new_list[ventaProductos.length -1] = newValue                     
                             setVentaProductos(new_list)

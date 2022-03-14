@@ -4,18 +4,16 @@
   box-sizing: border-box;
 }
 
-body {
-  padding: 5px;
-  width: 1024px;
-  height: 970px;
+.App {
+  padding: 5px 30px 30px 30px;
+  /* width: 1024px;
+  height: 970px; */
 }
-
-/* .logo{
-} */
 
 .init {
   display: -webkit-box !important;
   width: 100%;
+  margin-right: 20px;
 }
 
 .pass{
@@ -32,9 +30,10 @@ body {
   padding-left: 16px;
   padding-right: 16px
 }
+
 .header{
-  margin-bottom: 10px;
-  margin-right: 10px;
+  margin-bottom: 15px;
+  /* margin-right: 10px; */
   width: fit-content;
   background-color: white;
   color: #0d6efd;
@@ -45,18 +44,54 @@ body {
   border: none;
 }
 
+.template-container{
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  /* display: grid;
+  grid-template-columns: 30% 70%; */
+  /* grid-template-rows: 100vh; */
+  /* width: 100vw; */
+}
+
+.template-left-side{
+  flex-direction: column;
+  /* grid-column: 1 / 2; */
+  /* grid-row: 1 / 2; */
+  /* background-color: aqua; */
+  /* width: 100%;
+  height: 100%; */
+}
+
+.template-content{
+  /* grid-column: 2 / 3; */
+  /* grid-row: 1 / 2; */
+  /* background-color: blueviolet; */
+  /* width: 100%; */
+  /* height: 100%; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.stadistic{
+  height: 15%;
+  /* background-color: brown; */
+  width: 100%;
+}
+
 .barraLat {
-  width: 40vh;
-  height: 100vh
+  width: 45vh;
+  /* height: 100vh */
 }
 .css-1pv7ovc {
   display: flex;
   align-items: center;
-  padding: 16px 20px;
+  /* padding: 16px 20px; */
   border-radius: 12px;
   background-color: rgba(145, 158, 171, 0.12);
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  width: 40vh;
+  /* width: 40vh; */
   height: 10vh;
   justify-content: space-evenly;
 }
@@ -127,36 +162,6 @@ body {
   } 
 } */
 
-.template-container{
-  display: grid;
-  grid-template-columns: 30% 70%;
-  grid-template-rows: 100vh;
-  width: 100vw;
-}
-
-.template-left-side{
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  /* background-color: aqua; */
-  width: 100%;
-  height: 100%;
-}
-.template-content{
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  /* background-color: blueviolet; */
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.stadistic{
-  height: 50%;
-  /* background-color: brown; */
-  width: 100%;
-}
 .image-card{
   width: 3vh;
 }
@@ -175,4 +180,106 @@ body {
 
 .client{
   margin-bottom: 15px;
+}
+
+/* ********Chat********* */
+.page{
+  /* display: flex; */
+  height: 100%;
+  width: 100%;
+  /* align-items: center; */
+  background-color:#919eab1f;
+  opacity: 200ms;
+  /* flex-direction: column; */
+  border-radius: 12px;
+  margin-top: 20px;
+  padding: 25px;
+}
+
+.p_chat{
+  color: #0d6efd;
+  /* color: #46516e; */
+  margin-left: 10px;
+}
+
+.container_chat{
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  max-height: 500px;
+  overflow: auto;
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 20px;
+  scrollbar-width: 20px;
+  /* margin-top: 25px; */
+}
+
+.in_chat{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 20px;
+  font-size: 17px;
+  background-color: transparent;
+  border: 1px solid lightgray;
+  outline: none;
+  color: lightgray;
+  letter-spacing: 1px;
+  line-height: 20px;
+}
+
+::placeholder {
+  color: lightgray;
+}
+
+.chat_btn{
+  background-color: #0d6efd;
+  width: 100%;
+  border: none;
+  height: 50px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.f_chat{
+  width: 100%;  
+}
+
+.myRow{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.myMessage{
+  width: 45%;
+  background-color: #0d6efd;
+  color: #ffffff;
+  padding: 10px;
+  margin-right: 5px;
+  text-align: center;
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+
+.partnerRow{
+  justify-content: flex-start;
+}
+
+.partnerMessage{
+  width: 45%;
+  background-color: transparent;
+  color: lightgray;
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin-left: 5px;
+  text-align: center;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
 }
