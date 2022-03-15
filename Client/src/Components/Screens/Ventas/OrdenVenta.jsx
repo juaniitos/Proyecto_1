@@ -41,8 +41,9 @@ const OrdenVenta = (props) => {
         }
         setSubTotalsList(new_subTotalsList)
         setSubTotal(new_sub);
-        setImpuesto(new_sub * 0.12)
-        setTotal(subTotal + impuesto)
+        const imp = 0.12;
+        setImpuesto(new_sub * imp)
+        setTotal(new_sub + (new_sub * 0.12))
     }
 
     const lineAdd = () => {
