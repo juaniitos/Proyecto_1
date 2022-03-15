@@ -50,11 +50,11 @@
         "accordion_body_button_6b": "Language",
         "accordion_header_6+": "Security",
         "accordion_body_button_6+a": "Reset Password",
-        "card_title_a": "Total Earning",
+        "card_title_a": "Total sales",
         "card_button_a": "Month",
         "card_button_b": "Year",
-        "card_title_b": "Total",
-        "card_title_c": "Special Title Treatment",
+        "card_title_b": "Proformed Total",
+        "card_title_c": "Featured Product",
         "card_title_d": "With supporting text below as a natural lead-in to additional content.",
         "card_title_e": "Button"
     },
@@ -190,6 +190,7 @@
     },
     "orden_venta": {
         "h1": "Sales Order",
+        "h1_P": "Proforma",
         "dcto": "Document n°",
         "autocomplete_lb_a": "Customer Finder",
         "autocomplete_lb_b": "Product Finder",

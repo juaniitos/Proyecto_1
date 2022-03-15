@@ -10,7 +10,7 @@ import { Autocomplete } from "@mui/material";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
-const OrdenVenta = (props) => {
+const Proforma = (props) => {
 
     const { t } = useTranslation('translation');
     const navigate = useNavigate();
@@ -22,8 +22,6 @@ const OrdenVenta = (props) => {
     const [ventaProductos, setVentaProductos] = useState([{}]);
     const [subTotal, setSubTotal] = useState(0);
     const [subTotalsList, setSubTotalsList] = useState([]);
-    const [impuesto, setImpuesto] = useState([]);
-    const [total, setTotal] = useState([]);
 
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
@@ -41,8 +39,6 @@ const OrdenVenta = (props) => {
         }
         setSubTotalsList(new_subTotalsList)
         setSubTotal(new_sub);
-        setImpuesto(new_sub * 0.12)
-        setTotal(subTotal + impuesto)
     }
 
     const lineAdd = () => {
@@ -73,7 +69,7 @@ const OrdenVenta = (props) => {
         <div>
             {login && <>
             <div className="cabOV" >
-                <h1>{t('orden_venta.h1')}</h1>
+                <h1>{t('orden_venta.h1_P')}</h1>
                 {/* <img src={logo} width={"70vh"} /> */}
             </div>
             <h2 className="subTittle">{t('orden_venta.dcto')}</h2>
@@ -139,21 +135,21 @@ const OrdenVenta = (props) => {
                         </tr>
                         <tr>
                             <th>{t('orden_venta.table_th_b')}</th>
-                            <td><p> {impuesto ? impuesto : 0 }  </p></td>
+                            <td><Input/></td>
                         </tr>
                         <tr>
                             <th>{t('orden_venta.table_th_c')}</th>
-                            <td><p> {total} </p></td>
+                            <td><Input/></td>
                         </tr>
                     </tbody>
                 </Table>
             </Card>
             <br/>
-            <Button className="buttonOv" color="success" onClick={() => navigate('#')}>{t('orden_venta.btn_fact')}</Button>
-            {/* <Button className="buttonOv" onClick={() => navigate('#')}>{t('orden_venta.btn_cot')}</Button> */}
+            {/* <Button className="buttonOv" color="success" onClick={() => navigate('#')}>{t('orden_venta.btn_fact')}</Button> */}
+            <Button className="buttonOv" onClick={() => navigate('#')}>{t('orden_venta.btn_cot')}</Button>
             {/* <Button className="buttonOv" color="primary" onClick={() => navigate('/Home')}>{t('orden_venta.button')}</Button> */}
             </>}
         </div>
     )
 }
-export default OrdenVenta;
+export default Proforma;

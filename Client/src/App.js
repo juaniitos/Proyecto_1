@@ -26,6 +26,7 @@ import ClientList from './Components/Screens/Clientes/ClientList';
 import ChangePassword from './Components/Screens/Usuarios/ChangePassword';
 import UsersConnection from './Components/Screens/Usuarios/UsersConnection';
 import { display, style } from '@mui/system';
+import Proforma from './Components/Screens/Ventas/Proforma';
 // import ClientListNoActive from './Components/Screens/Clientes/ClientListNoActive';
 
 function App() {
@@ -121,6 +122,7 @@ function App() {
           <Route path='/changePassword' element={<ChangePassword setLogin={setLogin} />} />
           <Route path='/home' element={<Home user={usuario} />} />
           <Route path='/ordenventa' element={<OrdenVenta/>} />
+          <Route path='/proforma' element={<Proforma/>} />
           <Route path='/informesventas' element={<InformesVentas/>} />
           <Route path='/item' element={<CreateItem/>} />
           <Route path='/item/editar/:_id' element={<EditarItem/>} />

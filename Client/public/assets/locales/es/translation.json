@@ -50,11 +50,11 @@
         "accordion_body_button_6b": "Idioma",
         "accordion_header_6+": "Seguridad",
         "accordion_body_button_6+a": "Modificar clave de acceso",
-        "card_title_a": "Ganancias totales",
+        "card_title_a": "Total de Ventas",
         "card_button_a": "Mes",
         "card_button_b": "Año",
-        "card_title_b": "Total",
-        "card_title_c": "Tratamiento de título especial",
+        "card_title_b": "Total Proformado",
+        "card_title_c": "Producto destacado",
         "card_title_d": "Con el texto de apoyo a continuación como una introducción natural a contenido adicional.",
         "card_title_e": "Botón"
     },
@@ -190,6 +190,7 @@
     },
     "orden_venta": {
         "h1": "Orden de Venta",
+        "h1_P": "Proforma",
         "dcto": "Documento n°",
         "autocomplete_lb_a": "Buscador de clientes",
         "autocomplete_lb_b": "Buscador de productos",

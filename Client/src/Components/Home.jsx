@@ -43,7 +43,7 @@ const Home = () => {
                             <AccordionItem >
                                 <AccordionHeader targetId="1">{t("home.accordion_header_1")}</AccordionHeader>
                                 <AccordionBody accordionId="1">
-                                    <Button color='#ffffff' onClick={ () => navigate('/ordenventa')}>{t("home.accordion_body_button_1a")}</Button><br></br>
+                                    <Button color='#ffffff' onClick={ () => navigate('/proforma')}>{t("home.accordion_body_button_1a")}</Button><br></br>
                                     <Button color='#ffffff' onClick={ () => navigate('/ordenventa')}>{t("home.accordion_body_button_1b")}</Button><br></br>
                                     {/* <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_1c")}</Button><br></br>
                                     <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_1d")}</Button><br></br>
@@ -141,8 +141,8 @@ const Home = () => {
                     >
                         <img className='image-card' src='https://berrydashboard.io/free/static/media/earning.b019e86a.svg' />
                         <div>
-                            <Button id="control-outline" type="checkbox" name="outline" onClick={totalMonth}>{t("home.card_button_a")}</Button>
-                            <Button id="control-outline" type="checkbox" name="outline">{t("home.card_button_b")}</Button>
+                            {/* <Button id="control-outline" type="checkbox" name="outline" onClick={totalMonth}>{t("home.card_button_a")}</Button>
+                            <Button id="control-outline" type="checkbox" name="outline">{t("home.card_button_b")}</Button> */}
                         </div>
                         <CardTitle tag="h5">
                             {t("home.card_title_b")}

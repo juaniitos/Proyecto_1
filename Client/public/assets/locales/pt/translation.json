@@ -49,11 +49,11 @@
         "accordion_body_button_6a": "Temas (estilos)",
         "accordion_body_button_6b": "Idioma",
         "accordion_body_button_6+a": "Modificar a chave de acesso",
-        "card_title_a": "Lucro Total",
+        "card_title_a": "Vendas totais",
         "card_button_a": "Mês",
         "card_button_b": "Ano",
-        "card_title_b": "Total",
-        "card_title_c": "Tratamento especial do título",
+        "card_title_b": "Total Proformado",
+        "card_title_c": "Produto em destaque",
         "card_title_d": "Com o texto de suporte abaixo como um lead-in natural para conteúdo adicional.",
         "card_title_e": "Tecla"
     },
@@ -189,6 +189,7 @@
     },
     "orden_venta": {
         "h1": "Ordem de venda",
+        "h1_P": "Proforma",
         "dcto": "Documento n°",
         "autocomplete_lb_a": "Localizador de clientes",
         "autocomplete_lb_b": "Localizador de produtos",
