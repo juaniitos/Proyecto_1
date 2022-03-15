@@ -97,6 +97,8 @@
         "c_label_d": "Endereço eletrônico:",
         "c_label_e": "Saldo da conta:",
         "form_label": "Status do cliente",
+        "form_act": "Ativo",
+        "form_no_act": "Inativo",
         "form_help": "Formulário preenchido",
         "placeholder_a": "Inserir o nome do cliente",
         "placeholder_b": "Insira o sobrenome do cliente",

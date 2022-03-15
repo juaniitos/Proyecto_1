@@ -98,6 +98,8 @@
         "c_label_d": "Email Address:",
         "c_label_e": "Account Balance:",
         "form_label": "Customer Status",
+        "form_act": "Active",
+        "form_no_act": "Inactive",
         "form_help": "Completed form",
         "placeholder_a": "Insert customer first name",
         "placeholder_b": "Insert customer last name",

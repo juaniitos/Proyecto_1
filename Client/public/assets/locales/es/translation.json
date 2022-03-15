@@ -98,6 +98,8 @@
         "c_label_d": "Correo eléctrónico:",
         "c_label_e": "Saldo de Cuenta:",
         "form_label": "Estado de Cliente",
+        "form_act": "Activo",
+        "form_no_act": "Inactivo",
         "form_help": "Formulario completo",
         "placeholder_a": "Inserte nombre de cliente",
         "placeholder_b": "Inserte apellido de cliente",

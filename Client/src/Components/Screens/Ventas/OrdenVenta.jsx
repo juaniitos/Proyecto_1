@@ -21,23 +21,24 @@ const OrdenVenta = (props) => {
     const [inputText, setInputText] = useState("");
     const [ventaProductos, setVentaProductos] = useState([{}]);
     const [subTotal, setSubTotal] = useState(0);
+    const [subTotalsList, setSubTotalsList] = useState([]);
 
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
       };
-    const updateSubTotal = (p) => {
-        let subT = 0;
-        if(!isNaN(subTotal)) {
-            subT = subTotal;
-            console.log(subTotal);
+    const updateSubTotal = (p, index) => {
+        let new_subTotalsList = [0]
+        if(subTotalsList.length > 0) {
+            new_subTotalsList = [...subTotalsList];
+            new_subTotalsList[index] = p
         }
-        // console.log(subTotal)
-        p = parseInt(p);
-        var st = subT + p;
-        console.log("subP",p);
-        console.log("subST", typeof st);
-        setSubTotal(st);
+        let new_sub = 0
+        for(let i=0; i < new_subTotalsList.length; i++){
+            new_sub = new_sub + new_subTotalsList[i]
+        }
+        setSubTotalsList(new_subTotalsList)
+        setSubTotal(new_sub);
     }
 
     const lineAdd = () => {
@@ -119,7 +120,7 @@ const OrdenVenta = (props) => {
                 return (
                     <Card key={index}>
                         {console.log('v', v)}
-                        {<VentaForm input={v} updatePrice={updateSubTotal} />}
+                        {<VentaForm input={v} updatePrice={updateSubTotal} index={index}/>}
                     </Card>
                 )
             })}                
@@ -146,7 +147,7 @@ const OrdenVenta = (props) => {
             <br/>
             <Button className="buttonOv" color="success" onClick={() => navigate('#')}>{t('orden_venta.btn_fact')}</Button>
             <Button className="buttonOv" onClick={() => navigate('#')}>{t('orden_venta.btn_cot')}</Button>
-            <Button className="buttonOv" color="primary" onClick={() => navigate('/Home')}>{t('orden_venta.button')}</Button>
+            {/* <Button className="buttonOv" color="primary" onClick={() => navigate('/Home')}>{t('orden_venta.button')}</Button> */}
             </>}
         </div>
     )

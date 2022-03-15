@@ -59,7 +59,7 @@ const ClientForm = ({c, onSubmit, label, read}) => {
                     control={
                         <Switch checked={cliente.activo} onChange={changeCheck} name="activo" />
                     }
-                    label={cliente.activo == true ? 'Activo' : 'Inactivo'}
+                    label={cliente.activo == true ? `${t('client_form.form_act')}` : `${t('client_form.form_no_act')}`}
                     />
                 </FormGroup>
                 <FormHelperText>{t('client_form.form_help')}</FormHelperText>

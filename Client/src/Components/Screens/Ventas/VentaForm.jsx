@@ -11,11 +11,12 @@ const VentaForm = (props) => {
     const [ctd, setCtd] = useState(0);
 
     useEffect(() => {
-        const new_price = props.input.precio * ctd;
+        let new_price = props.input.precio * ctd;
+        if(isNaN(new_price)){
+            new_price = 0
+        }
         setPrice(new_price)
-        console.log('props.input.precio', props.input.precio)
-        console.log('new_price', new_price)
-        props.updatePrice(new_price)
+        props.updatePrice(new_price, props.index)
     }, [ctd])
 
     useEffect (() => {

@@ -23,8 +23,9 @@ const io = require('socket.io')(server);
 
 io.on("connection", socket => {
     // console.log(socket.id);
-    socket.emit("your id", socket.id);
-    socket.on("send message", body => {
-        io.emit("message", body)
+    // socket.emit("your_id", socket.id);
+    socket.on("send_message", body => {
+        console.log(body);
+        io.emit("message_" + body.receptor, body)
     });
 })

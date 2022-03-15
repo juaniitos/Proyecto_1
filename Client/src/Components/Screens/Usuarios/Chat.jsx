@@ -1,23 +1,30 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import io from 'socket.io-client';
 import { Form, Button, Input } from 'reactstrap';
 import { useTranslation } from "react-i18next";
+import SocketContext from '../../../Context/socket-context';
 
-const Chat = () => {
+const Chat = (props) => {
 
     const { t } = useTranslation('translation');
-    const [yourId, setYourId] = useState();
     const [messages, setMessages] = useState([]);
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState({
+        emisor_id:'',
+        receptor:'',
+        emisor:'',
+        mensaje:''
+    });
+    const { usuario } = useContext(SocketContext);
 
     const socketRef = useRef();
 
     useEffect(() => {
         socketRef.current = io.connect('/');
 
-        socketRef.current.on("your id", id => {
-            setYourId(id);
+        socketRef.current.on("message_" + usuario._id, (message) => {
+            recieveMessage(message);
         })
+
 
         socketRef.current.on("message", (message) => {
             recieveMessage(message);
@@ -30,16 +37,21 @@ const Chat = () => {
 
     const sendMessage = (e) => {
         e.preventDefault();
-        const messageObject = {
-            body: message,
-            id: yourId,
-        };
-        setMessage("");
-        socketRef.current.emit("send message", messageObject);
+        message.emisor = usuario.name;
+        message.emisor_id = usuario._id;
+        message.receptor = props.input._id;
+        
+        socketRef.current.emit("send_message", message);
+        setMessage({
+            ...message, mensaje: ''
+        });
     }
 
     const handleChange = (e) => {
-        setMessage(e.target.value);
+        setMessage({
+            ...message,
+            mensaje: e.target.value
+        });
     }
 
     return(
@@ -47,11 +59,11 @@ const Chat = () => {
             <p className='p_chat'>{t('chat.p')}</p>
             <div className='container_chat'>
                 {messages.map((message, index) => {
-                    if(message.id === yourId) {
+                    if(message.emisor_id === usuario._id) {
                         return(
                             <div className='myRow' key={index}>
                                 <div className='myMessage'>
-                                    {message.body}
+                                    {message.emisor}:{message.mensaje}
                                 </div> 
                             </div>
                         )
@@ -59,14 +71,14 @@ const Chat = () => {
                     return(
                         <div className='partnerRow' key={index}>
                             <div className='partnerMessage'>
-                                {message.body}
+                                {message.emisor}:{message.mensaje}
                             </div> 
                         </div>
                     )
                 })}
             </div>
             <Form className='f_chat' onSubmit={sendMessage}>
-                <Input className='in_chat' value={message} onChange={handleChange} placeholder={t('chat.placeholder')} />
+                <Input className='in_chat' value={message.mensaje} onChange={handleChange} placeholder={t('chat.placeholder')} />
                 <Button className='chat_btn'>{t('chat.button')}</Button>
             </Form>
         </div>

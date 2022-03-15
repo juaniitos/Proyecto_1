@@ -94,6 +94,7 @@ function App() {
       <img className='logo' src={logo} width={"70vh"} /> 
       {login &&   
       <div className='d-flex justify-content-end'>
+        <Button className='header btn-user' onClick={() => navigate('/Home')}>{t('inf_venta.button')}</Button>
         <Button className='header' onClick={cerrarSesion}>{t('app.header_button')}</Button>
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
           <DropdownToggle color="primary" className='globe' caret>
@@ -138,8 +139,8 @@ function App() {
       </SocketContext.Provider>
       {login &&
       <div>
-        {/* || 'http://localhost:3000' || 'http://localhost:3000/changePassword' */}
-      {window.location.pathname === 'http://localhost:3000/chat' ? style={'display': 'none'} :
+        {window.location.pathname !== '/chat' && window.location.pathname !== '/changePassword' &&
+        window.location.pathname !== '/' &&
         <Button className='btn-userChat' onClick={ () => navigate('/chat')}>{t('chat.p')}</Button>}
       </div>}
     </div>

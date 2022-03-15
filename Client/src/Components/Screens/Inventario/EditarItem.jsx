@@ -45,9 +45,9 @@ const EditarItem = () => {
             <h1>{t('editar_item.h1')}</h1>
             {/* <h2>En proceso ...</h2> */}
             {loaded &&
-            <ProductForm read={'http://localhost:3000/products' ? [0,1,1,1,1,1,0,1] : [0,0,0,0,0,0,0,0]} p={product} onSubmit={editarProduct} label={t('editar_item.editar')}/>
+            <ProductForm read={window.location.pathname !== '/products' ? [0,1,1,1,1,1,0,1] : [0,0,0,0,0,0,0,0]} p={product} onSubmit={editarProduct} label={t('editar_item.editar')}/>
             }
-            <Button color="primary" onClick={() => navigate('/Home')}>{t('editar_item.button')}</Button>
+            {/* <Button color="primary" onClick={() => navigate('/Home')}>{t('editar_item.button')}</Button> */}
             </>}
         </div>
     )

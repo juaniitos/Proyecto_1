@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import SocketContext from "../../../Context/socket-context";
 import { useTranslation } from "react-i18next";
-import { Autocomplete,TextField } from "@mui/material";
-import { Button } from 'reactstrap';
+import { Button, Autocomplete,TextField } from "@mui/material";
 import Chat from './Chat';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -38,7 +37,7 @@ const UsersConnection = () => {
             {login && <>
             <h2>{t('users_conn.h2')}</h2>
             <div>
-            <div className="d-flex justify-content space-between">
+            <div className="search client">
                 <Autocomplete
                     disablePortal
                     id="combo-box-demo"
@@ -52,7 +51,6 @@ const UsersConnection = () => {
                       }}
               
                     />
-                    <Button className='header btn-user' onClick={() => navigate('/Home')}>{t('inf_venta.button')}</Button>
                 </div>
                 {/* <UsersList /> */}
                 <div>
