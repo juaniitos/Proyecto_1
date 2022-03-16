@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const VentaSchema = new mongoose.Schema({
+const ProformaSchema = new mongoose.Schema({
     cliente: {
         type: Schema.Types.ObjectId,
         ref: 'Client'
@@ -40,6 +40,6 @@ const VentaSchema = new mongoose.Schema({
     }
 }, {timestamps: true})
 
-const Venta = mongoose.model("Venta", VentaSchema);
+const Proforma = mongoose.model("Proforma", ProformaSchema);
 
-module.exports = Venta;
+module.exports = Proforma;

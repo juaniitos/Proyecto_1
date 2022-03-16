@@ -1,11 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Accordion, AccordionItem, AccordionHeader, Button, AccordionBody, Card, CardTitle, CardText } from "reactstrap";
 import SocketContext from '../Context/socket-context';
+import axios from 'axios';
 
 const Home = () => {
     const [indice, setIndice] = useState(1);
+    const [ventas, setVentas] = useState([])
+    const [productos, setProductos] = useState([]);
     const navigate = useNavigate();
     const { t } = useTranslation('translation');
 
@@ -18,11 +21,35 @@ const Home = () => {
             setIndice(i)
         }
     }
-    const totalMonth = (e) => {
-        <CardText>
-                $961
-        </CardText>
+    // const totalMonth = (e) => {
+    //     <CardText>
+    //             $961
+    //     </CardText>
+    // }
+
+    useEffect(() =>{
+        axios.get('/api/products/destacados')
+            .then(res => {
+                setProductos(res.data.products);
+            })
+            .catch (err => {
+                console.log("NO FUNCIONA", err)
+            })
+    }, [])
+
+    const ventaSum = () => {
+        axios.get('/api/ventas')
+        .then(res => {
+            setVentas(res.data.ventas)
+            let sum = 0;
+            Object.values(res.data.ventas).forEach((v) => sum += v.total)
+            return sum
+        }) 
+        .catch(err => {
+            console.log(err)
+        })
     }
+
     return(
         <div>
             {login && <>            
@@ -131,7 +158,7 @@ const Home = () => {
                             {t("home.card_title_a")}
                         </CardTitle>
                         <CardText>
-                            $500
+                            {ventaSum()}
                         </CardText>
                     </Card>
                     <Card
@@ -148,7 +175,7 @@ const Home = () => {
                             {t("home.card_title_b")}
                         </CardTitle>
                         <CardText>
-                            $961
+                            
                         </CardText>
                     </Card>
                     <div className='stadistic' >
@@ -161,7 +188,13 @@ const Home = () => {
                                 {t("home.card_title_c")}
                             </CardTitle>
                             <CardText>
-                                Producto más vendido
+                                <ul>
+                                    {productos.map((p, _id) => {
+                                        return(
+                                            <li key={p._id}>{p.codigo + " - " + p.descripcion + " - " + p.imgUrl}</li>
+                                        )           
+                                    })}
+                                </ul>
                                 {/* {t("home.card_title_d")} */}
                             </CardText>
                             {/* <Button>

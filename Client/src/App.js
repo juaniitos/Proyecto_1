@@ -25,7 +25,6 @@ import EditarClient from './Components/Screens/Clientes/EditarClient';
 import ClientList from './Components/Screens/Clientes/ClientList';
 import ChangePassword from './Components/Screens/Usuarios/ChangePassword';
 import UsersConnection from './Components/Screens/Usuarios/UsersConnection';
-import { display, style } from '@mui/system';
 import Proforma from './Components/Screens/Ventas/Proforma';
 // import ClientListNoActive from './Components/Screens/Clientes/ClientListNoActive';
 
@@ -64,7 +63,7 @@ function App() {
   )
 
   useEffect(() => {
-    console.log("SESION",localStorage.getItem('USUARIO'))
+    // console.log("SESION",localStorage.getItem('USUARIO'))
     if(localStorage.getItem('USUARIO')) {
       setLogin(true);
       setUsuario(JSON.parse(localStorage.getItem('USUARIO')));
@@ -95,6 +94,9 @@ function App() {
       <img className='logo' src={logo} width={"70vh"} /> 
       {login &&   
       <div className='d-flex justify-content-end'>
+        {window.location.pathname !== '/chat' && window.location.pathname !== '/changePassword' &&
+        window.location.pathname !== '/' &&
+        <Button className='header' onClick={ () => navigate('/chat')}>{t('chat.p')}</Button>}
         <Button className='header' onClick={() => navigate('/Home')}>{t('inf_venta.button')}</Button>
         <Button className='header' onClick={cerrarSesion}>{t('app.header_button')}</Button>
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
@@ -139,12 +141,12 @@ function App() {
           {/* <Route path='/clientList/NoActive' element={<ClientListNoActive/>} /> */}
         </Routes>
       </SocketContext.Provider>
-      {login &&
+      {/* {login &&
       <div>
         {window.location.pathname !== '/chat' && window.location.pathname !== '/changePassword' &&
         window.location.pathname !== '/' &&
         <Button className='btn-userChat' onClick={ () => navigate('/chat')}>{t('chat.p')}</Button>}
-      </div>}
+      </div>} */}
     </div>
   );
 }

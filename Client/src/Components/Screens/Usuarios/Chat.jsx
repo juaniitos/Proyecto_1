@@ -26,7 +26,6 @@ const Chat = (props) => {
             recieveMessage(message);
         })
 
-
         socketRef.current.on("message", (message) => {
             recieveMessage(message);
         })
@@ -62,7 +61,7 @@ const Chat = (props) => {
             <div className='container_chat'>
                 {messages.map((message, index) => {
                     if(message.emisor_id === usuario._id) {
-                        return(
+                        return(                            
                             <div className='myRow' key={index}>
                                 <div className='myMessage'>
                                     {message.emisor}: {message.mensaje}

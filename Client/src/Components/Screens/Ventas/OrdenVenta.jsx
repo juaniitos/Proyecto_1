@@ -73,15 +73,6 @@ const OrdenVenta = (props) => {
             impuesto: impuesto,
             total: total
         }
-        console.log(client);
-        console.log(ventaProductos);
-        console.log(num);
-        console.log(inputText.cantidad);
-        console.log(inputText.precio);
-        console.log(subTotal);
-        console.log(impuesto);
-        console.log(total);
-
         axios.post('/api/createOrdenVenta', data)
             .then(res => {
                 console.log(res)
@@ -89,7 +80,7 @@ const OrdenVenta = (props) => {
             .catch(error => {
                 console.log(error)
             })
-            // navigate('/home')
+            navigate('/home')
     }
 
     useEffect (() => {

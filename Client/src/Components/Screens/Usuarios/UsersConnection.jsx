@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import SocketContext from "../../../Context/socket-context";
 import { useTranslation } from "react-i18next";
-import { Button, Autocomplete,TextField } from "@mui/material";
+import { Autocomplete,TextField } from "@mui/material";
 import Chat from './Chat';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -44,7 +44,7 @@ const UsersConnection = () => {
                     disablePortal
                     id="combo-box-demo"
                     options={users.filter((u) => {
-                        if(u.nombre !== usuario.name.split(" ")[0]){
+                        if(u.email !== usuario.email){
                             return u
                         }
                     })}

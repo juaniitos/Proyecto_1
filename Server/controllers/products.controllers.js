@@ -15,6 +15,14 @@ module.exports.viewsProducts = (req, res) => {
     .catch(err => res.json({ message: "Algo salió mal viewsProducts", err }));
 };
 
+
+module.exports.viewsProductsDestacado = (req, res) => {
+    console.log("Funciona viewsProducts!")
+    Product.find({destacado: true}).sort({codigo: 1})
+    .then(productsDestacados => res.json({products: productsDestacados}))
+    .catch(err => res.json({ message: "Algo salió mal viewsProducts", err }));
+};
+
 module.exports.searchProducts = (req, res) => {
     console.log("Funciona searchProducts")
     Product.findById({_id: req.params._id})
@@ -38,4 +46,5 @@ module.exports.eliminarProduct = (req, res) => {
         .then(result => res.json({message: 'Producto eliminado', result: result}))
         .catch(err => res.json({message: 'Algo salió mal', error: err}));
 };
+
 

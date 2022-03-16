@@ -30,6 +30,9 @@ const ProductsSchema = new mongoose.Schema({
     imgUrl: {
         type: String
     },
+    destacado: {
+        type: Boolean
+    }
 }, {timestamps: true});
 
 const Product = mongoose.model("Product", ProductsSchema);

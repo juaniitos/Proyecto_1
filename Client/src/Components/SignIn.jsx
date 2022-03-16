@@ -120,7 +120,9 @@ const SignInSide = (props) => {
                                 Usuario 1: ventas@JD.com<br/>
                                 Contraseña: 1234<br/>
                                 Usuario 2: ventas2@JD.com<br/>
-                                Contraseña: 5678
+                                Contraseña: 5678<br/>
+                                Usuario 3: ventas3@JD.com<br/>
+                                Contraseña: 4321
                             </Typography>
                         </Box>
                     </Box>
