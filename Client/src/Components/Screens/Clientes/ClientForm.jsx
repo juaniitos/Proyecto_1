@@ -15,9 +15,9 @@ const ClientForm = ({c, onSubmit, label, read}) => {
     const initialClient = {
         nombre: c.nombre ? c.nombre : "",
         apellido: c.apellido ? c.apellido : "",
-        ruc: c.ruc ? c.ruc : "0",
+        ruc: c.ruc ? c.ruc : 0,
         email: c.email ? c.email : "",
-        saldo: c.saldo ? c.saldo : "0",
+        saldo: c.saldo ? c.saldo : 0,
         activo: c.activo ? c.activo : true  
     }
 

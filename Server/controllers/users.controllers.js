@@ -29,7 +29,7 @@ module.exports.login = (req, res) => {
                     const datos = {
                         _id: user._id,
                         name: user.nombre + ' ' + user.apellido,
-                        email: user.email 
+                        email: user.email
                     };
                     // console.log("LLEGUE!")
                     const newJWT = jwt.sign(datos, secret);

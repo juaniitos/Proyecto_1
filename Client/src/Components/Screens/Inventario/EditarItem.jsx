@@ -2,7 +2,7 @@ import { Button } from "reactstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import ProductForm from "../../ProductForm";
+import ProductForm from "../Inventario/ProductForm";
 import SocketContext from "../../../Context/socket-context";
 import { useTranslation } from "react-i18next";
 

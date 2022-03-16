@@ -9,11 +9,11 @@ const ProductForm = ({p, onSubmit, label, read}) => {
     const initialProduct = {
         codigo: p.codigo ? p.codigo : "",
         descripcion: p.descripcion ? p.descripcion : "",
-        precio: p.precio ? p.precio : "0",
-        cantidad: p.cantidad ? p.cantidad : "0",
+        precio: p.precio ? p.precio : 0,
+        cantidad: p.cantidad ? p.cantidad : 0,
         marca: p.marca ? p.marca : "",
         caracteristicas: p.caracteristicas ? p.caracteristicas : "",
-        costo: p.costo ? p.costo : "0",
+        costo: p.costo ? p.costo : 0,
         imgUrl: p.imgUrl ? p.imgUrl : ""     
     }
 

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {  Button,Card,Input, Table} from "reactstrap";
+import {  Button,Card,Form,Input, Table} from "reactstrap";
 import TextField from "@mui/material/TextField";
 import SocketContext from "../../../Context/socket-context";
 import adicion from "../../../static/images/icons/adicional_linea.png"  ;
@@ -24,6 +24,7 @@ const OrdenVenta = (props) => {
     const [subTotalsList, setSubTotalsList] = useState([]);
     const [impuesto, setImpuesto] = useState([]);
     const [total, setTotal] = useState([]);
+    const [cantidades, setCantidades] = useState([]);
 
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
@@ -42,8 +43,17 @@ const OrdenVenta = (props) => {
         setSubTotalsList(new_subTotalsList)
         setSubTotal(new_sub);
         const imp = 0.12;
-        setImpuesto(new_sub * imp)
-        setTotal(new_sub + (new_sub * 0.12))
+        let imp_calc = new_sub * imp;
+        let imp_decimal = imp_calc.toFixed(2);
+        setImpuesto(imp_decimal);
+        let tot = new_sub + (new_sub * 0.12);
+        let tot_decimal = tot.toFixed(2);
+        setTotal(tot_decimal);
+        if(cantidades.length > 0) {
+            setCantidades([...cantidades, [index] = p]);
+        } else {
+            setCantidades([])
+        }
     }
 
     const lineAdd = () => {
@@ -51,10 +61,41 @@ const OrdenVenta = (props) => {
         setVentaProductos([...ventaProductos, {}]);
     }
 
+    const addVenta = (e, ov) => {
+        e.preventDefault();
+        const data = {
+            cliente : client,
+            product: ventaProductos,
+            contador: num,
+            cantidades: cantidades,
+            precio: ventaProductos.price,
+            subtotal: subTotal,
+            impuesto: impuesto,
+            total: total
+        }
+        console.log(client);
+        console.log(ventaProductos);
+        console.log(num);
+        console.log(inputText.cantidad);
+        console.log(inputText.precio);
+        console.log(subTotal);
+        console.log(impuesto);
+        console.log(total);
+
+        axios.post('/api/createOrdenVenta', data)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+            // navigate('/home')
+    }
+
     useEffect (() => {
         axios.get('/api/clients')
         .then(res => {
-            console.log("RES", res.data.clients);
+            // console.log("RES", res.data.clients);
             setClients(res.data.clients);
         })
         .catch (err => {
@@ -62,7 +103,7 @@ const OrdenVenta = (props) => {
         });
         axios.get('/api/products')
         .then(res => {
-            console.log("RES", res.data.products);
+            // console.log("RES", res.data.products);
             setProducts(res.data.products);
         })
         .catch (err => {
@@ -70,89 +111,99 @@ const OrdenVenta = (props) => {
         });
     },[])  
 
+    const [num, setNum] = useState(0)
+
+    const addNum = () => {
+        setNum(num + 1);
+    }
+
     return (
         <div>
             {login && <>
-            <div className="cabOV" >
-                <h1>{t('orden_venta.h1')}</h1>
-                {/* <img src={logo} width={"70vh"} /> */}
-            </div>
-            <h2 className="subTittle">{t('orden_venta.dcto')}</h2>
-            <div>
-                <div className="search client">
-                <Autocomplete
-                    disablePortal
-                    id="combo-box-demo"
-                    options={clients}
-                    getOptionLabel={(option) => (option?.ruc + " - " + option?.nombre +" "+ option?.apellido)}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label={t('orden_venta.autocomplete_lb_a')} onChange={inputHandler}
-                    variant="outlined" />}
-                    onChange={(event, newValue) => {
-                        setClient(newValue);
-                      }}
-              
+            <Form onSubmit={addVenta}>
+                <div className="cabOV" >
+                    <h1>{t('orden_venta.h1')}</h1>
+                    {/* <img src={logo} width={"70vh"} /> */}
+                </div>
+                <h2 className="subTittle">{t('orden_venta.dcto')}<span> {num} </span>
+                    <img src={adicion} alt='adicionar numero' width={'20vh'} onClick={ addNum }/>
+                </h2>               
+                <div>                    
+                    <div className="search client">
+                    <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={clients}
+                        getOptionLabel={(option) => (option?.ruc + " - " + option?.nombre +" "+ option?.apellido)}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label={t('orden_venta.autocomplete_lb_a')} onChange={inputHandler}
+                        variant="outlined" />}
+                        onChange={(event, newValue) => {
+                            setClient(newValue);
+                        }}
+                
+                        />
+                    </div>
+                    <FormOfClients input={client}/>
+                </div>
+                
+                <div>
+                    <div className="search client">
+                    <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={products}
+                        getOptionLabel={(option) => (option?.codigo + " - " + option?.descripcion +" "+ option?.precio)}
+                        sx={{ width: 500 }}
+                        renderInput={(params) => <TextField {...params} label={t('orden_venta.autocomplete_lb_b')} onChange={inputHandler }
+                        variant="outlined" />}
+                        onChange={(event, newValue) => {
+                            // setProducto(newValue);
+                            const l = ventaProductos[ventaProductos.length -1]
+                            if(Object.keys(l.length == 0)){  
+                                // console.log('Entré!')  
+                                const new_list = [...ventaProductos]
+                                new_list[ventaProductos.length -1] = newValue                     
+                                setVentaProductos(new_list)
+                            } else {
+                                setVentaProductos([...ventaProductos, newValue])
+                            }
+                        }}            
                     />
+                    </div>
+                    {ventaProductos.map ((v, index) => {
+                    return (
+                        <Card key={index}>
+                            {/* {console.log('v', v)} */}
+                            {<VentaForm input={v} updatePrice={updateSubTotal} index={index} />}
+                        </Card>
+                    )
+                })}                
                 </div>
-                <FormOfClients input={client}/>
-            </div>
-            
-            <div>
-                <div className="search client">
-                <Autocomplete
-                    disablePortal
-                    id="combo-box-demo"
-                    options={products}
-                    getOptionLabel={(option) => (option?.codigo + " - " + option?.descripcion +" "+ option?.precio)}
-                    sx={{ width: 500 }}
-                    renderInput={(params) => <TextField {...params} label={t('orden_venta.autocomplete_lb_b')} onChange={inputHandler }
-                    variant="outlined" />}
-                    onChange={(event, newValue) => {
-                        // setProducto(newValue);
-                        const l = ventaProductos[ventaProductos.length -1]
-                        if(Object.keys(l.length == 0)){  
-                            // console.log('Entré!')  
-                            const new_list = [...ventaProductos]
-                            new_list[ventaProductos.length -1] = newValue                     
-                            setVentaProductos(new_list)
-                        } else {
-                            setVentaProductos([...ventaProductos, newValue])
-                        }
-                    }}            
-                />
-                </div>
-                {ventaProductos.map ((v, index) => {
-                return (
-                    <Card key={index}>
-                        {console.log('v', v)}
-                        {<VentaForm input={v} updatePrice={updateSubTotal} index={index}/>}
-                    </Card>
-                )
-            })}                
-            </div>
-            <img  src={adicion} alt='adicionar linea' width={'20vh'} onClick={ lineAdd } />
-            <Card className="resumen">
-                <Table>
-                    <tbody>
-                        <tr>
-                            <th>{t('orden_venta.table_th_a')}</th>
-                            <td><p> {subTotal ? subTotal : 0 } </p></td>
-                        </tr>
-                        <tr>
-                            <th>{t('orden_venta.table_th_b')}</th>
-                            <td><p> {impuesto ? impuesto : 0 }  </p></td>
-                        </tr>
-                        <tr>
-                            <th>{t('orden_venta.table_th_c')}</th>
-                            <td><p> {total} </p></td>
-                        </tr>
-                    </tbody>
-                </Table>
-            </Card>
-            <br/>
-            <Button className="buttonOv" color="success" onClick={() => navigate('#')}>{t('orden_venta.btn_fact')}</Button>
-            {/* <Button className="buttonOv" onClick={() => navigate('#')}>{t('orden_venta.btn_cot')}</Button> */}
-            {/* <Button className="buttonOv" color="primary" onClick={() => navigate('/Home')}>{t('orden_venta.button')}</Button> */}
+                <img  src={adicion} alt='adicionar linea' width={'20vh'} onClick={ lineAdd } />
+                <Card className="resumen">
+                    <Table>
+                        <tbody>
+                            <tr>
+                                <th>{t('orden_venta.table_th_a')}</th>
+                                <td><p>{ subTotal ? subTotal : 0 }</p></td>
+                            </tr>
+                            <tr>
+                                <th>{t('orden_venta.table_th_b')}</th>
+                                <td><p>{ impuesto ? impuesto : 0 }</p></td>
+                            </tr>
+                            <tr>
+                                <th>{t('orden_venta.table_th_c')}</th>
+                                <td><p>{ total ? total : 0 }</p></td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                </Card>
+                <br/>
+                <Button className="buttonOv" color="success" type='submit' /* onClick={() => navigate('#')} */ >{t('orden_venta.btn_fact')}</Button>
+                {/* <Button className="buttonOv" onClick={() => navigate('#')}>{t('orden_venta.btn_cot')}</Button> */}
+                {/* <Button className="buttonOv" color="primary" onClick={() => navigate('/Home')}>{t('orden_venta.button')}</Button> */}
+            </Form>
             </>}
         </div>
     )

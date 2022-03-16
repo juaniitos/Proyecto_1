@@ -14,7 +14,9 @@ const UsersConnection = () => {
     const {login} = useContext(SocketContext);
     const [users, setUsers] = useState([]);
     const [inputText, setInputText] = useState("");
-
+    const [userEmit, setUserEmit] = useState();
+    const [chatList, setChatList] = useState([]);
+    const { usuario } = useContext(SocketContext);
     
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
@@ -41,21 +43,32 @@ const UsersConnection = () => {
                 <Autocomplete
                     disablePortal
                     id="combo-box-demo"
-                    options={users}
+                    options={users.filter((u) => {
+                        if(u.nombre !== usuario.name.split(" ")[0]){
+                            return u
+                        }
+                    })}
                     getOptionLabel={(option) => (option?.nombre +" "+ option?.apellido)}
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label={t('users_conn.label')} onChange={inputHandler}
                     variant="outlined" />}
                     onChange={(event, newValue) => {
-                        setUsers(newValue);
+                        console.log(newValue)
+                        setUserEmit(newValue)
+                        setChatList([...chatList, <Chat input={newValue}/>])
                       }}
               
                     />
                 </div>
                 {/* <UsersList /> */}
-                <div>
-                    <Chat input={users}/>
-                </div>
+                {/* <div>
+                    <Chat input={userEmit}/>
+                </div> */}
+                {chatList.map((cl) => {
+                    return (
+                        <div>{cl}</div>
+                    )
+                })}
             </div>
             </>}
         </div>

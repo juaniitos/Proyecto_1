@@ -29,7 +29,7 @@ const FormOfClient = (props) => {
                     </Col>
                     <Label for="apellido cliente" sm={2}>{t('form_of_client.label_b')}</Label>
                     <Col sm={3}>
-                        <Input value={props.input?.apellido} />
+                        <Input value={props.input?.apellido} />                        
                     </Col>
                 </FormGroup>
                 <FormGroup row >

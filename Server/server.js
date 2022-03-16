@@ -29,3 +29,10 @@ io.on("connection", socket => {
         io.emit("message_" + body.receptor, body)
     });
 })
+
+// io.on("connection", socket => {
+//     socket.emit("your id", socket.id);
+//     socket.on("send message", body => {
+//         io.emit("message", body)
+//     })
+// })

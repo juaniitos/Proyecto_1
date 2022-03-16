@@ -15,6 +15,7 @@ const Chat = (props) => {
         mensaje:''
     });
     const { usuario } = useContext(SocketContext);
+    const usuarioEmit = props.input;
 
     const socketRef = useRef();
 
@@ -39,12 +40,13 @@ const Chat = (props) => {
         e.preventDefault();
         message.emisor = usuario.name;
         message.emisor_id = usuario._id;
-        message.receptor = props.input._id;
-        
+        message.receptor = usuarioEmit._id;
+         
         socketRef.current.emit("send_message", message);
         setMessage({
             ...message, mensaje: ''
         });
+        setMessages(oldMsgs => [...oldMsgs, message]);
     }
 
     const handleChange = (e) => {
@@ -63,18 +65,19 @@ const Chat = (props) => {
                         return(
                             <div className='myRow' key={index}>
                                 <div className='myMessage'>
-                                    {message.emisor}:{message.mensaje}
+                                    {message.emisor}: {message.mensaje}
                                 </div> 
                             </div>
                         )
-                    }
-                    return(
-                        <div className='partnerRow' key={index}>
-                            <div className='partnerMessage'>
-                                {message.emisor}:{message.mensaje}
-                            </div> 
-                        </div>
-                    )
+                    } else {
+                        return(
+                            <div className='partnerRow' key={index}>
+                                <div className='partnerMessage'>
+                                    {message.emisor}: {message.mensaje}
+                                </div> 
+                            </div>
+                        )
+                    }   
                 })}
             </div>
             <Form className='f_chat' onSubmit={sendMessage}>

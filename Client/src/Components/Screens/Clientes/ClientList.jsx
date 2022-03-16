@@ -113,7 +113,7 @@ const ClientList = () => {
                                 <td>{c.ruc}</td>
                                 <td>{c.email}</td> 
                                 <td>{c.saldo}</td> 
-                                <td>{c.activo == true ? 'Activo' : 'Inactivo'}</td>                                                                                        
+                                <td>{c.activo == true ? `${t('client_form.form_act')}` : `${t('client_form.form_no_act')}`}</td>                                                                                        
                                 <td><Button color="success" onClick={() => navigate('/client/editar/' + c._id)}>{t('client_list.th_btn_a')}</Button>&nbsp;&nbsp;<Button color="danger" onClick={() => {deleteClient(c._id)}}>{t('client_list.th_btn_b')}</Button></td>
                             </tr>
                         )
@@ -121,7 +121,7 @@ const ClientList = () => {
                 </tbody>
             </>}
             </Table>
-            <Button color="primary" onClick={() => navigate('/Home')}>{t('client_list.button')}</Button>                
+            {/* <Button color="primary" onClick={() => navigate('/Home')}>{t('client_list.button')}</Button>                 */}
             </>}
         </div>
     )

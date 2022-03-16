@@ -1,49 +1,43 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const VentaSchema = new mongoose.Schema({
+    cliente: {
+        type: Schema.Types.ObjectId,
+        ref: 'Client'
+    },
+    product: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Product'
+        }
+    ],
     contador: {
         type: Number,
-        required: [true]
+        // required: [true]
     },
-    nombre: {
-        type: String,
-        required: [true, "El nombre es requerido"]
-    },
-    apellido: {
-        type: String,
-        required: [true, "El apellido es requerido"]
-    },
-    id: {
-        type: Number,
-        required: [true, "El id es requerido"]
-    },
-    codigo: {
-        type: String,
-        required: true
-    },
-    descripcion: {
-        type: String,
-        required: true
-    },
-    cantidad: {
-        type: Number,
-        required: true
-    },
+    cantidades: 
+    [
+        {
+            type: Number,
+            // required: true
+        }
+    ],
     precio: {
         type: Number,
-        required: true
+        // required: true
     },
     subtotal: {
         type: Number,
-        require: true
+        // require: true
     },
     impuesto: {
         type: Number,
-        required: true
+        // required: true
     },
     total: {
         type: Number,
-        required: true
+        // required: true
     }
 }, {timestamps: true})
 

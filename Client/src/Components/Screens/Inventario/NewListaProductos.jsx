@@ -34,7 +34,7 @@ const NewListaProductos = () => {
                     />
                 </div>
                 <ListOfProducts input={inputText}/>
-                <Button color="primary" onClick={() => navigate('/Home')}>{t('lista_prod.button')}</Button>                
+                {/* <Button color="primary" onClick={() => navigate('/Home')}>{t('lista_prod.button')}</Button>                 */}
             </div>
             </>}
         </div>

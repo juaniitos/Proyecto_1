@@ -39,7 +39,7 @@ const CreateClient = () => {
             <h1>{t('client_list.crear')}</h1>
             {/* <h2>En proceso ...</h2> */}
             <ClientForm read={[1,1,1,1,1,1]} c={newClient} onSubmit={addClient} label={t('client_list.btn_c')}/>
-            <Button color="primary" onClick={() => navigate('/Home')}>{t('client_list.button')}</Button>
+            {/* <Button color="primary" onClick={() => navigate('/Home')}>{t('client_list.button')}</Button> */}
             </>}
         </div>
     )

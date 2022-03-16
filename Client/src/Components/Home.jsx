@@ -161,7 +161,8 @@ const Home = () => {
                                 {t("home.card_title_c")}
                             </CardTitle>
                             <CardText>
-                                {t("home.card_title_d")}
+                                Producto más vendido
+                                {/* {t("home.card_title_d")} */}
                             </CardText>
                             {/* <Button>
                                 {t("home.card_title_e")}

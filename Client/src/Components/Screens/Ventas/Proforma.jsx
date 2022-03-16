@@ -22,6 +22,8 @@ const Proforma = (props) => {
     const [ventaProductos, setVentaProductos] = useState([{}]);
     const [subTotal, setSubTotal] = useState(0);
     const [subTotalsList, setSubTotalsList] = useState([]);
+    const [impuesto, setImpuesto] = useState([]);
+    const [total, setTotal] = useState([]);
 
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
@@ -39,6 +41,13 @@ const Proforma = (props) => {
         }
         setSubTotalsList(new_subTotalsList)
         setSubTotal(new_sub);
+        const imp = 0.12;
+        let imp_calc = new_sub * imp;
+        let imp_decimal = imp_calc.toFixed(2);
+        setImpuesto(imp_decimal);
+        let tot = new_sub + (new_sub * 0.12);
+        let tot_decimal = tot.toFixed(2);
+        setTotal(tot_decimal);
     }
 
     const lineAdd = () => {
@@ -131,22 +140,22 @@ const Proforma = (props) => {
                     <tbody>
                         <tr>
                             <th>{t('orden_venta.table_th_a')}</th>
-                            <td><p> {subTotal ? subTotal : 0 } </p></td>
+                            <td><p>{ subTotal ? subTotal : 0 }</p></td>
                         </tr>
                         <tr>
                             <th>{t('orden_venta.table_th_b')}</th>
-                            <td><Input/></td>
+                            <td><p>{ impuesto ? impuesto : 0 }</p></td>
                         </tr>
                         <tr>
                             <th>{t('orden_venta.table_th_c')}</th>
-                            <td><Input/></td>
+                            <td><p>{ total ? total : 0 }</p></td>
                         </tr>
                     </tbody>
                 </Table>
             </Card>
             <br/>
-            {/* <Button className="buttonOv" color="success" onClick={() => navigate('#')}>{t('orden_venta.btn_fact')}</Button> */}
             <Button className="buttonOv" onClick={() => navigate('#')}>{t('orden_venta.btn_cot')}</Button>
+            {/* <Button className="buttonOv" color="success" onClick={() => navigate('#')}>{t('orden_venta.btn_fact')}</Button> */}            
             {/* <Button className="buttonOv" color="primary" onClick={() => navigate('/Home')}>{t('orden_venta.button')}</Button> */}
             </>}
         </div>

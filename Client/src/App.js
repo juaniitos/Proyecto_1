@@ -91,11 +91,11 @@ function App() {
   }
 
   return (
-    <div className='App'>
+    <div>
       <img className='logo' src={logo} width={"70vh"} /> 
       {login &&   
       <div className='d-flex justify-content-end'>
-        <Button className='header btn-user' onClick={() => navigate('/Home')}>{t('inf_venta.button')}</Button>
+        <Button className='header' onClick={() => navigate('/Home')}>{t('inf_venta.button')}</Button>
         <Button className='header' onClick={cerrarSesion}>{t('app.header_button')}</Button>
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
           <DropdownToggle color="primary" className='globe' caret>

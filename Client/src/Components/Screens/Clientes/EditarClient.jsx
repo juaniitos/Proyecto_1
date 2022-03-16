@@ -47,7 +47,7 @@ const EditarClient = () => {
             {loaded &&
             <ClientForm read={'http://localhost:3000/clients' ? [1,1,1,1,1,1] : [0,0,0,0,0,0]} c={client} onSubmit={editarClient} label={t('client_list.btn_e')}/>
             }
-            <Button color="primary" onClick={() => navigate('/Home')}>{t('client_list.button')}</Button>
+            {/* <Button color="primary" onClick={() => navigate('/Home')}>{t('client_list.button')}</Button> */}
             </>}
         </div>
     )
