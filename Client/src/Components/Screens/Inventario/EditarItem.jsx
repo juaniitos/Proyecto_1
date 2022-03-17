@@ -6,7 +6,7 @@ import ProductForm from "../Inventario/ProductForm";
 import SocketContext from "../../../Context/socket-context";
 import { useTranslation } from "react-i18next";
 
-const EditarItem = () => {
+const EditarItem = (props) => {
 
     const { t } = useTranslation('translation');
     const {_id} = useParams();
@@ -14,6 +14,7 @@ const EditarItem = () => {
 
     const [product, setProduct] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [errorsObject, setErrorsObject] = useState({});
 
     const {login} = useContext(SocketContext);
 
@@ -32,10 +33,11 @@ const EditarItem = () => {
         axios.put('/api/products/update/'+ _id, p)
             .then(res => {             
                 console.log(res);                
-                navigate(-1)
+                navigate('/products')
             })
-            .catch (err => {
-                console.log(err)
+            .catch(err => {
+                const errorResponse = err.response.data.errors;
+                setErrorsObject(errorResponse);
             });
     }
 
@@ -45,7 +47,7 @@ const EditarItem = () => {
             <h1>{t('editar_item.h1')}</h1>
             {/* <h2>En proceso ...</h2> */}
             {loaded &&
-            <ProductForm read={window.location.pathname !== '/products' ? [0,1,1,1,1,1,0,1] : [0,0,0,0,0,0,0,0]} p={product} onSubmit={editarProduct} label={t('editar_item.editar')}/>
+            <ProductForm read={window.location.pathname !== '/products' ? [0,1,1,1,1,1,0,1,1] : [0,0,0,0,0,0,0,0,0]} p={product} onSubmit={editarProduct} label={t('editar_item.editar')} errorsObject={errorsObject}/>
             }
             {/* <Button color="primary" onClick={() => navigate('/Home')}>{t('editar_item.button')}</Button> */}
             </>}

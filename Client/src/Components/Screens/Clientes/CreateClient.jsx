@@ -20,6 +20,7 @@ const CreateClient = () => {
         activo: ""
     }
     const [newClient, setNewClient] = useState(initialClient);
+    const [errorsObject, setErrorsObject] = useState({});
     
     const addClient = (e, c) => {
         e.preventDefault();
@@ -30,7 +31,10 @@ const CreateClient = () => {
                 setNewClient(initialClient)
                 navigate('/clientList')                
             })
-            .catch(error => console.log("Error", error))
+            .catch(err => {
+                const errorResponse = err.response.data.errors;
+                setErrorsObject(errorResponse);
+            });
     }
 
     return (
@@ -38,7 +42,7 @@ const CreateClient = () => {
             {login && <>
             <h1>{t('client_list.crear')}</h1>
             {/* <h2>En proceso ...</h2> */}
-            <ClientForm read={[1,1,1,1,1,1]} c={newClient} onSubmit={addClient} label={t('client_list.btn_c')}/>
+            <ClientForm read={[1,1,1,1,1,1]} c={newClient} onSubmit={addClient} label={t('client_list.btn_c')} errorsObject={errorsObject}/>
             {/* <Button color="primary" onClick={() => navigate('/Home')}>{t('client_list.button')}</Button> */}
             </>}
         </div>

@@ -22,7 +22,8 @@ const CreateItem = () => {
         "imgUrl" : "" 
     }
     const [newProduct, setNewProduct] = useState(initialProducts);
-    
+    const [errorsObject, setErrorsObject] = useState({});
+
     const addProduct = (e, p) => {
         e.preventDefault();
         console.log(p)
@@ -30,9 +31,12 @@ const CreateItem = () => {
             .then(res => {
                 console.log(res)
                 setNewProduct(initialProducts)
-                navigate('/Home')                
+                navigate('/products')                
             })
-            .catch(error => console.log("Error", error))
+            .catch(err => {
+                const errorResponse = err.response.data.errors;
+                setErrorsObject(errorResponse);
+            });
     }
 
     return (
@@ -40,7 +44,7 @@ const CreateItem = () => {
             {login && <>
             <h1>{t('crear_item.h1')}</h1>
             {/* <h2>En proceso ...</h2> */}
-            <ProductForm read={[1,1,1,1,1,1,1,1]} p={newProduct} onSubmit={addProduct} label={t('crear_item.crear')}/>
+            <ProductForm read={[1,1,1,1,1,1,1,1,1]} p={newProduct} onSubmit={addProduct} label={t('crear_item.crear')} errorsObject={errorsObject}/>
             {/* <Button color="primary" onClick={() => navigate('/Home')}>{t('crear_item.button')}</Button> */}
             </>}
         </div>

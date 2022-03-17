@@ -11,16 +11,16 @@ const ClientSchema = new mongoose.Schema({
         type: String,
         required: [true, "El apellido es requerido"]
     },
-    ruc: {
-        type: Number,
-        minlength: 10,
-        required: [true, "El ruc es requerido"],
-        unique: true
-    },
     email: {
         type: String,
         required: [true, "El email es requerido"],
         match: [/^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/, "El formato del email es inválido"],
+        unique: true
+    },
+    ruc: {
+        type: Number,
+        minlength: 10,
+        required: [true, "El ruc es requerido"],
         unique: true
     },
     saldo: {

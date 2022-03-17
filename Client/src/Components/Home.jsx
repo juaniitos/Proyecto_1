@@ -7,7 +7,8 @@ import axios from 'axios';
 
 const Home = () => {
     const [indice, setIndice] = useState(1);
-    const [ventas, setVentas] = useState([])
+    const [ventas, setVentas] = useState([]);
+    const [proformas, setProformas] = useState([]);
     const [productos, setProductos] = useState([]);
     const navigate = useNavigate();
     const { t } = useTranslation('translation');
@@ -35,20 +36,25 @@ const Home = () => {
             .catch (err => {
                 console.log("NO FUNCIONA", err)
             })
+            axios.get('/api/sumVentas')
+            .then(res => {
+                setVentas(res.data.totalVentas[0].total)
+            })
+            .catch (err => {
+                console.log("NO FUNCIONA", err)
+            })
+            axios.get('/api/sumProformas')
+            .then(res => {
+                setProformas(res.data.totalProformas[0].total)
+            })
+            .catch (err => {
+                console.log("NO FUNCIONA", err)
+            })
     }, [])
 
-    const ventaSum = () => {
-        axios.get('/api/ventas')
-        .then(res => {
-            setVentas(res.data.ventas)
-            let sum = 0;
-            Object.values(res.data.ventas).forEach((v) => sum += v.total)
-            return sum
-        }) 
-        .catch(err => {
-            console.log(err)
-        })
-    }
+        
+
+
 
     return(
         <div>
@@ -73,8 +79,8 @@ const Home = () => {
                                     <Button color='#ffffff' onClick={ () => navigate('/proforma')}>{t("home.accordion_body_button_1a")}</Button><br></br>
                                     <Button color='#ffffff' onClick={ () => navigate('/ordenventa')}>{t("home.accordion_body_button_1b")}</Button><br></br>
                                     {/* <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_1c")}</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_1d")}</Button><br></br>
-                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_1e")}</Button> */}
+                                    <Button color='#ffffff' onClick={ () => navigate('#')}>{t("home.accordion_body_button_1d")}</Button><br></br> */}
+                                    {/* <Button color='#ffffff' onClick={ () => navigate('/informesventas')}>{t("home.accordion_body_button_1e")}</Button> */}
                                 </AccordionBody>
                             </AccordionItem>
                             <AccordionItem >
@@ -158,7 +164,7 @@ const Home = () => {
                             {t("home.card_title_a")}
                         </CardTitle>
                         <CardText>
-                            {ventaSum()}
+                            {'$' + ventas}
                         </CardText>
                     </Card>
                     <Card
@@ -175,7 +181,7 @@ const Home = () => {
                             {t("home.card_title_b")}
                         </CardTitle>
                         <CardText>
-                            
+                            {'$' + proformas}
                         </CardText>
                     </Card>
                     <div className='stadistic' >
@@ -191,7 +197,10 @@ const Home = () => {
                                 <ul>
                                     {productos.map((p, _id) => {
                                         return(
-                                            <li key={p._id}>{p.codigo + " - " + p.descripcion + " - " + p.imgUrl}</li>
+                                            <li key={p._id} className="list_prod" ><span className="list_prod_sp">{t("home.card_body_a")}</span >{p.codigo}
+                                            <span className="list_prod_sp">{t("home.card_body_b")}</span>{p.descripcion}
+                                            <span className="list_prod_sp">{t("home.card_body_c")}</span>{p.marca}
+                                            <span className="list_prod_sp">{t("home.card_body_d")}</span><img className="btn_img" src={p.imgUrl} alt="imagen producto"/></li>
                                         )           
                                     })}
                                 </ul>

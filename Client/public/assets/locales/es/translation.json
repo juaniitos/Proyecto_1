@@ -55,6 +55,10 @@
         "card_button_b": "Año",
         "card_title_b": "Total Proformado",
         "card_title_c": "Producto destacado",
+        "card_body_a": "* código: ",
+        "card_body_b": " - descripción: ",
+        "card_body_c": " - marca: ",
+        "card_body_d": " - img ref: ",
         "card_title_d": "Con el texto de apoyo a continuación como una introducción natural a contenido adicional.",
         "card_title_e": "Botón"
     },
@@ -167,8 +171,11 @@
         "th_b": "Descripción",
         "th_c": "Cantidad",
         "th_d": "Precio",
-        "th_e": "Imagen del producto",
-        "th_f": "Acciones",
+        "th_e": "Estado",
+        "th_f": "Imagen del producto",        
+        "th_g": "Acciones",
+        "form_dest" : "Destacado",
+        "form_no_dest": "No destacado",
         "btn_ed": "Editar",
         "btn_del": "Eliminar"
     },
@@ -190,7 +197,11 @@
     },
     "inf_venta": {
         "h1": "Informe de Ventas",
-        "button": "Volver a Home"
+        "button": "Volver a Home",
+        "th_a": "N° Documento",
+        "th_b": "Nombre",
+        "th_c": "Apellido",
+        "th_d": "Total"
     },
     "orden_venta": {
         "h1": "Orden de Venta",
@@ -216,8 +227,20 @@
         "placeholder": "Escribe aquí",
         "button": "Enviar"
     },
-    "users_conn" :{
+    "users_conn" : {
         "h2": "Chatea con tus compañeros",
         "label": "Buscador de usuarios"
+    },
+    "errors" : {
+        "client_a": "*Nombre es requerido.",
+        "client_b": "*Apellido es requerido.",
+        "client_c": "*RUC debe tener al menos 10 caracteres y debe ser único.",
+        "client_d": "*Email es requerido y debe ser único.",
+        "client_e": "*Saldo es requerido.",
+        "prod_a": "*Código es requerido.",
+        "prod_b": "*Descripción es requerido.",
+        "prod_c": "*Precio es requerido.",
+        "prod_d": "*Cantidad es requerido.",
+        "prod_e": "*Costo es requerido."
     }
 }

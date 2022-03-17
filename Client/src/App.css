@@ -188,6 +188,23 @@ body {
   margin-bottom: 15px;
 }
 
+.list_prod{
+  list-style: none;
+  font-size: 20px;
+}
+
+.list_prod_sp{
+  color:rgba(0, 0, 0, 0.466);
+  font-size: 15px;
+}
+
+.err_log{
+  color: red;
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .btn-userChat{
   height: 100%;
   width: 100%;
@@ -294,6 +311,7 @@ body {
   width: 45%;
   background-color: transparent;
   color: lightgray;
+  font-weight: bold;
   border: 1px solid lightgray;
   padding: 10px;
   margin-left: 5px;

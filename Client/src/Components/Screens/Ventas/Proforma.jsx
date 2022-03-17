@@ -25,7 +25,7 @@ const Proforma = (props) => {
     const [impuesto, setImpuesto] = useState([]);
     const [total, setTotal] = useState([]);
     const [cantidades, setCantidades] = useState([]);
-
+    const [num, setNum] = useState(0)
 
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
@@ -63,7 +63,7 @@ const Proforma = (props) => {
     }
 
     const addVenta = (e, ov) => {
-        e.preventDefault();
+        /* e.preventDefault(); */
         const data = {
             cliente : client,
             product: ventaProductos,
@@ -81,13 +81,13 @@ const Proforma = (props) => {
             .catch(error => {
                 console.log(error)
             })
-            navigate('/home')
+            navigate('/proforma')
     }
 
     useEffect (() => {
         axios.get('/api/clients')
         .then(res => {
-            // console.log("RES", res.data.clients);
+            console.log("RES-CLIENTES", res.data.clients);
             setClients(res.data.clients);
         })
         .catch (err => {
@@ -101,13 +101,19 @@ const Proforma = (props) => {
         .catch (err => {
             console.log("NO FUNCIONA", err)
         });
+        axios.get('/api/proformas')
+        .then(res => {
+            console.log(res.data.ventas)
+            setNum(res.data.proformas.length + 1)
+        })
+        .catch(err => {
+            console.log("NO FUNCIONA", err)
+        })
     },[])  
-
-    const [num, setNum] = useState(0)
 
     const addNum = () => {
         setNum(num + 1);
-    } 
+    }
 
     return (
         <div>
@@ -192,7 +198,8 @@ const Proforma = (props) => {
                     </Table>
                 </Card>
                 <br/>
-                <Button className="buttonOv" color="success" type='submit' /* onClick={() => navigate('#')} */ >{t('orden_venta.btn_fact')}</Button>
+                <Button className="buttonOv" /* onClick={() => navigate('#')} */>{t('orden_venta.btn_cot')}</Button>
+                {/* <Button className="buttonOv" color="success" type='submit' onClick={() => navigate('#')}>{t('orden_venta.btn_fact')}</Button> */}
                 {/* <Button className="buttonOv" onClick={() => navigate('#')}>{t('orden_venta.btn_cot')}</Button> */}
                 {/* <Button className="buttonOv" color="primary" onClick={() => navigate('/Home')}>{t('orden_venta.button')}</Button> */}
             </Form>

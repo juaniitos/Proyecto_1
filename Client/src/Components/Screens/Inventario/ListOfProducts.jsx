@@ -83,6 +83,7 @@ const ListOfProducts = (props) => {
                         <th>{t('lista_prod.th_d')}</th>
                         <th>{t('lista_prod.th_e')}</th>
                         <th>{t('lista_prod.th_f')}</th>
+                        <th>{t('lista_prod.th_g')}</th>
                     </tr>
                 </thead>
                 {loaded && <>
@@ -94,6 +95,7 @@ const ListOfProducts = (props) => {
                                 <td>{p.descripcion}</td>
                                 <td>{p.cantidad}</td>
                                 <td>{p.precio}</td>
+                                <td>{p.destacado == true ? `${t('lista_prod.form_dest')}` : `${t('lista_prod.form_no_dest')}`}</td>
                                 <td><img className="btn_img" onClick={() => mostrarImg(_id)} src={p.imgUrl} alt="imagen producto"/></td>  
                                 {/* <td><img className={btnActive == _id ? "btn_img.active" : "btn_img"} onClick={() => agrandarImg(_id)} src={p.imgUrl} alt="imagen producto"/></td>   */}
                                 {/* <td><img className="img_prod" src={p.imgUrl} alt="imagen producto"/></td>                                                          */}

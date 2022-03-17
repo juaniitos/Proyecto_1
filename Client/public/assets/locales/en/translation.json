@@ -55,6 +55,10 @@
         "card_button_b": "Year",
         "card_title_b": "Proformed Total",
         "card_title_c": "Featured Product",
+        "card_body_a": "* code: ",
+        "card_body_b": " - description: ",
+        "card_body_c": " - brand: ",
+        "card_body_d": " - img ref: ",
         "card_title_d": "With supporting text below as a natural lead-in to additional content.",
         "card_title_e": "Button"
     },
@@ -167,10 +171,13 @@
         "th_b": "Description",
         "th_c": "Amount",
         "th_d": "Price",
-        "th_e": "Product image URL",
-        "th_f": "Actions",
+        "th_e": "State",
+        "th_f": "Product image URL",        
+        "th_g": "Actions",
+        "form_dest" : "Featured",
+        "form_no_dest": "Not featured",
         "btn_ed": "Edit",
-        "btn_del": "Delete"
+        "btn_del": "Delete"  
     },
     "buscar_prod": {
         "h1": "Search Products",
@@ -190,7 +197,11 @@
     },
     "inf_venta": {
         "h1": "Sales Report",
-        "button": "Back to Home"
+        "button": "Back to Home",
+        "th_a": "N° Document",
+        "th_b": "First Name",
+        "th_c": "Last Name",
+        "th_d": "Total"
     },
     "orden_venta": {
         "h1": "Sales Order",
@@ -219,5 +230,17 @@
     "users_conn" :{
         "h2": "Chat with your colleagues",
         "label": "User Finder"
+    },
+    "errors" : {
+        "client_a": "*First Name is required.",
+        "client_b": "*Last Name is required.",
+        "client_c": "*RUC must be at least 10 characters long and must be unique.",
+        "client_d": "*Email is required and must be unique.",
+        "client_e": "*Balance is required.",
+        "prod_a": "*Code is required.",
+        "prod_b": "*Description is required.",
+        "prod_c": "*Price is required.",
+        "prod_d": "*Amount is required.",
+        "prod_e": "*Cost is required."
     }
 }

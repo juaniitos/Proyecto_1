@@ -54,6 +54,10 @@
         "card_button_b": "Ano",
         "card_title_b": "Total Proformado",
         "card_title_c": "Produto em destaque",
+        "card_body_a": "* código: ",
+        "card_body_b": " - descrição: ",
+        "card_body_c": " - marca: ",
+        "card_body_d": " - img ref: ",
         "card_title_d": "Com o texto de suporte abaixo como um lead-in natural para conteúdo adicional.",
         "card_title_e": "Tecla"
     },
@@ -166,8 +170,11 @@
         "th_b": "Descrição",
         "th_c": "Quantidade",
         "th_d": "Preço",
-        "th_e": "URL de imagem do produto",
-        "th_f": "Ações",
+        "th_e": "Estado",
+        "th_f": "URL de imagem do produto",        
+        "th_g": "Ações",
+        "form_dest" : "Destacado",
+        "form_no_dest": "não apresentado",
         "btn_ed": "Editar",
         "btn_del": "Eliminar"
     },
@@ -189,7 +196,11 @@
     },
     "inf_venta": {
         "h1": "Relatório de Vendas",
-        "button": "De volta para casa"
+        "button": "De volta para casa",
+        "th_a": "Documento N°",
+        "th_b": "Nome",
+        "th_c": "Sobrenome",
+        "th_d": "Total"
     },
     "orden_venta": {
         "h1": "Ordem de venda",
@@ -218,5 +229,17 @@
     "users_conn" :{
         "h2": "Converse com seus colegas",
         "label": "Localizador de usuários"
+    },
+    "errors" : {
+        "client_a": "*Nome é necessário.",
+        "client_b": "*Sobrenome é necessário.",
+        "client_c": "*RUC deve ter pelo menos 10 caracteres de comprimento e deve ser único.",
+        "client_d": "*O e-mail é necessário e deve ser único.",
+        "client_e": "*O equilíbrio é necessário.",
+        "prod_a": "*Código é necessário.",
+        "prod_b": "*Descrição é necessária.",
+        "prod_c": "*O preço é necessário.",
+        "prod_d": "*Quantidade é necessária.",
+        "prod_e": "*O custo é necessário."
     }
 }

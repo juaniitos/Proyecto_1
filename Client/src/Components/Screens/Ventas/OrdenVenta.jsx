@@ -25,6 +25,7 @@ const OrdenVenta = (props) => {
     const [impuesto, setImpuesto] = useState([]);
     const [total, setTotal] = useState([]);
     const [cantidades, setCantidades] = useState([]);
+    const [num, setNum] = useState(0)
 
     let inputHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
@@ -62,7 +63,7 @@ const OrdenVenta = (props) => {
     }
 
     const addVenta = (e, ov) => {
-        e.preventDefault();
+        /* e.preventDefault(); */
         const data = {
             cliente : client,
             product: ventaProductos,
@@ -80,13 +81,13 @@ const OrdenVenta = (props) => {
             .catch(error => {
                 console.log(error)
             })
-            navigate('/home')
+            navigate('/ordenventa')
     }
 
     useEffect (() => {
         axios.get('/api/clients')
         .then(res => {
-            // console.log("RES", res.data.clients);
+            console.log("RES-CLIENTES", res.data.clients);
             setClients(res.data.clients);
         })
         .catch (err => {
@@ -100,9 +101,15 @@ const OrdenVenta = (props) => {
         .catch (err => {
             console.log("NO FUNCIONA", err)
         });
+        axios.get('/api/ventas')
+        .then(res => {
+            console.log(res.data.ventas)
+            setNum(res.data.ventas.length + 1)
+        })
+        .catch(err => {
+            console.log("NO FUNCIONA", err)
+        })
     },[])  
-
-    const [num, setNum] = useState(0)
 
     const addNum = () => {
         setNum(num + 1);

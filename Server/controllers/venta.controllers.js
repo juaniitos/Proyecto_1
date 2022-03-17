@@ -9,7 +9,22 @@ module.exports.createVenta = (req , res) => {
 };
 module.exports.viewsVenta = (req, res) => {
     console.log("Funciona viewsVenta")
-    Venta.find({}).sort({contador: 1})
+    Venta.find({})
     .then(allVenta => res.json({ventas: allVenta}))
     .catch(error => res.json ({data: null, message: "Algo salió mal en la creación de la venta", error: false}))
-}
+};
+module.exports.sumaVenta = (req, res) => {
+    console.log("Funciona sumaVenta")
+    Venta.aggregate([{ 
+        $group: { 
+            _id: null, 
+            total: { 
+                $sum: "$total" 
+            }
+        } }])
+    .then(allSumVenta => res.json({totalVentas: allSumVenta}))
+    .catch(error => res.json ({data: null, message: "Algo salió mal en la creación de la venta", error: false}))
+};
+
+
+
